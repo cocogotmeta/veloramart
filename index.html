@@ -3,161 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velora Mart | Ultra Premium Gourmet & Fine Foods</title>
+    <title>Velora Mart | Pakistan's Online Shopping Mall</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        gold: {
-                            100: '#FFF2C6',
-                            300: '#F3D079',
-                            500: '#D4AF37',
-                            700: '#AA820A',
-                        },
-                        velora: {
-                            black: '#080808',
-                            dark: '#121212',
-                            card: '#1A1A1A',
-                            border: '#2A2A2A'
+                        daraz: {
+                            orange: '#f57224',
+                            lightOrange: '#f8823d',
+                            bg: '#f5f5f5',
+                            dark: '#212121',
                         }
                     },
                     fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Roboto', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #080808;
-            color: #E5E5E5;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF2C6 0%, #D4AF37 50%, #AA820A 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gold-border-gradient {
-            border-image: linear-gradient(to right, #D4AF37, #2A2A2A) 1;
-        }
-        .glass-panel {
-            background: rgba(26, 26, 26, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #121212;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #D4AF37;
-            border-radius: 4px;
-        }
+        body { background-color: #f5f5f5; font-family: 'Roboto', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { height: 4px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #f57224; border-radius: 4px; }
     </style>
 </head>
-<body class="custom-scrollbar antialiased">
+<body class="antialiased text-gray-800">
 
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 glass-panel border-b border-gold-500/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Top Announcement Bar -->
+    <div class="bg-daraz-orange text-white text-xs py-1.5 px-4 text-center font-medium">
+        🎉 Free Delivery on orders over Rs. 2,500 | Fast Shipping Across Pakistan!
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             
-            <!-- Brand Logo -->
-            <div class="flex items-center space-x-3">
-                <span class="text-3xl font-serif font-black tracking-widest gold-gradient-text uppercase">Velora Mart</span>
-            </div>
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-1 text-2xl font-black italic text-daraz-orange tracking-tight">
+                <i class="fa-solid fa-bag-shopping"></i> VELORA<span class="text-daraz-dark not-italic">MART</span>
+            </a>
 
             <!-- Search Bar -->
-            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
-                <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search caviar, truffle, wagyu, chocolates..." 
-                    class="w-full bg-velora-dark border border-velora-border rounded-full py-2.5 pl-10 pr-4 text-sm text-gray-200 focus:outline-none focus:border-gold-500 transition-colors">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-500 text-sm"></i>
+            <div class="flex-1 max-w-2xl relative">
+                <div class="flex">
+                    <input type="text" id="searchInput" oninput="filterProducts()" 
+                        placeholder="Search in Velora Mart..." 
+                        class="w-full border border-gray-300 rounded-l-md py-2 px-4 text-sm focus:outline-none focus:border-daraz-orange bg-gray-50">
+                    <button onclick="filterProducts()" class="bg-daraz-orange hover:bg-daraz-lightOrange text-white px-6 rounded-r-md font-semibold text-sm transition-colors">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="flex items-center space-x-6">
-                <button onclick="toggleCart()" class="relative text-gray-300 hover:text-gold-500 transition-colors">
-                    <i class="fa-solid fa-bag-shopping text-2xl"></i>
-                    <span id="cartBadge" class="absolute -top-2 -right-2 bg-gold-500 text-velora-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+            <!-- Cart -->
+            <div class="flex items-center gap-6">
+                <button onclick="toggleCart()" class="relative flex items-center gap-2 text-gray-700 hover:text-daraz-orange transition-colors">
+                    <div class="relative">
+                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                        <span id="cartBadge" class="absolute -top-2 -right-2 bg-daraz-orange text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </div>
+                    <span class="hidden sm:inline text-sm font-medium">Cart</span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Search Bar -->
-        <div class="md:hidden px-4 pb-4">
-            <div class="relative w-full">
-                <input type="text" id="mobileSearchInput" oninput="syncMobileSearch()" placeholder="Search gourmet foods..." 
-                    class="w-full bg-velora-dark border border-velora-border rounded-full py-2 pl-10 pr-4 text-sm text-gray-200 focus:outline-none focus:border-gold-500">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-500 text-sm"></i>
+        <!-- Categories Bar -->
+        <div class="bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 flex items-center space-x-6 overflow-x-auto text-xs font-medium py-2.5 custom-scrollbar text-gray-600" id="categoryContainer">
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative py-20 overflow-hidden border-b border-velora-border">
-        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="text-gold-500 font-semibold tracking-widest uppercase text-xs mb-3 block">Ultra-Max Luxury Dining at Home</span>
-            <h1 class="text-4xl sm:text-6xl font-serif font-bold text-white mb-6">Exquisite Culinary Masterpieces</h1>
-            <p class="max-w-2xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed mb-8">
-                Indulge in Pakistan's finest handpicked gourmet selection, from rare black truffles to artisanal chocolates and A5 Wagyu beef.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <button onclick="filterCategory('All')" class="px-6 py-2.5 rounded-full bg-gold-500 text-velora-black font-semibold hover:bg-gold-300 transition-all text-sm">Explore Collection</button>
+    <!-- Banner -->
+    <div class="max-w-7xl mx-auto px-4 mt-4">
+        <div class="bg-gradient-to-r from-daraz-orange to-red-600 rounded-lg p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
+            <div>
+                <span class="bg-black/30 text-white text-xs px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">Flash Sale</span>
+                <h1 class="text-2xl md:text-4xl font-extrabold mt-2">UP TO 50% OFF ON GROCERY & FOOD</h1>
+                <p class="text-sm opacity-90 mt-1">Best Prices in Pakistan | Cash On Delivery Available</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Main Storefront Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
-        <!-- Category Filters -->
-        <div class="flex items-center space-x-2 overflow-x-auto pb-6 custom-scrollbar mb-8" id="categoryContainer">
-            <!-- Dynamic Categories injected here -->
+    <!-- Products Grid -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-gray-800">Just For You</h2>
         </div>
 
-        <!-- Products Grid -->
-        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Dynamic Products injected here -->
+        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
         </div>
     </main>
 
-    <!-- Slide-over Cart Drawer -->
+    <!-- Cart Drawer -->
     <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute inset-0 bg-black/50 transition-opacity" onclick="toggleCart()"></div>
         <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div class="w-screen max-w-md bg-velora-dark border-l border-gold-500/20 text-white flex flex-col">
-                <div class="p-6 border-b border-velora-border flex items-center justify-between">
-                    <h2 class="text-xl font-serif font-bold gold-gradient-text">Your Selection</h2>
-                    <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="w-screen max-w-md bg-white text-gray-800 flex flex-col shadow-2xl">
+                <div class="p-4 bg-daraz-orange text-white flex items-center justify-between">
+                    <h2 class="text-base font-bold flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> My Cart</h2>
+                    <button onclick="toggleCart()"><i class="fa-solid fa-xmark text-xl"></i></button>
                 </div>
 
-                <!-- Cart Items List -->
-                <div id="cartItemsList" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
-                    <p class="text-gray-500 text-center py-8">Your shopping bag is empty.</p>
+                <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+                    <p class="text-gray-400 text-center py-8 text-sm">Your cart is empty.</p>
                 </div>
 
-                <!-- Cart Footer -->
-                <div class="p-6 border-t border-velora-border bg-velora-black space-y-4">
-                    <div class="flex justify-between text-base font-semibold">
-                        <span>Subtotal</span>
-                        <span id="cartSubtotal" class="text-gold-500">PKR 0</span>
+                <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+                    <div class="flex justify-between text-sm font-bold">
+                        <span>Total (PKR):</span>
+                        <span id="cartSubtotal" class="text-daraz-orange text-lg">Rs. 0</span>
                     </div>
-                    <p class="text-xs text-gray-500">Taxes & doorstep delivery calculated at checkout.</p>
-                    <button class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-velora-black font-bold uppercase tracking-wider text-sm rounded hover:brightness-110 transition-all">
-                        Proceed to Checkout
+                    <button class="w-full py-2.5 bg-daraz-orange text-white font-bold uppercase text-sm rounded hover:bg-daraz-lightOrange transition-colors shadow">
+                        Checkout Now
                     </button>
                 </div>
             </div>
@@ -165,189 +132,88 @@
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-velora-border bg-velora-black py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer class="bg-gray-900 text-gray-400 text-xs mt-12 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-                <span class="text-xl font-serif font-bold gold-gradient-text">VELORA MART</span>
-                <p class="text-xs text-gray-500 mt-1">Ultra-Max Premium Food & Fine Grocery Experience.</p>
+                <h3 class="text-white font-bold text-sm mb-2">VELORA MART PAKISTAN</h3>
+                <p>Support: <a href="mailto:imadgotmeta@gmail.com" class="text-daraz-orange hover:underline">imadgotmeta@gmail.com</a></p>
             </div>
-            <div class="text-xs text-gray-400 text-center md:text-right">
-                <p>Support: <a href="mailto:imadgotmeta@gmail.com" class="text-gold-500 hover:underline">imadgotmeta@gmail.com</a></p>
-                <p class="mt-1">&copy; 2026 Velora Mart. All Rights Reserved.</p>
+            <div class="md:text-right">
+                <p>&copy; 2026 Velora Mart. Cash on Delivery Available.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Application Logic -->
+    <!-- App Logic -->
     <script>
-        // Sample Products Database
         const products = [
-            {
-                id: 1,
-                title: "Beluga Caviar Imperial",
-                category: "Caviar & Seafood",
-                price: 145000,
-                rating: 5.0,
-                image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
-                desc: "Wild Beluga caviar harvested from mature Caspian Sea sturgeon, rich and buttery."
-            },
-            {
-                id: 2,
-                title: "Japanese A5 Wagyu Ribeye (500g)",
-                category: "Meat & Poultry",
-                price: 68000,
-                rating: 4.9,
-                image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
-                desc: "Authentic Miyazaki A5 Wagyu with unmatched marbling and velvety texture."
-            },
-            {
-                id: 3,
-                title: "Italian Black Truffle Oil (250ml)",
-                category: "Oils & Spices",
-                price: 18500,
-                rating: 4.8,
-                image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80",
-                desc: "Cold-pressed extra virgin olive oil infused with authentic Umbrian black winter truffles."
-            },
-            {
-                id: 4,
-                title: "Saffron Filaments Super Negin (10g)",
-                category: "Oils & Spices",
-                price: 24000,
-                rating: 5.0,
-                image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80",
-                desc: "Grade 1 Persian Saffron threads with deep crimson aroma and intense flavor profile."
-            },
-            {
-                id: 5,
-                title: "Gold Leaf Artisan Chocolates (12 Pcs)",
-                category: "Sweets & Desserts",
-                price: 12500,
-                rating: 4.7,
-                image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80",
-                desc: "Handcrafted Swiss dark truffles coated in edible 24K gold leaf foil."
-            },
-            {
-                id: 6,
-                title: "Manuka Honey UMF 20+ (250g)",
-                category: "Sweets & Desserts",
-                price: 38000,
-                rating: 4.9,
-                image: "https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=600&q=80",
-                desc: "Ultra-rare raw New Zealand Manuka honey with guaranteed therapeutic UMF rating."
-            },
-            {
-                id: 7,
-                title: "Artisanal Aged Parmesan Reggiano",
-                category: "Dairy & Cheese",
-                price: 15500,
-                rating: 4.8,
-                image: "https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=600&q=80",
-                desc: "Aged 36 months in Modena, offering deep nutty notes and crystalline crunch."
-            },
-            {
-                id: 8,
-                title: "Organic Blue Mountain Coffee Beans",
-                category: "Beverages",
-                price: 22000,
-                rating: 4.9,
-                image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80",
-                desc: "Jamaican single-origin roasted beans known for mild flavor and lack of bitterness."
-            }
+            { id: 1, title: "Shan Bombay Biryani Masala", category: "Spices", price: 280, originalPrice: 350, discount: "-20%", rating: 4.8, image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80" },
+            { id: 2, title: "Super Basmati Rice 5KG", category: "Rice & Atta", price: 1850, originalPrice: 2200, discount: "-16%", rating: 4.9, image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" },
+            { id: 3, title: "Pure Organic Desi Ghee 1KG", category: "Ghee & Oils", price: 2450, originalPrice: 2800, discount: "-12%", rating: 4.7, image: "https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?auto=format&fit=crop&w=400&q=80" },
+            { id: 4, title: "Gulab Jamun Sweet Box 1KG", category: "Sweets", price: 1200, originalPrice: 1500, discount: "-20%", rating: 5.0, image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=400&q=80" }
         ];
 
         let cart = [];
         let activeCategory = "All";
 
-        // Initialize Storefront
         document.addEventListener("DOMContentLoaded", () => {
             renderCategories();
             renderProducts();
         });
 
-        // Render Category Filter Buttons
         function renderCategories() {
             const categories = ["All", ...new Set(products.map(p => p.category))];
             const container = document.getElementById("categoryContainer");
-            
             container.innerHTML = categories.map(cat => `
                 <button onclick="filterCategory('${cat}')" 
-                    class="px-5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${
-                        activeCategory === cat 
-                        ? 'bg-gold-500 text-velora-black border-gold-500 shadow-lg shadow-gold-500/20' 
-                        : 'bg-velora-card text-gray-400 border-velora-border hover:border-gold-500/50 hover:text-white'
+                    class="whitespace-nowrap transition-colors hover:text-daraz-orange ${
+                        activeCategory === cat ? 'text-daraz-orange font-bold border-b-2 border-daraz-orange pb-1' : ''
                     }">
                     ${cat}
                 </button>
             `).join("");
         }
 
-        // Filter Categories
         function filterCategory(cat) {
             activeCategory = cat;
             renderCategories();
             filterProducts();
         }
 
-        // Render Product Cards
         function renderProducts(items = products) {
             const grid = document.getElementById("productsGrid");
-            
-            if (items.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">No ultra-premium items match your search.</div>`;
-                return;
-            }
-
             grid.innerHTML = items.map(p => `
-                <div class="glass-panel rounded-xl overflow-hidden group hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div class="bg-white rounded hover:shadow-lg transition-shadow duration-200 overflow-hidden border border-gray-100 flex flex-col justify-between">
                     <div>
-                        <div class="relative overflow-hidden h-52">
-                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 left-3 bg-velora-black/80 backdrop-blur text-gold-500 text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded border border-gold-500/30">
-                                ${p.category}
-                            </span>
+                        <div class="relative overflow-hidden h-40 bg-gray-50">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+                            <span class="absolute top-1.5 right-1.5 bg-daraz-orange text-white text-[10px] font-bold px-1.5 py-0.5 rounded">${p.discount}</span>
                         </div>
-                        <div class="p-5">
-                            <div class="flex items-center justify-between text-xs text-gold-500 mb-2">
-                                <span><i class="fa-solid fa-star text-xs"></i> ${p.rating}</span>
-                                <span class="text-gray-400">In Stock</span>
-                            </div>
-                            <h3 class="font-serif font-bold text-lg text-white mb-2 group-hover:text-gold-300 transition-colors">${p.title}</h3>
-                            <p class="text-gray-400 text-xs line-clamp-2 mb-4">${p.desc}</p>
+                        <div class="p-2.5">
+                            <h3 class="text-xs text-gray-800 line-clamp-2 leading-snug mb-2">${p.title}</h3>
+                            <div class="text-daraz-orange text-base font-bold">Rs. ${p.price.toLocaleString()}</div>
+                            <div class="text-[10px] text-gray-400 line-through">Rs. ${p.originalPrice.toLocaleString()}</div>
                         </div>
                     </div>
-                    <div class="p-5 pt-0 flex items-center justify-between border-t border-velora-border/50 mt-auto">
-                        <div>
-                            <span class="text-[10px] text-gray-500 block uppercase">Price</span>
-                            <span class="text-gold-500 font-bold text-base">PKR ${p.price.toLocaleString()}</span>
-                        </div>
-                        <button onclick="addToCart(${p.id})" class="bg-velora-dark hover:bg-gold-500 hover:text-velora-black text-gold-500 border border-gold-500/40 p-2.5 rounded-lg transition-all">
-                            <i class="fa-solid fa-cart-plus"></i>
+                    <div class="p-2.5 pt-0">
+                        <button onclick="addToCart(${p.id})" class="w-full bg-daraz-orange hover:bg-daraz-lightOrange text-white text-xs font-bold py-1.5 rounded transition-colors">
+                            Add To Cart
                         </button>
                     </div>
                 </div>
             `).join("");
         }
 
-        // Search & Filter Handler
         function filterProducts() {
-            const query = (document.getElementById("searchInput").value || document.getElementById("mobileSearchInput").value).toLowerCase();
-            
+            const query = document.getElementById("searchInput").value.toLowerCase();
             const filtered = products.filter(p => {
-                const matchesCategory = activeCategory === "All" || p.category === activeCategory;
-                const matchesSearch = p.title.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query);
-                return matchesCategory && matchesSearch;
+                const matchesCat = activeCategory === "All" || p.category === activeCategory;
+                const matchesSearch = p.title.toLowerCase().includes(query);
+                return matchesCat && matchesSearch;
             });
-
             renderProducts(filtered);
         }
 
-        function syncMobileSearch() {
-            document.getElementById("searchInput").value = document.getElementById("mobileSearchInput").value;
-            filterProducts();
-        }
-
-        // Cart Drawer Handlers
         function toggleCart() {
             document.getElementById("cartDrawer").classList.toggle("hidden");
         }
@@ -355,26 +221,10 @@
         function addToCart(productId) {
             const item = products.find(p => p.id === productId);
             const existing = cart.find(c => c.id === productId);
-
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...item, qty: 1 });
-            }
-
+            if (existing) { existing.qty += 1; } 
+            else { cart.push({ ...item, qty: 1 }); }
             updateCartUI();
             toggleCart();
-        }
-
-        function updateCartQty(productId, delta) {
-            const item = cart.find(c => c.id === productId);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    cart = cart.filter(c => c.id !== productId);
-                }
-            }
-            updateCartUI();
         }
 
         function updateCartUI() {
@@ -387,24 +237,19 @@
 
             badge.innerText = totalCount;
             badge.classList.toggle("hidden", totalCount === 0);
-            subtotalEl.innerText = `PKR ${subtotal.toLocaleString()}`;
+            subtotalEl.innerText = `Rs. ${subtotal.toLocaleString()}`;
 
             if (cart.length === 0) {
-                list.innerHTML = `<p class="text-gray-500 text-center py-8">Your shopping bag is empty.</p>`;
+                list.innerHTML = `<p class="text-gray-400 text-center py-8 text-sm">Your cart is empty.</p>`;
                 return;
             }
 
             list.innerHTML = cart.map(item => `
-                <div class="flex items-center space-x-4 bg-velora-card p-3 rounded-lg border border-velora-border">
-                    <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded">
+                <div class="flex items-center gap-3 bg-gray-50 p-2.5 rounded border border-gray-200">
+                    <img src="${item.image}" alt="${item.title}" class="w-12 h-12 object-cover rounded">
                     <div class="flex-1 min-w-0">
-                        <h4 class="text-sm font-semibold text-white truncate">${item.title}</h4>
-                        <span class="text-xs text-gold-500 font-bold block mt-1">PKR ${(item.price * item.qty).toLocaleString()}</span>
-                        <div class="flex items-center space-x-2 mt-2">
-                            <button onclick="updateCartQty(${item.id}, -1)" class="w-5 h-5 bg-velora-dark text-gray-300 rounded flex items-center justify-center text-xs hover:text-white">-</button>
-                            <span class="text-xs text-white">${item.qty}</span>
-                            <button onclick="updateCartQty(${item.id}, 1)" class="w-5 h-5 bg-velora-dark text-gray-300 rounded flex items-center justify-center text-xs hover:text-white">+</button>
-                        </div>
+                        <h4 class="text-xs font-semibold text-gray-800 truncate">${item.title}</h4>
+                        <span class="text-xs text-daraz-orange font-bold">Rs. ${(item.price * item.qty).toLocaleString()}</span>
                     </div>
                 </div>
             `).join("");
@@ -412,4 +257,3 @@
     </script>
 </body>
 </html>
-
