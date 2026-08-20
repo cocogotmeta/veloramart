@@ -3,42 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELORA MALL | Premium Shopping Portal</title>
+    <title>VELORA BOUTIQUE | Luxury Flagship Mall</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldBrand: '#064E3B',
+                        emeraldHover: '#022C22',
+                        goldAccent: '#D97706',
+                        goldLight: '#FEF3C7',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F4F4F7; color: #1E293B; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; color: #0F172A; }
         .hide-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-slate-900 text-slate-200 text-[11px] font-bold py-2 px-4 text-center tracking-wide flex items-center justify-center gap-3">
-        <span>⚡ VELORA MEGA MALL • CASH ON DELIVERY AVAILABLE NATIONWIDE</span>
+    <!-- Top Luxury Bar -->
+    <div class="bg-emeraldBrand text-emerald-100 text-[11px] font-bold py-2.5 px-4 text-center tracking-widest flex items-center justify-center gap-2">
+        <span class="bg-amber-500 text-slate-950 px-2 py-0.5 rounded text-[9px] font-black uppercase">Official Merchant</span>
+        <span>VELORA BOUTIQUE &bull; EXPRESS DOORSTEP DELIVERY &bull; CASH ON DELIVERY</span>
     </div>
 
-    <!-- Header / Search Bar (Daraz Style) -->
+    <!-- Header / Daraz-Style Search -->
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-2">
-                <div class="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center text-xl font-black">
-                    <i class="fa-solid fa-store"></i>
+            <a href="#" class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-emeraldBrand text-amber-400 flex items-center justify-center text-xl font-black shadow-md border border-amber-500/30">
+                    <i class="fa-solid fa-crown"></i>
                 </div>
                 <div class="leading-none">
-                    <span class="font-extrabold text-xl tracking-tight text-slate-900">VELORA</span>
-                    <span class="text-[10px] font-bold text-orange-600 block uppercase tracking-widest">Mall</span>
+                    <span class="font-black text-xl tracking-tight text-slate-900">VELORA</span>
+                    <span class="text-[10px] font-black text-goldAccent block uppercase tracking-widest">Boutique Mall</span>
                 </div>
             </a>
 
-            <!-- Search Bar -->
+            <!-- Search -->
             <div class="flex-1 max-w-2xl mx-2">
                 <div class="relative flex items-center">
-                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search in Velora Mall (e.g., Headphones, Trimmers, Hoodies...)" 
-                        class="w-full bg-slate-100 border border-slate-300 rounded-xl py-2.5 pl-4 pr-12 text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-orange-500 transition-all">
-                    <button class="absolute right-1 px-4 py-1.5 bg-orange-600 hover:bg-orange-700 rounded-lg text-white text-xs font-bold transition-all">
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search luxury grooming, audio, fashion accessories..." 
+                        class="w-full bg-slate-100 border border-slate-300 rounded-xl py-2.5 pl-4 pr-12 text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emeraldBrand transition-all">
+                    <button class="absolute right-1 px-4 py-1.5 bg-emeraldBrand hover:bg-emeraldHover rounded-lg text-amber-400 text-xs font-bold transition-all">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
@@ -46,9 +60,9 @@
 
             <!-- Cart Trigger -->
             <button onclick="toggleCart()" class="relative flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-800 transition-all border border-slate-200">
-                <i class="fa-solid fa-cart-shopping text-orange-600 text-sm"></i>
-                <span class="hidden sm:inline">Cart</span>
-                <span id="cartBadge" class="bg-orange-600 text-white text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                <i class="fa-solid fa-bag-shopping text-emeraldBrand text-sm"></i>
+                <span class="hidden sm:inline">Bag</span>
+                <span id="cartBadge" class="bg-emeraldBrand text-amber-400 text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
             </button>
         </div>
     </header>
@@ -56,75 +70,77 @@
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6 flex-1 w-full">
 
-        <!-- Daraz Category Quick Icons -->
+        <!-- Category Grid Icons -->
         <div class="grid grid-cols-4 sm:grid-cols-8 gap-3 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm text-center">
             <button onclick="filterCategory('All')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg group-hover:bg-orange-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emeraldBrand flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-border-all"></i>
                 </div>
                 <span class="text-[11px] font-bold text-slate-700">All Items</span>
             </button>
             <button onclick="filterCategory('Electronics')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg group-hover:bg-blue-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-mobile-screen-button"></i>
                 </div>
                 <span class="text-[11px] font-bold text-slate-700">Gadgets</span>
             </button>
             <button onclick="filterCategory('Grooming')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-scissors"></i>
                 </div>
                 <span class="text-[11px] font-bold text-slate-700">Grooming</span>
             </button>
             <button onclick="filterCategory('Fashion')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg group-hover:bg-purple-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-shirt"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Fashion</span>
+                <span class="text-[11px] font-bold text-slate-700">Apparel</span>
             </button>
             <button onclick="filterCategory('Electronics')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg group-hover:bg-amber-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-headphones"></i>
                 </div>
                 <span class="text-[11px] font-bold text-slate-700">Audio</span>
             </button>
             <button onclick="filterCategory('Grooming')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-lg group-hover:bg-rose-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-spray-can"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Perfumes</span>
+                <span class="text-[11px] font-bold text-slate-700">Fragrances</span>
             </button>
             <button onclick="filterCategory('Fashion')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-wallet"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Wallets</span>
+                <span class="text-[11px] font-bold text-slate-700">Leather</span>
             </button>
             <button onclick="filterCategory('Electronics')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-lg group-hover:bg-teal-600 group-hover:text-white transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
                     <i class="fa-solid fa-clock"></i>
                 </div>
                 <span class="text-[11px] font-bold text-slate-700">Watches</span>
             </button>
         </div>
 
-        <!-- Flash Sale Section Header (Daraz Vibe) -->
+        <!-- Flash Sale Banner -->
         <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <span class="text-xs font-black bg-orange-600 text-white px-3 py-1 rounded-lg uppercase tracking-wider">Flash Sale</span>
-                <span class="text-xs font-bold text-slate-600 hidden sm:inline">On Sale Right Now</span>
+                <span class="text-xs font-black bg-emeraldBrand text-amber-400 px-3 py-1 rounded-lg uppercase tracking-wider flex items-center gap-1.5 border border-amber-500/30">
+                    <i class="fa-solid fa-bolt"></i> Prime Deals
+                </span>
+                <span class="text-xs font-bold text-slate-600 hidden sm:inline">Limited Collector Stock Available</span>
             </div>
             <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-700">
-                <span>Ending in:</span>
-                <span class="bg-slate-900 text-orange-400 px-2 py-1 rounded">03</span> : 
-                <span class="bg-slate-900 text-orange-400 px-2 py-1 rounded">45</span> : 
-                <span class="bg-slate-900 text-orange-400 px-2 py-1 rounded">12</span>
+                <span>Ends In:</span>
+                <span class="bg-emeraldBrand text-amber-400 px-2.5 py-1 rounded">01</span> : 
+                <span class="bg-emeraldBrand text-amber-400 px-2.5 py-1 rounded">42</span> : 
+                <span class="bg-emeraldBrand text-amber-400 px-2.5 py-1 rounded">15</span>
             </div>
         </div>
 
-        <!-- Product Cards Grid (Daraz Multi-Vendor Style) -->
+        <!-- Products Grid -->
         <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-            <!-- Dynamic Injected Items -->
+            <!-- Dynamic JS Injection -->
         </div>
 
     </main>
@@ -132,14 +148,16 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-6 mt-8">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 font-medium">
-            <p>&copy; 2026 VELORA Mall. Verified Merchant Store.</p>
+            <p>&copy; 2026 VELORA Boutique. Certified Luxury Goods Retailer.</p>
         </div>
     </footer>
 
-    <!-- Quick View Modal -->
-    <div id="quickViewModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-xl w-full p-6 relative space-y-4 shadow-2xl">
-            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900"><i class="fa-solid fa-xmark text-lg"></i></button>
+    <!-- Detailed Modal -->
+    <div id="quickViewModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 relative space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto hide-scroll">
+            <button onclick="closeQuickView()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 bg-slate-100 rounded-full w-8 h-8 flex items-center justify-center z-10 transition-colors">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
             <div id="quickViewContent"></div>
         </div>
     </div>
@@ -149,7 +167,7 @@
         <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl">
             <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
                 <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-bag-shopping text-orange-600"></i> My Cart
+                    <i class="fa-solid fa-bag-shopping text-emeraldBrand"></i> My Shopping Bag
                 </h3>
                 <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-900"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
@@ -158,16 +176,16 @@
 
             <div class="p-4 border-t border-slate-200 bg-slate-50 space-y-3">
                 <div class="flex justify-between font-extrabold text-slate-900 text-sm">
-                    <span>Total Payable:</span>
-                    <span id="cartTotal" class="text-orange-600">Rs. 0</span>
+                    <span>Total Amount:</span>
+                    <span id="cartTotal" class="text-emeraldBrand">Rs. 0</span>
                 </div>
                 
                 <form id="checkoutForm" onsubmit="processOrder(event)" class="space-y-2.5">
-                    <input type="text" id="custName" placeholder="Full Name" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500">
-                    <input type="tel" id="custPhone" placeholder="WhatsApp / Phone Number" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500">
-                    <textarea id="custAddress" placeholder="Complete Delivery Address" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl h-16 resize-none focus:outline-none focus:border-orange-500"></textarea>
+                    <input type="text" id="custName" placeholder="Full Name" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-emeraldBrand">
+                    <input type="tel" id="custPhone" placeholder="WhatsApp / Mobile Number" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-emeraldBrand">
+                    <textarea id="custAddress" placeholder="Complete Delivery Address" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl h-16 resize-none focus:outline-none focus:border-emeraldBrand"></textarea>
                     
-                    <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md">
+                    <button type="submit" class="w-full py-3.5 bg-emeraldBrand hover:bg-emeraldHover text-amber-400 font-bold rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md">
                         <i class="fa-brands fa-whatsapp text-base"></i> Place Order via WhatsApp
                     </button>
                 </form>
@@ -177,14 +195,108 @@
 
     <script>
         const products = [
-            { id: 1, title: "Velora AirBuds Pro ANC Earbuds", category: "Electronics", price: 4999, original_price: 7999, discount: "-38%", rating: "4.9 ★ (120)", image_url: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800" },
-            { id: 2, title: "Chronos OLED Smartwatch Series 9", category: "Electronics", price: 8499, original_price: 12999, discount: "-35%", rating: "5.0 ★ (85)", image_url: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800" },
-            { id: 3, title: "Vintage T9 Metal Barber Trimmer", category: "Grooming", price: 3199, original_price: 4999, discount: "-36%", rating: "4.8 ★ (230)", image_url: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800" },
-            { id: 4, title: "Double Edge Stainless Safety Razor", category: "Grooming", price: 2499, original_price: 3499, discount: "-28%", rating: "4.9 ★ (64)", image_url: "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=800" },
-            { id: 5, title: "Aura EDP Long-Lasting Perfume 100ml", category: "Grooming", price: 4199, original_price: 5999, discount: "-30%", rating: "5.0 ★ (142)", image_url: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800" },
-            { id: 6, title: "Heavyweight Fleece Oversized Hoodie", category: "Fashion", price: 5299, original_price: 7499, discount: "-29%", rating: "4.9 ★ (98)", image_url: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800" },
-            { id: 7, title: "Italian Leather Premium Slim Wallet", category: "Fashion", price: 2799, original_price: 3999, discount: "-30%", rating: "4.8 ★ (115)", image_url: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800" },
-            { id: 8, title: "RGB Mechanical Cyber Keyboard", category: "Electronics", price: 8999, original_price: 12500, discount: "-28%", rating: "5.0 ★ (76)", image_url: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800" }
+            {
+                id: 1,
+                title: "Velora Studio ANC Wireless Headphones",
+                category: "Electronics",
+                price: 12500,
+                original_price: 16000,
+                discount: "-22%",
+                rating: "4.9 ★ (180 Reviews)",
+                stock: "6 left in stock",
+                description: "Hi-Res Audio certified studio wireless headphones with active noise cancellation, plush memory foam earcups, and up to 50 hours battery life.",
+                features: ["Custom 40mm Titanium Drivers", "Hybrid Active Noise Cancellation", "Bluetooth 5.3 + 3.5mm Wired Mode", "Multipoint Dual Device Connection"],
+                images: [
+                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+                    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800",
+                    "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800"
+                ]
+            },
+            {
+                id: 2,
+                title: "Double Edge Stainless Steel Safety Razor",
+                category: "Grooming",
+                price: 3499,
+                original_price: 4500,
+                discount: "-22%",
+                rating: "4.9 ★ (95 Reviews)",
+                stock: "8 left in stock",
+                description: "Weighted solid stainless steel safety razor designed for an ultra-close barber grade shave without razor burns or ingrown hairs.",
+                features: ["100% Solid Stainless Steel Build", "Zero-Waste Eco-Friendly Shaving", "Compatible with All DE Blades", "Anti-Slip Diamond Knurled Handle"],
+                images: [
+                    "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=800",
+                    "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
+                    "https://images.unsplash.com/photo-1503925802522-890a50c98456?w=800"
+                ]
+            },
+            {
+                id: 3,
+                title: "Chronos Titanium OLED Smartwatch",
+                category: "Electronics",
+                price: 14900,
+                original_price: 18500,
+                discount: "-19%",
+                rating: "5.0 ★ (110 Reviews)",
+                stock: "4 left in stock",
+                description: "Grade-5 titanium smart timepiece featuring vibrant Always-On AMOLED panel, sapphire glass, continuous heart monitoring, and fitness analytics.",
+                features: ["Grade-5 Titanium Alloy Case", "1.96-inch Always-On AMOLED Display", "Sapphire Crystal Scratch Resistance", "7-Day Battery Backup"],
+                images: [
+                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+                    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800",
+                    "https://images.unsplash.com/photo-1510017803434-a899398421b3?w=800"
+                ]
+            },
+            {
+                id: 4,
+                title: "Heavyweight Fleece Streetwear Hoodie (450 GSM)",
+                category: "Fashion",
+                price: 6200,
+                original_price: 8000,
+                discount: "-22%",
+                rating: "4.9 ★ (130 Reviews)",
+                stock: "12 left in stock",
+                description: "Crafted from 450 GSM combed organic cotton fleece. Features dropped shoulder silhouette, double-layered hood, and durable ribbed cuffs.",
+                features: ["450 GSM Heavyweight Organic Cotton", "Ultra-Soft Brushed Fleece Lining", "Pre-Shrunk Fade Resistant Dye", "Relaxed Boxy Fit"],
+                images: [
+                    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800",
+                    "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=800",
+                    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800"
+                ]
+            },
+            {
+                id: 5,
+                title: "Precision Metal Barber Clipper Set",
+                category: "Grooming",
+                price: 4200,
+                original_price: 5800,
+                discount: "-27%",
+                rating: "4.8 ★ (220 Reviews)",
+                stock: "15 left in stock",
+                description: "Full metallic cordless hair clipper and detail trimmer kit. High torque rotary motor engineered for crisp fades and clean line-ups.",
+                features: ["Zero-Gapped Carbon Steel Blades", "2000mAh Li-ion Battery (3 Hour Run)", "Full Metallic Engraved Casing", "Includes Guard Attachments (1-4)"],
+                images: [
+                    "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
+                    "https://images.unsplash.com/photo-1503925802522-890a50c98456?w=800",
+                    "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=800"
+                ]
+            },
+            {
+                id: 6,
+                title: "Full-Grain Italian Leather Bifold Wallet",
+                category: "Fashion",
+                price: 3200,
+                original_price: 4200,
+                discount: "-23%",
+                rating: "4.8 ★ (140 Reviews)",
+                stock: "9 left in stock",
+                description: "Handcrafted from full-grain vegetable-tanned Italian leather that develops a rich patina over time. Equipped with RFID blocking lining.",
+                features: ["100% Genuine Full-Grain Leather", "Advanced RFID Signal Shielding", "Holds 10+ Cards and Cash", "Slim Profile Hand-Stitched Construction"],
+                images: [
+                    "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800",
+                    "https://images.unsplash.com/photo-1606503825008-909a63318290?w=800",
+                    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"
+                ]
+            }
         ];
 
         let cart = [];
@@ -194,23 +306,28 @@
         function renderProducts(items) {
             const grid = document.getElementById("productsGrid");
             grid.innerHTML = items.map(p => `
-                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 hover:border-orange-400 hover:shadow-md transition-all duration-200 flex flex-col justify-between group">
+                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 hover:border-emeraldBrand hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
                     <div>
                         <div class="relative h-40 sm:h-48 overflow-hidden rounded-xl mb-2.5 bg-slate-100 cursor-pointer" onclick="openQuickView(${p.id})">
-                            <img src="${p.image_url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            <span class="absolute top-2 left-2 bg-orange-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase">${p.discount}</span>
+                            <img src="${p.images[0]}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2 left-2 bg-emeraldBrand text-amber-400 text-[9px] font-black px-2 py-0.5 rounded uppercase border border-amber-500/20">${p.discount}</span>
                         </div>
-                        <h4 class="text-xs font-bold text-slate-800 line-clamp-2 leading-snug cursor-pointer hover:text-orange-600 transition-colors" onclick="openQuickView(${p.id})">${p.title}</h4>
-                        <div class="text-[10px] text-amber-500 font-bold mt-1">${p.rating}</div>
+                        <h4 class="text-xs font-bold text-slate-800 line-clamp-2 leading-snug cursor-pointer hover:text-emeraldBrand transition-colors" onclick="openQuickView(${p.id})">${p.title}</h4>
+                        <div class="text-[10px] text-amber-600 font-bold mt-1">${p.rating}</div>
                     </div>
                     <div class="mt-3 pt-2 border-t border-slate-100">
                         <div class="flex items-baseline gap-1.5 mb-2">
-                            <span class="text-sm sm:text-base font-extrabold text-orange-600">Rs. ${p.price.toLocaleString()}</span>
+                            <span class="text-sm sm:text-base font-extrabold text-emeraldBrand">Rs. ${p.price.toLocaleString()}</span>
                             <span class="text-[10px] text-slate-400 line-through">Rs. ${p.original_price.toLocaleString()}</span>
                         </div>
-                        <button onclick="addToCart(${p.id})" class="w-full py-2 bg-orange-50 hover:bg-orange-600 text-orange-600 hover:text-white border border-orange-200 text-xs font-bold rounded-xl transition-all">
-                            Add to Cart
-                        </button>
+                        <div class="flex gap-2">
+                            <button onclick="openQuickView(${p.id})" class="px-2.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all" title="Quick View">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            <button onclick="addToCart(${p.id})" class="flex-1 py-2 bg-emerald-50 hover:bg-emeraldBrand text-emeraldBrand hover:text-amber-400 border border-emerald-200 text-xs font-bold rounded-xl transition-all">
+                                Add to Bag
+                            </button>
+                        </div>
                     </div>
                 </div>
             `).join("");
@@ -219,18 +336,47 @@
         function openQuickView(id) {
             const p = products.find(x => x.id === id);
             document.getElementById("quickViewContent").innerHTML = `
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <img src="${p.image_url}" class="w-full sm:w-1/2 h-48 object-cover rounded-xl border border-slate-200">
-                    <div class="space-y-3 sm:w-1/2 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] font-bold text-orange-600 uppercase tracking-widest">${p.category}</span>
-                            <h3 class="text-base font-bold text-slate-900 mt-0.5">${p.title}</h3>
-                            <p class="text-xs text-slate-500 mt-1">High-quality product with 7-day return guarantee and fast dispatch.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <div class="h-64 sm:h-72 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+                            <img id="mainGalleryImg" src="${p.images[0]}" class="w-full h-full object-cover transition-all duration-300">
                         </div>
+                        <div class="flex gap-2 overflow-x-auto pb-1">
+                            ${p.images.map((img) => `
+                                <button onclick="switchImage('${img}')" class="w-16 h-16 rounded-xl border-2 border-slate-200 hover:border-emeraldBrand overflow-hidden flex-shrink-0 transition-all">
+                                    <img src="${img}" class="w-full h-full object-cover">
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 flex flex-col justify-between">
                         <div>
-                            <div class="text-lg font-extrabold text-orange-600 mb-3">Rs. ${p.price.toLocaleString()}</div>
-                            <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3 bg-orange-600 text-white font-bold text-xs uppercase rounded-xl hover:bg-orange-700 transition-all">
-                                Add To Cart
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-black text-emeraldBrand uppercase tracking-widest bg-emerald-50 px-2.5 py-1 rounded-full">${p.category}</span>
+                                <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">${p.stock}</span>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 leading-snug">${p.title}</h3>
+                            <div class="text-xs font-bold text-amber-600 mt-1">${p.rating}</div>
+                            
+                            <p class="text-xs text-slate-600 mt-3 leading-relaxed">${p.description}</p>
+                            
+                            <div class="mt-4 space-y-1.5">
+                                <span class="text-[11px] font-black uppercase text-slate-400 tracking-wider">Specifications:</span>
+                                <ul class="space-y-1">
+                                    ${p.features.map(f => `<li class="text-xs font-medium text-slate-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-emeraldBrand text-[10px]"></i> ${f}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100">
+                            <div class="flex items-baseline gap-2 mb-3">
+                                <span class="text-2xl font-black text-emeraldBrand">Rs. ${p.price.toLocaleString()}</span>
+                                <span class="text-xs text-slate-400 line-through">Rs. ${p.original_price.toLocaleString()}</span>
+                                <span class="text-xs font-black text-amber-600 bg-amber-50 px-2 py-0.5 rounded">${p.discount} OFF</span>
+                            </div>
+                            <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3.5 bg-emeraldBrand hover:bg-emeraldHover text-amber-400 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bag-shopping"></i> Add To Shopping Bag
                             </button>
                         </div>
                     </div>
@@ -239,6 +385,7 @@
             document.getElementById("quickViewModal").classList.remove("hidden");
         }
 
+        function switchImage(src) { document.getElementById("mainGalleryImg").src = src; }
         function closeQuickView() { document.getElementById("quickViewModal").classList.add("hidden"); }
         function toggleCart() { document.getElementById("cartModal").classList.toggle("hidden"); }
 
@@ -258,7 +405,7 @@
 
             const container = document.getElementById("cartItems");
             if (cart.length === 0) {
-                container.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Your cart is empty.</div>`;
+                container.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Your shopping bag is empty.</div>`;
                 return;
             }
 
@@ -266,7 +413,7 @@
                 <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200">
                     <div>
                         <h5 class="text-xs font-bold text-slate-800 line-clamp-1">${i.title}</h5>
-                        <p class="text-[11px] font-semibold text-orange-600">Rs. ${i.price.toLocaleString()} × ${i.qty}</p>
+                        <p class="text-[11px] font-semibold text-emeraldBrand">Rs. ${i.price.toLocaleString()} × ${i.qty}</p>
                     </div>
                     <span class="text-xs font-extrabold text-slate-900">Rs. ${(i.price * i.qty).toLocaleString()}</span>
                 </div>
@@ -283,7 +430,7 @@
             const total = cart.reduce((a, b) => a + (b.price * b.qty), 0);
 
             let orderList = cart.map(i => `• ${i.title} (x${i.qty}) - Rs. ${i.price * i.qty}`).join('\n');
-            let message = `*NEW ORDER - VELORA MALL*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n${orderList}\n\n*Total:* Rs. ${total.toLocaleString()}`;
+            let message = `*NEW ORDER - VELORA BOUTIQUE*\n\n*Customer:* ${name}\n*Contact:* ${phone}\n*Address:* ${address}\n\n*Items:*\n${orderList}\n\n*Total Payable:* Rs. ${total.toLocaleString()}`;
 
             window.open(`https://wa.me/923234749637?text=${encodeURIComponent(message)}`, '_blank');
         }
