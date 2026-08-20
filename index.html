@@ -3,190 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELORA BOUTIQUE | Luxury Flagship Mall</title>
+    <title>AETHER LUXURY MALT | Ultra Glassmorphism Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        emeraldBrand: '#064E3B',
-                        emeraldHover: '#022C22',
-                        goldAccent: '#D97706',
-                        goldLight: '#FEF3C7',
+                        glassBg: 'rgba(15, 23, 42, 0.65)',
+                        glassBorder: 'rgba(255, 255, 255, 0.12)',
+                        glassCard: 'rgba(255, 255, 255, 0.05)',
+                        glassHover: 'rgba(255, 255, 255, 0.1)',
+                        goldGlow: '#F59E0B',
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: radial-gradient(circle at top left, #0f172a, #020617, #090d16);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .liquid-glass-modal {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .gold-glow-btn {
+            background: linear-gradient(135deg, #f59e0b, #b45309);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        }
+        .gold-glow-btn:hover {
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.45);
+        }
         .hide-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col justify-between">
+<body class="antialiased flex flex-col justify-between selection:bg-amber-500 selection:text-black">
 
-    <!-- Top Luxury Bar -->
-    <div class="bg-emeraldBrand text-emerald-100 text-[11px] font-bold py-2.5 px-4 text-center tracking-widest flex items-center justify-center gap-2">
-        <span class="bg-amber-500 text-slate-950 px-2 py-0.5 rounded text-[9px] font-black uppercase">Official Merchant</span>
-        <span>VELORA BOUTIQUE &bull; EXPRESS DOORSTEP DELIVERY &bull; CASH ON DELIVERY</span>
+    <!-- Top Glow Bar -->
+    <div class="liquid-glass border-b border-white/10 text-amber-400 text-[11px] font-bold py-2 px-4 text-center tracking-widest flex items-center justify-center gap-2">
+        <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded text-[9px] font-black uppercase">Liquid Glass Edition</span>
+        <span>AETHER BOUTIQUE &bull; EXPRESS VIP DELIVERY &bull; CASH ON DELIVERY AVAILABLE</span>
     </div>
 
-    <!-- Header / Daraz-Style Search -->
-    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <!-- Liquid Glass Header (Daraz Navigation Style) -->
+    <header class="sticky top-0 z-40 liquid-glass border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-            <a href="#" class="flex items-center gap-2.5">
-                <div class="w-10 h-10 rounded-xl bg-emeraldBrand text-amber-400 flex items-center justify-center text-xl font-black shadow-md border border-amber-500/30">
-                    <i class="fa-solid fa-crown"></i>
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl font-black shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                    <i class="fa-solid fa-gem"></i>
                 </div>
                 <div class="leading-none">
-                    <span class="font-black text-xl tracking-tight text-slate-900">VELORA</span>
-                    <span class="text-[10px] font-black text-goldAccent block uppercase tracking-widest">Boutique Mall</span>
+                    <span class="font-black text-xl tracking-tight text-white">AETHER</span>
+                    <span class="text-[9px] font-extrabold text-amber-400 block uppercase tracking-widest">Luxury Mall</span>
                 </div>
             </a>
 
-            <!-- Search -->
+            <!-- Search Bar -->
             <div class="flex-1 max-w-2xl mx-2">
                 <div class="relative flex items-center">
-                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search luxury grooming, audio, fashion accessories..." 
-                        class="w-full bg-slate-100 border border-slate-300 rounded-xl py-2.5 pl-4 pr-12 text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emeraldBrand transition-all">
-                    <button class="absolute right-1 px-4 py-1.5 bg-emeraldBrand hover:bg-emeraldHover rounded-lg text-amber-400 text-xs font-bold transition-all">
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search luxury audio, razors, tech accessories, apparel..." 
+                        class="w-full bg-white/5 border border-white/15 rounded-2xl py-2.5 pl-4 pr-12 text-xs font-medium text-white placeholder-slate-400 focus:outline-none focus:border-amber-500/50 focus:bg-white/10 transition-all">
+                    <button class="absolute right-1.5 px-4 py-1.5 gold-glow-btn text-slate-950 rounded-xl text-xs font-extrabold transition-all">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Cart Trigger -->
-            <button onclick="toggleCart()" class="relative flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-800 transition-all border border-slate-200">
-                <i class="fa-solid fa-bag-shopping text-emeraldBrand text-sm"></i>
-                <span class="hidden sm:inline">Bag</span>
-                <span id="cartBadge" class="bg-emeraldBrand text-amber-400 text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            <!-- Cart Button -->
+            <button onclick="toggleCart()" class="relative flex items-center gap-2.5 bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2.5 rounded-2xl text-xs font-bold text-white transition-all">
+                <i class="fa-solid fa-bag-shopping text-amber-400 text-sm"></i>
+                <span class="hidden sm:inline">Cart</span>
+                <span id="cartBadge" class="bg-amber-500 text-slate-950 text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
             </button>
         </div>
     </header>
 
-    <!-- Main Container -->
+    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6 flex-1 w-full">
 
-        <!-- Category Grid Icons -->
-        <div class="grid grid-cols-4 sm:grid-cols-8 gap-3 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm text-center">
+        <!-- Category Grid -->
+        <div class="grid grid-cols-4 sm:grid-cols-8 gap-3 liquid-glass p-4 rounded-3xl text-center">
             <button onclick="filterCategory('All')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emeraldBrand flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-border-all"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">All Items</span>
+                <span class="text-[11px] font-bold text-slate-300">All Items</span>
             </button>
             <button onclick="filterCategory('Electronics')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-mobile-screen-button"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Gadgets</span>
+                <span class="text-[11px] font-bold text-slate-300">Gadgets</span>
             </button>
             <button onclick="filterCategory('Grooming')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-scissors"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Grooming</span>
+                <span class="text-[11px] font-bold text-slate-300">Grooming</span>
             </button>
             <button onclick="filterCategory('Fashion')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-shirt"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Apparel</span>
+                <span class="text-[11px] font-bold text-slate-300">Apparel</span>
             </button>
-            <button onclick="filterCategory('Electronics')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+            <button onclick="filterCategory('Audio')" class="flex flex-col items-center gap-2 group">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-headphones"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Audio</span>
+                <span class="text-[11px] font-bold text-slate-300">Audio</span>
             </button>
-            <button onclick="filterCategory('Grooming')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+            <button onclick="filterCategory('Fragrance')" class="flex flex-col items-center gap-2 group">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-spray-can"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Fragrances</span>
+                <span class="text-[11px] font-bold text-slate-300">Fragrances</span>
             </button>
-            <button onclick="filterCategory('Fashion')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+            <button onclick="filterCategory('Accessories')" class="flex flex-col items-center gap-2 group">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-wallet"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Leather</span>
+                <span class="text-[11px] font-bold text-slate-300">Leather</span>
             </button>
-            <button onclick="filterCategory('Electronics')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center text-lg group-hover:bg-emeraldBrand group-hover:text-amber-400 transition-all shadow-sm">
+            <button onclick="filterCategory('Watches')" class="flex flex-col items-center gap-2 group">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
                     <i class="fa-solid fa-clock"></i>
                 </div>
-                <span class="text-[11px] font-bold text-slate-700">Watches</span>
+                <span class="text-[11px] font-bold text-slate-300">Timepieces</span>
             </button>
         </div>
 
-        <!-- Flash Sale Banner -->
-        <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <!-- Flash Deals Glass Banner -->
+        <div class="liquid-glass rounded-3xl p-4 flex flex-wrap items-center justify-between gap-4 border border-amber-500/20">
             <div class="flex items-center gap-3">
-                <span class="text-xs font-black bg-emeraldBrand text-amber-400 px-3 py-1 rounded-lg uppercase tracking-wider flex items-center gap-1.5 border border-amber-500/30">
-                    <i class="fa-solid fa-bolt"></i> Prime Deals
+                <span class="text-xs font-black bg-amber-500 text-slate-950 px-3 py-1 rounded-xl uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_10px_rgba(245,158,11,0.3)]">
+                    <i class="fa-solid fa-bolt"></i> VIP Flash Drop
                 </span>
-                <span class="text-xs font-bold text-slate-600 hidden sm:inline">Limited Collector Stock Available</span>
+                <span class="text-xs font-bold text-slate-300 hidden sm:inline">Collector Items • Verified Authentic</span>
             </div>
-            <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-700">
+            <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-400">
                 <span>Ends In:</span>
-                <span class="bg-emeraldBrand text-amber-400 px-2.5 py-1 rounded">01</span> : 
-                <span class="bg-emeraldBrand text-amber-400 px-2.5 py-1 rounded">42</span> : 
-                <span class="bg-emeraldBrand text-amber-400 px-2.5 py-1 rounded">15</span>
+                <span class="bg-white/10 border border-white/15 px-2.5 py-1 rounded-lg">02</span> : 
+                <span class="bg-white/10 border border-white/15 px-2.5 py-1 rounded-lg">18</span> : 
+                <span class="bg-white/10 border border-white/15 px-2.5 py-1 rounded-lg">45</span>
             </div>
         </div>
 
-        <!-- Products Grid -->
-        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-            <!-- Dynamic JS Injection -->
+        <!-- Dynamic Product Grid -->
+        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- JS Injection -->
         </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 mt-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 font-medium">
-            <p>&copy; 2026 VELORA Boutique. Certified Luxury Goods Retailer.</p>
+    <footer class="liquid-glass border-t border-white/10 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400 font-medium">
+            <p>&copy; 2026 AETHER Flagship Store. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Detailed Modal -->
-    <div id="quickViewModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 relative space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto hide-scroll">
-            <button onclick="closeQuickView()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 bg-slate-100 rounded-full w-8 h-8 flex items-center justify-center z-10 transition-colors">
+    <!-- Glass Quick View Modal -->
+    <div id="quickViewModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-xl z-50 hidden flex items-center justify-center p-4">
+        <div class="liquid-glass-modal rounded-3xl max-w-2xl w-full p-6 relative space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto hide-scroll text-white">
+            <button onclick="closeQuickView()" class="absolute top-5 right-5 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center z-10 transition-colors">
                 <i class="fa-solid fa-xmark text-base"></i>
             </button>
             <div id="quickViewContent"></div>
         </div>
     </div>
 
-    <!-- Cart Drawer -->
-    <div id="cartModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-end">
-        <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl">
-            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
-                <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-bag-shopping text-emeraldBrand"></i> My Shopping Bag
+    <!-- Glass Cart Drawer -->
+    <div id="cartModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-xl z-50 hidden flex justify-end">
+        <div class="liquid-glass-modal w-full max-w-md h-full flex flex-col shadow-2xl border-l border-white/10 text-white">
+            <div class="p-4 border-b border-white/10 flex justify-between items-center bg-white/5">
+                <h3 class="font-bold text-sm flex items-center gap-2 text-amber-400">
+                    <i class="fa-solid fa-bag-shopping"></i> VIP Shopping Bag
                 </h3>
-                <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-900"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button onclick="toggleCart()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
 
             <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
 
-            <div class="p-4 border-t border-slate-200 bg-slate-50 space-y-3">
-                <div class="flex justify-between font-extrabold text-slate-900 text-sm">
+            <div class="p-4 border-t border-white/10 bg-white/5 space-y-3">
+                <div class="flex justify-between font-extrabold text-white text-sm">
                     <span>Total Amount:</span>
-                    <span id="cartTotal" class="text-emeraldBrand">Rs. 0</span>
+                    <span id="cartTotal" class="text-amber-400">Rs. 0</span>
                 </div>
                 
                 <form id="checkoutForm" onsubmit="processOrder(event)" class="space-y-2.5">
-                    <input type="text" id="custName" placeholder="Full Name" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-emeraldBrand">
-                    <input type="tel" id="custPhone" placeholder="WhatsApp / Mobile Number" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-emeraldBrand">
-                    <textarea id="custAddress" placeholder="Complete Delivery Address" required class="w-full text-xs p-3 bg-white border border-slate-300 rounded-xl h-16 resize-none focus:outline-none focus:border-emeraldBrand"></textarea>
+                    <input type="text" id="custName" placeholder="Full Name" required class="w-full text-xs p-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-amber-500">
+                    <input type="tel" id="custPhone" placeholder="WhatsApp / Mobile Number" required class="w-full text-xs p-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-amber-500">
+                    <textarea id="custAddress" placeholder="Complete Delivery Address" required class="w-full text-xs p-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-400 h-16 resize-none focus:outline-none focus:border-amber-500"></textarea>
                     
-                    <button type="submit" class="w-full py-3.5 bg-emeraldBrand hover:bg-emeraldHover text-amber-400 font-bold rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md">
-                        <i class="fa-brands fa-whatsapp text-base"></i> Place Order via WhatsApp
+                    <button type="submit" class="w-full py-3.5 gold-glow-btn text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i> Confirm VIP Order via WhatsApp
                     </button>
                 </form>
             </div>
@@ -197,15 +222,15 @@
         const products = [
             {
                 id: 1,
-                title: "Velora Studio ANC Wireless Headphones",
-                category: "Electronics",
-                price: 12500,
-                original_price: 16000,
-                discount: "-22%",
-                rating: "4.9 ★ (180 Reviews)",
-                stock: "6 left in stock",
-                description: "Hi-Res Audio certified studio wireless headphones with active noise cancellation, plush memory foam earcups, and up to 50 hours battery life.",
-                features: ["Custom 40mm Titanium Drivers", "Hybrid Active Noise Cancellation", "Bluetooth 5.3 + 3.5mm Wired Mode", "Multipoint Dual Device Connection"],
+                title: "AETHER Studio Active Noise-Cancelling Headphones",
+                category: "Audio",
+                price: 13500,
+                original_price: 18000,
+                discount: "-25%",
+                rating: "4.9 ★ (210 Reviews)",
+                stock: "5 left in stock",
+                description: "Pro-grade studio wireless headphones featuring active noise cancellation, custom titanium drivers, and custom memory foam cushions.",
+                features: ["40mm Custom Titanium Drivers", "Hybrid Active Noise Cancellation", "50 Hours Battery Backup", "Bluetooth 5.3 Low Latency"],
                 images: [
                     "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
                     "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800",
@@ -214,15 +239,15 @@
             },
             {
                 id: 2,
-                title: "Double Edge Stainless Steel Safety Razor",
+                title: "Heavyweight Precision Double Edge Safety Razor Handle",
                 category: "Grooming",
-                price: 3499,
-                original_price: 4500,
-                discount: "-22%",
-                rating: "4.9 ★ (95 Reviews)",
+                price: 3800,
+                original_price: 5000,
+                discount: "-24%",
+                rating: "5.0 ★ (140 Reviews)",
                 stock: "8 left in stock",
-                description: "Weighted solid stainless steel safety razor designed for an ultra-close barber grade shave without razor burns or ingrown hairs.",
-                features: ["100% Solid Stainless Steel Build", "Zero-Waste Eco-Friendly Shaving", "Compatible with All DE Blades", "Anti-Slip Diamond Knurled Handle"],
+                description: "Crafted from solid brass with matte gunmetal finish. Delivers zero-irritation barber grade shaves without razor bumps.",
+                features: ["Solid Brass Weight Balance", "Non-Slip Knurled Texture", "Zero Plastic Eco Shave", "Fits All Standard DE Blades"],
                 images: [
                     "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=800",
                     "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
@@ -231,15 +256,15 @@
             },
             {
                 id: 3,
-                title: "Chronos Titanium OLED Smartwatch",
-                category: "Electronics",
-                price: 14900,
-                original_price: 18500,
-                discount: "-19%",
-                rating: "5.0 ★ (110 Reviews)",
+                title: "AETHER Onyx AMOLED Smartwatch Grade-5 Titanium",
+                category: "Watches",
+                price: 16500,
+                original_price: 21000,
+                discount: "-21%",
+                rating: "4.9 ★ (98 Reviews)",
                 stock: "4 left in stock",
-                description: "Grade-5 titanium smart timepiece featuring vibrant Always-On AMOLED panel, sapphire glass, continuous heart monitoring, and fitness analytics.",
-                features: ["Grade-5 Titanium Alloy Case", "1.96-inch Always-On AMOLED Display", "Sapphire Crystal Scratch Resistance", "7-Day Battery Backup"],
+                description: "Titanium casing with Sapphire crystal display. Full biometric analytics, dual-GPS tracking, and 10-day endurance battery.",
+                features: ["Grade-5 Titanium Casing", "1.96-inch Ultra AMOLED", "Sapphire Scratchproof Glass", "Water Resistant 50M"],
                 images: [
                     "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
                     "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800",
@@ -248,15 +273,15 @@
             },
             {
                 id: 4,
-                title: "Heavyweight Fleece Streetwear Hoodie (450 GSM)",
+                title: "450 GSM Heavyweight French Terry Streetwear Hoodie",
                 category: "Fashion",
-                price: 6200,
-                original_price: 8000,
-                discount: "-22%",
-                rating: "4.9 ★ (130 Reviews)",
-                stock: "12 left in stock",
-                description: "Crafted from 450 GSM combed organic cotton fleece. Features dropped shoulder silhouette, double-layered hood, and durable ribbed cuffs.",
-                features: ["450 GSM Heavyweight Organic Cotton", "Ultra-Soft Brushed Fleece Lining", "Pre-Shrunk Fade Resistant Dye", "Relaxed Boxy Fit"],
+                price: 6500,
+                original_price: 8500,
+                discount: "-23%",
+                rating: "4.8 ★ (165 Reviews)",
+                stock: "11 left in stock",
+                description: "Built with ultra-thick 450 GSM organic cotton. Oversized boxy silhouette, double-walled hood, pre-shrunk premium fabric.",
+                features: ["450 GSM Heavyweight Organic Cotton", "Custom Oversized Drop-Shoulder Fit", "Double-Layered Structured Hood", "Fade-Proof Deep Black Dye"],
                 images: [
                     "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800",
                     "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=800",
@@ -265,15 +290,15 @@
             },
             {
                 id: 5,
-                title: "Precision Metal Barber Clipper Set",
+                title: "Pro Cordless Metallic Fade Hair Clipper Set",
                 category: "Grooming",
-                price: 4200,
-                original_price: 5800,
+                price: 4500,
+                original_price: 6200,
                 discount: "-27%",
-                rating: "4.8 ★ (220 Reviews)",
-                stock: "15 left in stock",
-                description: "Full metallic cordless hair clipper and detail trimmer kit. High torque rotary motor engineered for crisp fades and clean line-ups.",
-                features: ["Zero-Gapped Carbon Steel Blades", "2000mAh Li-ion Battery (3 Hour Run)", "Full Metallic Engraved Casing", "Includes Guard Attachments (1-4)"],
+                rating: "4.9 ★ (310 Reviews)",
+                stock: "14 left in stock",
+                description: "All-metal cordless clipper engine built for sharp taper fades, line-ups, and clean zero-gap trimming.",
+                features: ["Carbon Steel Self-Sharpening Blade", "7200 RPM Heavy-Duty Motor", "2500mAh Li-ion Battery (4 Hrs)", "Full Metal Skeleton Housing"],
                 images: [
                     "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
                     "https://images.unsplash.com/photo-1503925802522-890a50c98456?w=800",
@@ -282,19 +307,117 @@
             },
             {
                 id: 6,
-                title: "Full-Grain Italian Leather Bifold Wallet",
-                category: "Fashion",
-                price: 3200,
-                original_price: 4200,
-                discount: "-23%",
-                rating: "4.8 ★ (140 Reviews)",
-                stock: "9 left in stock",
-                description: "Handcrafted from full-grain vegetable-tanned Italian leather that develops a rich patina over time. Equipped with RFID blocking lining.",
-                features: ["100% Genuine Full-Grain Leather", "Advanced RFID Signal Shielding", "Holds 10+ Cards and Cash", "Slim Profile Hand-Stitched Construction"],
+                title: "Handcrafted Italian Full-Grain Leather Wallet",
+                category: "Accessories",
+                price: 3400,
+                original_price: 4500,
+                discount: "-24%",
+                rating: "4.9 ★ (88 Reviews)",
+                stock: "7 left in stock",
+                description: "100% genuine vegetable-tanned leather wallet with integrated RFID protection layer and hand-stitched borders.",
+                features: ["Italian Full-Grain Leather", "RFID Blocking Technology", "Slim Profile Holds 12 Cards", "Rich Aged Patina Finish"],
                 images: [
                     "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800",
                     "https://images.unsplash.com/photo-1606503825008-909a63318290?w=800",
                     "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"
+                ]
+            },
+            {
+                id: 7,
+                title: "Noir Amber Eau De Parfum Exclusif (100ml)",
+                category: "Fragrance",
+                price: 8900,
+                original_price: 12000,
+                discount: "-25%",
+                rating: "5.0 ★ (175 Reviews)",
+                stock: "6 left in stock",
+                description: "Deep luxury fragrance blended with notes of rare amber, smoky oud, warm vanilla, and spiced cedarwood.",
+                features: ["30% High Oil Concentration", "14+ Hours Long Lasting Projection", "Hand-Poured Crystal Glass Bottle", "Unisex Warm Oriental Scent"],
+                images: [
+                    "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800",
+                    "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800",
+                    "https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=800"
+                ]
+            },
+            {
+                id: 8,
+                title: "Mechanical Tactile Wireless Low-Profile Keyboard",
+                category: "Electronics",
+                price: 11200,
+                original_price: 14500,
+                discount: "-22%",
+                rating: "4.9 ★ (130 Reviews)",
+                stock: "9 left in stock",
+                description: "CNC machined aluminum body keyboard with hot-swappable switches, RGB backlight, and ultra-fast wireless mode.",
+                features: ["Solid CNC Aluminum Chassis", "Hot-Swappable Tactile Switches", "Bluetooth + 2.4Ghz + Type-C", "Multi-Device Seamless Switch"],
+                images: [
+                    "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",
+                    "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800",
+                    "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800"
+                ]
+            },
+            {
+                id: 9,
+                title: "Minimalist Matte Black Stainless Steel Flask",
+                category: "Accessories",
+                price: 2400,
+                original_price: 3200,
+                discount: "-25%",
+                rating: "4.7 ★ (65 Reviews)",
+                stock: "20 left in stock",
+                description: "Double-walled vacuum insulated thermal bottle keeping drinks cold for 24 hours or hot for 12 hours.",
+                features: ["18/8 Food Grade Stainless Steel", "BPA Free Thermal Vacuum Seal", "Sweat-Proof Powder Finish", "750ml Capacity"],
+                images: [
+                    "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800",
+                    "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=800"
+                ]
+            },
+            {
+                id: 10,
+                title: "Polarized Dark Metal Frame Sunglasses",
+                category: "Accessories",
+                price: 4100,
+                original_price: 5500,
+                discount: "-25%",
+                rating: "4.8 ★ (92 Reviews)",
+                stock: "10 left in stock",
+                description: "Ultra-lightweight aerospace metal frames equipped with UV400 anti-glare TAC polarized lenses.",
+                features: ["UV400 Category 3 Protection", "Scratch-Resistant Polarized Lenses", "Aerospace Metal Frame Build", "Includes Hard Leather Case"],
+                images: [
+                    "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800",
+                    "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800"
+                ]
+            },
+            {
+                id: 11,
+                title: "Magnetic Wireless Powerbank 10,000mAh",
+                category: "Electronics",
+                price: 5800,
+                original_price: 7500,
+                discount: "-22%",
+                rating: "4.9 ★ (210 Reviews)",
+                stock: "13 left in stock",
+                description: "Fast magnetic snap wireless charger with real-time LED battery percentage indicator and pass-through charging.",
+                features: ["Strong Magnetic Lock Snap", "15W Fast Wireless + 20W PD Type-C", "Ultra Slim Metallic Shell", "Multi-Safety Voltage Protection"],
+                images: [
+                    "https://images.unsplash.com/photo-1622445268465-84288046b581?w=800",
+                    "https://images.unsplash.com/photo-1609592424089-a29d6b2c24b9?w=800"
+                ]
+            },
+            {
+                id: 12,
+                title: "Pure Mulberry Silk Sleep Mask & Pillowcase Set",
+                category: "Fashion",
+                price: 4900,
+                original_price: 6500,
+                discount: "-24%",
+                rating: "5.0 ★ (74 Reviews)",
+                stock: "6 left in stock",
+                description: "100% 22 Momme Mulberry Silk set designed to reduce hair friction and skin moisture loss overnight.",
+                features: ["22 Momme Grade 6A Mulberry Silk", "Hypoallergenic & Breathable", "Protects Hair & Perm Extensions", "Includes Travel Pouch"],
+                images: [
+                    "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800",
+                    "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=800"
                 ]
             }
         ];
@@ -306,26 +429,26 @@
         function renderProducts(items) {
             const grid = document.getElementById("productsGrid");
             grid.innerHTML = items.map(p => `
-                <div class="bg-white rounded-2xl p-3 border border-slate-200/80 hover:border-emeraldBrand hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                <div class="liquid-glass rounded-3xl p-3 hover:border-amber-500/50 hover:shadow-[0_0_25px_rgba(245,158,11,0.15)] transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-40 sm:h-48 overflow-hidden rounded-xl mb-2.5 bg-slate-100 cursor-pointer" onclick="openQuickView(${p.id})">
-                            <img src="${p.images[0]}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            <span class="absolute top-2 left-2 bg-emeraldBrand text-amber-400 text-[9px] font-black px-2 py-0.5 rounded uppercase border border-amber-500/20">${p.discount}</span>
+                        <div class="relative h-44 sm:h-52 overflow-hidden rounded-2xl mb-3 bg-white/5 cursor-pointer" onclick="openQuickView(${p.id})">
+                            <img src="${p.images[0]}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-2.5 left-2.5 bg-amber-500 text-slate-950 text-[9px] font-black px-2.5 py-0.5 rounded-lg uppercase tracking-wider shadow-md">${p.discount}</span>
                         </div>
-                        <h4 class="text-xs font-bold text-slate-800 line-clamp-2 leading-snug cursor-pointer hover:text-emeraldBrand transition-colors" onclick="openQuickView(${p.id})">${p.title}</h4>
-                        <div class="text-[10px] text-amber-600 font-bold mt-1">${p.rating}</div>
+                        <h4 class="text-xs font-bold text-slate-100 line-clamp-2 leading-snug cursor-pointer hover:text-amber-400 transition-colors" onclick="openQuickView(${p.id})">${p.title}</h4>
+                        <div class="text-[10px] text-amber-400 font-bold mt-1.5">${p.rating}</div>
                     </div>
-                    <div class="mt-3 pt-2 border-t border-slate-100">
-                        <div class="flex items-baseline gap-1.5 mb-2">
-                            <span class="text-sm sm:text-base font-extrabold text-emeraldBrand">Rs. ${p.price.toLocaleString()}</span>
-                            <span class="text-[10px] text-slate-400 line-through">Rs. ${p.original_price.toLocaleString()}</span>
+                    <div class="mt-4 pt-3 border-t border-white/10">
+                        <div class="flex items-baseline gap-1.5 mb-2.5">
+                            <span class="text-sm sm:text-base font-black text-amber-400">Rs. ${p.price.toLocaleString()}</span>
+                            <span class="text-[10px] text-slate-500 line-through">Rs. ${p.original_price.toLocaleString()}</span>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="openQuickView(${p.id})" class="px-2.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all" title="Quick View">
+                            <button onclick="openQuickView(${p.id})" class="px-3 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl transition-all" title="View Details">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
-                            <button onclick="addToCart(${p.id})" class="flex-1 py-2 bg-emerald-50 hover:bg-emeraldBrand text-emeraldBrand hover:text-amber-400 border border-emerald-200 text-xs font-bold rounded-xl transition-all">
-                                Add to Bag
+                            <button onclick="addToCart(${p.id})" class="flex-1 py-2 gold-glow-btn text-slate-950 text-xs font-extrabold rounded-xl transition-all">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -338,12 +461,12 @@
             document.getElementById("quickViewContent").innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-3">
-                        <div class="h-64 sm:h-72 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+                        <div class="h-64 sm:h-72 rounded-2xl overflow-hidden bg-white/5 border border-white/10">
                             <img id="mainGalleryImg" src="${p.images[0]}" class="w-full h-full object-cover transition-all duration-300">
                         </div>
                         <div class="flex gap-2 overflow-x-auto pb-1">
                             ${p.images.map((img) => `
-                                <button onclick="switchImage('${img}')" class="w-16 h-16 rounded-xl border-2 border-slate-200 hover:border-emeraldBrand overflow-hidden flex-shrink-0 transition-all">
+                                <button onclick="switchImage('${img}')" class="w-16 h-16 rounded-xl border border-white/15 hover:border-amber-400 overflow-hidden flex-shrink-0 transition-all">
                                     <img src="${img}" class="w-full h-full object-cover">
                                 </button>
                             `).join('')}
@@ -353,30 +476,30 @@
                     <div class="space-y-4 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-black text-emeraldBrand uppercase tracking-widest bg-emerald-50 px-2.5 py-1 rounded-full">${p.category}</span>
-                                <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">${p.stock}</span>
+                                <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-lg">${p.category}</span>
+                                <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg">${p.stock}</span>
                             </div>
-                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 leading-snug">${p.title}</h3>
-                            <div class="text-xs font-bold text-amber-600 mt-1">${p.rating}</div>
+                            <h3 class="text-base sm:text-lg font-bold text-white mt-2 leading-snug">${p.title}</h3>
+                            <div class="text-xs font-bold text-amber-400 mt-1">${p.rating}</div>
                             
-                            <p class="text-xs text-slate-600 mt-3 leading-relaxed">${p.description}</p>
+                            <p class="text-xs text-slate-300 mt-3 leading-relaxed">${p.description}</p>
                             
-                            <div class="mt-4 space-y-1.5">
-                                <span class="text-[11px] font-black uppercase text-slate-400 tracking-wider">Specifications:</span>
+                            <div class="mt-4 space-y-2">
+                                <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Specifications:</span>
                                 <ul class="space-y-1">
-                                    ${p.features.map(f => `<li class="text-xs font-medium text-slate-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-emeraldBrand text-[10px]"></i> ${f}</li>`).join('')}
+                                    ${p.features.map(f => `<li class="text-xs font-medium text-slate-200 flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> ${f}</li>`).join('')}
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="pt-4 border-t border-slate-100">
+                        <div class="pt-4 border-t border-white/10">
                             <div class="flex items-baseline gap-2 mb-3">
-                                <span class="text-2xl font-black text-emeraldBrand">Rs. ${p.price.toLocaleString()}</span>
-                                <span class="text-xs text-slate-400 line-through">Rs. ${p.original_price.toLocaleString()}</span>
-                                <span class="text-xs font-black text-amber-600 bg-amber-50 px-2 py-0.5 rounded">${p.discount} OFF</span>
+                                <span class="text-2xl font-black text-amber-400">Rs. ${p.price.toLocaleString()}</span>
+                                <span class="text-xs text-slate-500 line-through">Rs. ${p.original_price.toLocaleString()}</span>
+                                <span class="text-xs font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded">${p.discount} OFF</span>
                             </div>
-                            <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3.5 bg-emeraldBrand hover:bg-emeraldHover text-amber-400 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-bag-shopping"></i> Add To Shopping Bag
+                            <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3.5 gold-glow-btn text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bag-shopping"></i> Add To Bag
                             </button>
                         </div>
                     </div>
@@ -405,24 +528,24 @@
 
             const container = document.getElementById("cartItems");
             if (cart.length === 0) {
-                container.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Your shopping bag is empty.</div>`;
+                container.innerHTML = `<div class="text-center py-12 text-slate-500 text-xs">Your shopping bag is empty.</div>`;
                 return;
             }
 
             container.innerHTML = cart.map(i => `
-                <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <div class="flex items-center justify-between bg-white/5 p-3 rounded-2xl border border-white/10">
                     <div>
-                        <h5 class="text-xs font-bold text-slate-800 line-clamp-1">${i.title}</h5>
-                        <p class="text-[11px] font-semibold text-emeraldBrand">Rs. ${i.price.toLocaleString()} × ${i.qty}</p>
+                        <h5 class="text-xs font-bold text-white line-clamp-1">${i.title}</h5>
+                        <p class="text-[11px] font-semibold text-amber-400">Rs. ${i.price.toLocaleString()} × ${i.qty}</p>
                     </div>
-                    <span class="text-xs font-extrabold text-slate-900">Rs. ${(i.price * i.qty).toLocaleString()}</span>
+                    <span class="text-xs font-black text-white">Rs. ${(i.price * i.qty).toLocaleString()}</span>
                 </div>
             `).join("");
         }
 
         function processOrder(e) {
             e.preventDefault();
-            if (cart.length === 0) return alert("Your cart is empty!");
+            if (cart.length === 0) return alert("Cart empty hai!");
 
             const name = document.getElementById("custName").value;
             const phone = document.getElementById("custPhone").value;
@@ -430,7 +553,7 @@
             const total = cart.reduce((a, b) => a + (b.price * b.qty), 0);
 
             let orderList = cart.map(i => `• ${i.title} (x${i.qty}) - Rs. ${i.price * i.qty}`).join('\n');
-            let message = `*NEW ORDER - VELORA BOUTIQUE*\n\n*Customer:* ${name}\n*Contact:* ${phone}\n*Address:* ${address}\n\n*Items:*\n${orderList}\n\n*Total Payable:* Rs. ${total.toLocaleString()}`;
+            let message = `*AETHER LUXURY STORE ORDER*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n${orderList}\n\n*Total Payable:* Rs. ${total.toLocaleString()}`;
 
             window.open(`https://wa.me/923234749637?text=${encodeURIComponent(message)}`, '_blank');
         }
@@ -442,7 +565,7 @@
 
         function filterCategory(cat) {
             if (cat === 'All') renderProducts(products);
-            else renderProducts(products.filter(p => p.category === cat));
+            else renderProducts(products.filter(p => p.category.toLowerCase() === cat.toLowerCase()));
         }
     </script>
 </body>
