@@ -2,1663 +2,1827 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050505">
-<title>VORTEX PRIVÉ — The World's Private Luxury Vault</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MAISON VORTEX — Private Luxury Marketplace</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<script>
+tailwind.config = {
+theme:{
+extend:{
+fontFamily:{
+cinzel:["Cinzel","serif"],
+inter:["Inter","sans-serif"]
+},
+colors:{
+gold:"#D4AF37",
+dark:"#030405"
+}
+}
+}
+}
+</script>
 
 <style>
-:root{
-    --gold:#d4af37;
-    --gold2:#f6e7a8;
-    --dark:#030303;
-    --glass:rgba(255,255,255,.045);
-    --line:rgba(212,175,55,.18);
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+box-sizing:border-box;
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{
+scroll-behavior:smooth;
+}
 
 body{
-    margin:0;
-    background:
-      radial-gradient(circle at 10% 5%,rgba(212,175,55,.11),transparent 25%),
-      radial-gradient(circle at 90% 20%,rgba(255,255,255,.045),transparent 22%),
-      radial-gradient(circle at 50% 100%,rgba(212,175,55,.07),transparent 30%),
-      #020304;
-    color:#eee;
-    font-family:Inter,sans-serif;
-    overflow-x:hidden;
+margin:0;
+font-family:Inter,sans-serif;
+background:#020304;
+color:#f5f5f5;
+overflow-x:hidden;
 }
+
+::selection{
+background:#d4af37;
+color:#000;
+}
+
+/* =========================================================
+   CINEMATIC BACKGROUND
+========================================================= */
 
 body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:9998;
-    opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+content:"";
+position:fixed;
+inset:0;
+z-index:-5;
+background:
+radial-gradient(circle at 15% 15%,rgba(212,175,55,.10),transparent 28%),
+radial-gradient(circle at 85% 25%,rgba(255,255,255,.035),transparent 25%),
+radial-gradient(circle at 50% 100%,rgba(212,175,55,.07),transparent 35%);
 }
 
-.cinzel{font-family:Cinzel,serif}
-
-.gold{
-    color:var(--gold);
+.noise{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:999;
+opacity:.025;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 }
 
-.gold-gradient{
-    background:linear-gradient(120deg,#fff 5%,#f8e9aa 35%,#d4af37 60%,#8b6914 100%);
-    -webkit-background-clip:text;
-    color:transparent;
+/* floating lights */
+
+.orb{
+position:fixed;
+border-radius:50%;
+filter:blur(70px);
+pointer-events:none;
+z-index:-2;
+animation:orbFloat 12s ease-in-out infinite alternate;
 }
+
+.orb1{
+width:260px;
+height:260px;
+background:rgba(212,175,55,.09);
+top:12%;
+left:-100px;
+}
+
+.orb2{
+width:300px;
+height:300px;
+background:rgba(255,255,255,.035);
+right:-120px;
+top:45%;
+animation-delay:-4s;
+}
+
+.orb3{
+width:220px;
+height:220px;
+background:rgba(212,175,55,.07);
+left:35%;
+bottom:-100px;
+animation-delay:-7s;
+}
+
+@keyframes orbFloat{
+from{transform:translate3d(0,0,0) scale(1)}
+to{transform:translate3d(70px,-50px,0) scale(1.2)}
+}
+
+/* =========================================================
+   GLASS
+========================================================= */
 
 .glass{
-    background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.018));
-    border:1px solid rgba(255,255,255,.09);
-    backdrop-filter:blur(24px) saturate(150%);
-    -webkit-backdrop-filter:blur(24px) saturate(150%);
-    box-shadow:inset 0 1px rgba(255,255,255,.06),0 25px 80px rgba(0,0,0,.25);
+background:
+linear-gradient(
+135deg,
+rgba(255,255,255,.075),
+rgba(255,255,255,.025)
+);
+border:1px solid rgba(255,255,255,.10);
+backdrop-filter:blur(25px) saturate(140%);
+-webkit-backdrop-filter:blur(25px) saturate(140%);
+box-shadow:
+inset 0 1px 0 rgba(255,255,255,.08),
+0 25px 80px rgba(0,0,0,.25);
 }
 
 .gold-border{
-    border-color:rgba(212,175,55,.25)!important;
+border-color:rgba(212,175,55,.28);
 }
 
-::-webkit-scrollbar{width:7px}
-::-webkit-scrollbar-track{background:#020303}
-::-webkit-scrollbar-thumb{
-    background:linear-gradient(var(--gold),#70530d);
-    border-radius:20px;
+.gold-glow{
+box-shadow:
+0 0 0 1px rgba(212,175,55,.12),
+0 0 40px rgba(212,175,55,.10),
+inset 0 1px 0 rgba(255,255,255,.08);
 }
 
-/* LOADER */
-#loader{
-    position:fixed;
-    inset:0;
-    z-index:10000;
-    background:#020303;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:opacity 1s,visibility 1s;
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topline{
+height:34px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:9px;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:rgba(245,214,115,.85);
+background:rgba(0,0,0,.65);
+border-bottom:1px solid rgba(212,175,55,.12);
 }
 
-#loader.hide{
-    opacity:0;
-    visibility:hidden;
+.live-dot{
+width:6px;
+height:6px;
+border-radius:50%;
+background:#d4af37;
+box-shadow:0 0 15px #d4af37;
+animation:pulseGold 1.5s infinite;
 }
 
-.loader-ring{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    border:1px solid rgba(212,175,55,.2);
-    border-top-color:#f5d76e;
-    animation:spin 1.4s linear infinite;
-    position:relative;
+@keyframes pulseGold{
+0%,100%{opacity:1;transform:scale(1)}
+50%{opacity:.4;transform:scale(.7)}
 }
 
-.loader-ring:after{
-    content:"";
-    position:absolute;
-    inset:12px;
-    border-radius:50%;
-    border:1px solid rgba(212,175,55,.15);
-    border-bottom-color:#fff;
-    animation:spin 2s reverse linear infinite;
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(3,4,5,.72);
+backdrop-filter:blur(30px);
+-webkit-backdrop-filter:blur(30px);
+border-bottom:1px solid rgba(212,175,55,.13);
 }
 
-.loader-logo{
-    position:absolute;
-    text-align:center;
+.logo-ring{
+width:43px;
+height:43px;
+border-radius:50%;
+display:grid;
+place-items:center;
+border:1px solid rgba(212,175,55,.5);
+color:#d4af37;
+box-shadow:
+0 0 25px rgba(212,175,55,.12),
+inset 0 0 20px rgba(212,175,55,.05);
+animation:logoSpin 14s linear infinite;
 }
 
-.loader-logo h1{
-    font-family:Cinzel;
-    font-size:12px;
-    letter-spacing:.35em;
-    color:#f5df91;
+@keyframes logoSpin{
+to{transform:rotate(360deg)}
 }
 
-.loader-logo p{
-    font-size:7px;
-    letter-spacing:.45em;
-    color:#777;
-    margin-top:7px;
+.logo-ring i{
+animation:logoCounter 14s linear infinite;
 }
 
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* PARTICLES */
-#particles{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:0;
+@keyframes logoCounter{
+to{transform:rotate(-360deg)}
 }
 
-.particle{
-    position:absolute;
-    width:2px;
-    height:2px;
-    border-radius:50%;
-    background:#e8cc69;
-    box-shadow:0 0 10px #d4af37;
-    animation:float linear infinite;
-    opacity:.35;
-}
+/* =========================================================
+   HERO
+========================================================= */
 
-@keyframes float{
-    0%{transform:translateY(110vh) translateX(0);opacity:0}
-    15%{opacity:.5}
-    85%{opacity:.4}
-    100%{transform:translateY(-15vh) translateX(80px);opacity:0}
-}
-
-/* CURSOR GLOW */
-#cursorGlow{
-    position:fixed;
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    pointer-events:none;
-    background:radial-gradient(circle,rgba(212,175,55,.08),transparent 65%);
-    transform:translate(-50%,-50%);
-    z-index:0;
-}
-
-/* NAV */
-.nav{
-    background:rgba(3,4,5,.72);
-    backdrop-filter:blur(25px) saturate(170%);
-    border-bottom:1px solid rgba(212,175,55,.12);
-}
-
-.nav-link{
-    position:relative;
-}
-
-.nav-link:after{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:-8px;
-    width:0;
-    height:1px;
-    background:#e5c85c;
-    transition:.4s;
-    transform:translateX(-50%);
-}
-
-.nav-link:hover:after{width:100%}
-
-/* HERO */
 .hero{
-    min-height:720px;
-    position:relative;
-    overflow:hidden;
+position:relative;
+min-height:420px;
+display:flex;
+align-items:center;
+overflow:hidden;
+border-bottom:1px solid rgba(212,175,55,.12);
 }
 
-.hero:before{
-    content:"";
-    position:absolute;
-    width:650px;
-    height:650px;
-    border-radius:50%;
-    right:-200px;
-    top:-200px;
-    background:radial-gradient(circle,rgba(212,175,55,.13),transparent 68%);
-    animation:heroPulse 7s ease-in-out infinite;
+.hero-grid{
+position:absolute;
+inset:0;
+opacity:.18;
+background-image:
+linear-gradient(rgba(212,175,55,.15) 1px,transparent 1px),
+linear-gradient(90deg,rgba(212,175,55,.15) 1px,transparent 1px);
+background-size:70px 70px;
+mask-image:linear-gradient(to bottom,black,transparent);
 }
 
-@keyframes heroPulse{
-    50%{transform:scale(1.18);opacity:.65}
+.hero-content{
+position:relative;
+z-index:2;
 }
-
-.hero-orbit{
-    position:absolute;
-    width:500px;
-    height:500px;
-    border:1px solid rgba(212,175,55,.08);
-    border-radius:50%;
-    right:7%;
-    top:15%;
-    animation:orbit 18s linear infinite;
-}
-
-.hero-orbit:before{
-    content:"";
-    position:absolute;
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#f3d56b;
-    box-shadow:0 0 25px #d4af37;
-    top:50%;
-    left:-4px;
-}
-
-@keyframes orbit{to{transform:rotate(360deg)}}
 
 .hero-title{
-    animation:titleIn 1.2s cubic-bezier(.2,.8,.2,1) both;
+font-family:Cinzel,serif;
+font-size:clamp(38px,7vw,90px);
+line-height:.95;
+font-weight:800;
+letter-spacing:-.03em;
 }
 
-@keyframes titleIn{
-    from{opacity:0;transform:translateY(35px);filter:blur(15px)}
-    to{opacity:1;transform:none;filter:none}
+.gold-text{
+background:linear-gradient(
+120deg,
+#fff 0%,
+#f7e7a8 30%,
+#d4af37 65%,
+#fff1a8 100%
+);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+background-size:200% auto;
+animation:goldMove 5s linear infinite;
 }
 
-/* BUTTON */
-.lux-btn{
-    position:relative;
-    overflow:hidden;
-    background:linear-gradient(120deg,#f3df8c,#c49a25,#f1da7d);
-    color:#080808;
-    box-shadow:0 10px 35px rgba(212,175,55,.18);
-    transition:.35s;
+@keyframes goldMove{
+to{background-position:200% center}
 }
 
-.lux-btn:before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-120%;
-    width:70%;
-    height:100%;
-    transform:skewX(-25deg);
-    background:rgba(255,255,255,.45);
-    transition:.7s;
+.hero-line{
+height:1px;
+width:100px;
+background:linear-gradient(90deg,transparent,#d4af37,transparent);
+animation:linePulse 2s ease-in-out infinite;
 }
 
-.lux-btn:hover:before{left:140%}
-.lux-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 50px rgba(212,175,55,.35);
+@keyframes linePulse{
+50%{width:180px;opacity:.4}
 }
 
-/* PRODUCT CARD */
-.product-card{
-    transform-style:preserve-3d;
-    transition:
-      transform .18s ease,
-      border-color .4s,
-      box-shadow .5s;
-    will-change:transform;
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.searchbox{
+background:rgba(255,255,255,.035);
+border:1px solid rgba(212,175,55,.18);
+transition:.35s;
 }
 
-.product-card:hover{
-    border-color:rgba(212,175,55,.4);
-    box-shadow:
-      0 25px 70px rgba(0,0,0,.5),
-      0 0 45px rgba(212,175,55,.09);
+.searchbox:focus-within{
+border-color:rgba(212,175,55,.65);
+box-shadow:0 0 35px rgba(212,175,55,.08);
+transform:translateY(-1px);
 }
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.category{
+transition:.3s;
+white-space:nowrap;
+}
+
+.category:hover,
+.category.active{
+color:#000;
+background:#d4af37;
+border-color:#d4af37;
+box-shadow:
+0 0 25px rgba(212,175,55,.18);
+transform:translateY(-2px);
+}
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:14px;
+}
+
+@media(min-width:768px){
+.product-grid{
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:18px;
+}
+}
+
+@media(min-width:1200px){
+.product-grid{
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:20px;
+}
+}
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.product{
+position:relative;
+overflow:hidden;
+border-radius:24px;
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.075),
+rgba(255,255,255,.018)
+);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
+box-shadow:
+0 20px 50px rgba(0,0,0,.28),
+inset 0 1px 0 rgba(255,255,255,.06);
+transition:
+transform .6s cubic-bezier(.2,.8,.2,1),
+border-color .4s,
+box-shadow .5s;
+animation:cardIn .7s both;
+}
+
+.product:before{
+content:"";
+position:absolute;
+inset:-1px;
+background:linear-gradient(
+120deg,
+transparent 20%,
+rgba(255,255,255,.13),
+transparent 80%
+);
+transform:translateX(-120%);
+transition:.8s;
+z-index:5;
+pointer-events:none;
+}
+
+.product:hover:before{
+transform:translateX(120%);
+}
+
+.product:hover{
+transform:translateY(-8px) scale(1.012);
+border-color:rgba(212,175,55,.35);
+box-shadow:
+0 35px 90px rgba(0,0,0,.48),
+0 0 45px rgba(212,175,55,.08),
+inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+@keyframes cardIn{
+from{
+opacity:0;
+transform:translateY(25px) scale(.97);
+}
+to{
+opacity:1;
+transform:none;
+}
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
 
 .product-image{
-    transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .7s;
+position:relative;
+height:245px;
+overflow:hidden;
+background:#080909;
 }
 
-.product-card:hover .product-image{
-    transform:scale(1.08);
-    filter:saturate(1.12) contrast(1.05);
+@media(max-width:640px){
+.product-image{
+height:205px;
+}
 }
 
-.image-wrap:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-      110deg,
-      transparent 20%,
-      rgba(255,255,255,.14) 45%,
-      transparent 65%
-    );
-    transform:translateX(-130%);
-    transition:transform .9s;
+.product-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:
+transform 1s cubic-bezier(.2,.8,.2,1),
+filter .7s;
 }
 
-.product-card:hover .image-wrap:after{
-    transform:translateX(130%);
+.product:hover .product-image img{
+transform:scale(1.09);
+filter:brightness(1.08) saturate(1.08);
 }
 
-.heart{
-    transition:.3s;
+.image-overlay{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,.82),
+rgba(0,0,0,.05) 65%
+);
 }
 
-.heart.active{
-    color:#f3d36c;
-    transform:scale(1.25);
-    filter:drop-shadow(0 0 8px rgba(212,175,55,.7));
+.badge{
+position:absolute;
+top:12px;
+left:12px;
+z-index:3;
+padding:6px 9px;
+font-size:7px;
+font-weight:800;
+letter-spacing:.17em;
+text-transform:uppercase;
+border-radius:999px;
+background:rgba(0,0,0,.58);
+border:1px solid rgba(212,175,55,.35);
+color:#e8c85c;
+backdrop-filter:blur(12px);
 }
 
-/* REVEAL */
+.wishlist{
+position:absolute;
+right:12px;
+top:12px;
+width:33px;
+height:33px;
+border-radius:50%;
+display:grid;
+place-items:center;
+z-index:4;
+color:#fff;
+background:rgba(0,0,0,.42);
+border:1px solid rgba(255,255,255,.14);
+backdrop-filter:blur(10px);
+transition:.3s;
+}
+
+.wishlist:hover,
+.wishlist.liked{
+background:#d4af37;
+color:#000;
+transform:scale(1.1);
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.product-info{
+padding:15px;
+}
+
+.category-label{
+font-size:8px;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:#c9a52d;
+font-weight:800;
+}
+
+.product-title{
+font-family:Cinzel,serif;
+font-size:12px;
+font-weight:700;
+line-height:1.55;
+margin-top:5px;
+min-height:38px;
+}
+
+.stars{
+font-size:8px;
+color:#d4af37;
+margin-top:7px;
+}
+
+.price{
+font-family:monospace;
+font-weight:800;
+color:#e8c85c;
+font-size:14px;
+}
+
+.old-price{
+font-size:9px;
+color:#687078;
+text-decoration:line-through;
+}
+
+.buy-btn{
+position:relative;
+overflow:hidden;
+border-radius:12px;
+background:linear-gradient(
+135deg,
+#f1d56d,
+#b38a20
+);
+color:#050505;
+font-size:9px;
+font-weight:900;
+letter-spacing:.1em;
+text-transform:uppercase;
+padding:10px 13px;
+transition:.35s;
+}
+
+.buy-btn:hover{
+transform:translateY(-2px);
+box-shadow:
+0 10px 30px rgba(212,175,55,.25);
+}
+
+.buy-btn:active{
+transform:scale(.95);
+}
+
+/* =========================================================
+   SECTION REVEAL
+========================================================= */
+
 .reveal{
-    opacity:0;
-    transform:translateY(35px);
-    transition:1s cubic-bezier(.2,.8,.2,1);
+opacity:0;
+transform:translateY(35px);
+transition:
+opacity .8s ease,
+transform .8s ease;
 }
 
-.reveal.visible{
-    opacity:1;
-    transform:none;
-}
-
-/* CATEGORY */
-.category{
-    transition:.35s;
-    white-space:nowrap;
-}
-
-.category.active{
-    color:#050505;
-    background:linear-gradient(120deg,#f4df8c,#c69b2a);
-    border-color:#e5c85c;
-    box-shadow:0 0 25px rgba(212,175,55,.15);
-}
-
-/* MODAL */
-.modal{
-    opacity:0;
-    visibility:hidden;
-    transition:.4s;
-}
-
-.modal.open{
-    opacity:1;
-    visibility:visible;
-}
-
-.modal-box{
-    transform:translateY(35px) scale(.96);
-    transition:.45s cubic-bezier(.2,.8,.2,1);
-}
-
-.modal.open .modal-box{
-    transform:none;
-}
-
-/* TOAST */
-#toast{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    z-index:9999;
-    transform:translateY(120px);
-    opacity:0;
-    transition:.5s;
-}
-
-#toast.show{
-    transform:none;
-    opacity:1;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .hero{min-height:650px}
-    .hero-orbit{width:300px;height:300px;right:-100px;top:35%}
-    #cursorGlow{display:none}
-}
-</style>
-</head>
-
-<body>
-
-<div id="loader">
-    <div class="relative flex items-center justify-center">
-        <div class="loader-ring"></div>
-        <div class="loader-logo">
-            <h1>VORTEX PRIVÉ</h1>
-            <p>PRIVATE CLIENT VAULT</p>
-        </div>
-    </div>
-</div>
-
-<div id="particles"></div>
-<div id="cursorGlow"></div>
-
-<!-- TOP BAR -->
-<div class="relative z-20 text-center py-2 bg-black/70 border-b border-amber-500/10">
-    <span class="text-[8px] sm:text-[9px] uppercase tracking-[.35em] text-amber-200/70">
-        <i class="fa-solid fa-circle text-[5px] text-amber-400 mr-2 animate-pulse"></i>
-        Private Client Allocation · Worldwide White-Glove Service
-    </span>
-</div>
-
-<!-- NAV -->
-<header class="nav sticky top-0 z-50">
-    <div class="max-w-[1500px] mx-auto px-4 sm:px-7 py-4 flex items-center gap-5">
-
-        <a href="#" class="flex items-center gap-3 shrink-0">
-            <div class="w-10 h-10 rounded-full border border-amber-400/40 flex items-center justify-center text-amber-300 bg-amber-400/5 shadow-[0_0_25px_rgba(212,175,55,.12)]">
-                <i class="fa-solid fa-crown"></i>
-            </div>
-
-            <div class="hidden sm:block leading-none">
-                <div class="cinzel font-bold text-white tracking-[.22em] text-sm">
-                    VORTEX PRIVÉ
-                </div>
-                <div class="text-[7px] text-amber-400/70 tracking-[.3em] mt-1">
-                    PRIVATE LUXURY HOUSE
-                </div>
-            </div>
-        </a>
-
-        <div class="hidden lg:flex items-center gap-7 ml-6 text-[10px] uppercase tracking-widest text-slate-400">
-            <a href="#collection" class="nav-link hover:text-white transition">Collection</a>
-            <a href="#prestige" class="nav-link hover:text-white transition">Prestige</a>
-            <a href="#concierge" class="nav-link hover:text-white transition">Concierge</a>
-        </div>
-
-        <div class="flex-1 max-w-xl mx-auto relative">
-            <input
-                id="search"
-                type="text"
-                placeholder="Search the private collection..."
-                oninput="searchProducts()"
-                class="w-full rounded-full bg-white/[.035] border border-white/10 focus:border-amber-400/50 outline-none px-5 py-3 pr-12 text-[11px] text-white placeholder:text-slate-600 transition"
-            >
-            <i class="fa-solid fa-magnifying-glass absolute right-5 top-1/2 -translate-y-1/2 text-amber-400/70 text-xs"></i>
-        </div>
-
-        <button onclick="openWishlist()" class="relative w-11 h-11 rounded-full glass flex items-center justify-center hover:border-amber-400/40 transition shrink-0">
-            <i class="fa-regular fa-heart text-sm"></i>
-            <span id="wishCount" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-400 text-black text-[8px] font-bold flex items-center justify-center">0</span>
-        </button>
-
-        <button onclick="openCart()" class="relative h-11 px-4 sm:px-5 rounded-full glass flex items-center gap-2 hover:border-amber-400/40 transition shrink-0">
-            <i class="fa-solid fa-bag-shopping text-amber-300 text-sm"></i>
-            <span class="hidden sm:block text-[9px] cinzel tracking-widest">VAULT</span>
-            <span id="cartCount" class="w-4 h-4 rounded-full bg-amber-400 text-black text-[8px] font-bold flex items-center justify-center">0</span>
-        </button>
-    </div>
-</header>
-
-<main class="relative z-10">
-
-<!-- HERO -->
-<section class="hero max-w-[1500px] mx-auto px-5 sm:px-8 flex items-center">
-    <div class="hero-orbit"></div>
-
-    <div class="relative z-10 max-w-4xl py-28">
-        <div class="reveal flex items-center gap-3 mb-7">
-            <span class="w-9 h-px bg-amber-400"></span>
-            <span class="text-[9px] uppercase tracking-[.4em] text-amber-300">
-                THE 2026 PRIVATE COLLECTION
-            </span>
-        </div>
-
-        <h1 class="hero-title cinzel font-black text-5xl sm:text-7xl lg:text-[100px] leading-[.92] tracking-tight">
-            <span class="block text-white">BEYOND</span>
-            <span class="block gold-gradient">LUXURY.</span>
-        </h1>
-
-        <p class="reveal mt-8 max-w-xl text-sm sm:text-base text-slate-400 font-light leading-8">
-            A private digital vault for extraordinary objects,
-            rare craftsmanship and elevated everyday essentials.
-            Curated for those who refuse ordinary.
-        </p>
-
-        <div class="reveal mt-9 flex flex-wrap gap-3">
-            <a href="#collection" class="lux-btn px-7 py-4 rounded-full text-[10px] font-bold uppercase tracking-[.2em]">
-                Enter The Collection
-            </a>
-
-            <button onclick="showConcierge()" class="glass px-7 py-4 rounded-full text-[10px] uppercase tracking-[.2em] hover:border-amber-400/40 transition">
-                <i class="fa-solid fa-key mr-2 text-amber-400"></i>
-                Private Concierge
-            </button>
-        </div>
-
-        <div class="reveal flex flex-wrap gap-10 mt-14">
-            <div>
-                <div class="cinzel text-2xl text-white font-bold"><span data-counter="80">0</span>+</div>
-                <div class="text-[8px] uppercase tracking-[.25em] text-slate-600 mt-1">Curated Objects</div>
-            </div>
-            <div>
-                <div class="cinzel text-2xl text-white font-bold">24/7</div>
-                <div class="text-[8px] uppercase tracking-[.25em] text-slate-600 mt-1">Concierge</div>
-            </div>
-            <div>
-                <div class="cinzel text-2xl text-white font-bold">01:01</div>
-                <div class="text-[8px] uppercase tracking-[.25em] text-slate-600 mt-1">Private Standard</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- PRESTIGE STRIP -->
-<section id="prestige" class="max-w-[1500px] mx-auto px-5 sm:px-8">
-    <div class="glass rounded-3xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
-
-        <div class="flex items-center gap-4">
-            <div class="text-amber-300 text-xl"><i class="fa-solid fa-gem"></i></div>
-            <div>
-                <b class="text-xs text-white">Curated</b>
-                <p class="text-[8px] text-slate-500 mt-1">PRIVATE SELECTION</p>
-            </div>
-        </div>
-
-        <div class="flex items-center gap-4">
-            <div class="text-amber-300 text-xl"><i class="fa-solid fa-shield-halved"></i></div>
-            <div>
-                <b class="text-xs text-white">Protected</b>
-                <p class="text-[8px] text-slate-500 mt-1">SECURE CHECKOUT</p>
-            </div>
-        </div>
-
-        <div class="flex items-center gap-4">
-            <div class="text-amber-300 text-xl"><i class="fa-solid fa-truck-fast"></i></div>
-            <div>
-                <b class="text-xs text-white">White Glove</b>
-                <p class="text-[8px] text-slate-500 mt-1">GLOBAL DELIVERY</p>
-            </div>
-        </div>
-
-        <div class="flex items-center gap-4">
-            <div class="text-amber-300 text-xl"><i class="fa-solid fa-headset"></i></div>
-            <div>
-                <b class="text-xs text-white">Concierge</b>
-                <p class="text-[8px] text-slate-500 mt-1">PERSONAL ASSISTANCE</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- COLLECTION -->
-<section id="collection" class="max-w-[1500px] mx-auto px-5 sm:px-8 py-24">
-
-    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-7 reveal">
-
-        <div>
-            <span class="text-[9px] uppercase tracking-[.4em] text-amber-400">
-                PRIVATE CATALOGUE
-            </span>
-
-            <h2 class="cinzel text-3xl sm:text-5xl font-bold text-white mt-3">
-                The <span class="gold-gradient">Collection</span>
-            </h2>
-
-            <p class="text-xs text-slate-500 mt-3">
-                80 objects selected for the Vortex Privé vault.
-            </p>
-        </div>
-
-        <select id="sort" onchange="sortProducts()" class="glass rounded-full px-5 py-3 text-[10px] uppercase tracking-widest text-slate-300 outline-none">
-            <option value="featured">Featured</option>
-            <option value="low">Price: Low → High</option>
-            <option value="high">Price: High → Low</option>
-            <option value="name">Alphabetical</option>
-        </select>
-    </div>
-
-    <!-- CATEGORIES -->
-    <div id="categories" class="flex gap-2 overflow-x-auto py-8 hide-scrollbar">
-    </div>
-
-    <!-- GRID -->
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-    </div>
-
-    <div id="noResults" class="hidden text-center py-32">
-        <i class="fa-solid fa-magnifying-glass text-3xl text-amber-400/30"></i>
-        <h3 class="cinzel text-xl mt-5">No masterpiece found</h3>
-        <p class="text-xs text-slate-600 mt-2">Try another search.</p>
-    </div>
-
-</section>
-
-<!-- CONCIERGE -->
-<section id="concierge" class="max-w-[1500px] mx-auto px-5 sm:px-8 pb-24">
-    <div class="glass rounded-[2rem] p-8 sm:p-14 relative overflow-hidden reveal">
-        <div class="absolute -right-40 -top-40 w-96 h-96 rounded-full bg-amber-400/5 blur-3xl"></div>
-
-        <div class="relative z-10 max-w-3xl">
-            <span class="text-[9px] tracking-[.4em] text-amber-400 uppercase">
-                PRIVATE CLIENT SERVICE
-            </span>
-
-            <h2 class="cinzel text-3xl sm:text-5xl font-bold mt-4">
-                Your personal <span class="gold-gradient">concierge.</span>
-            </h2>
-
-            <p class="text-sm text-slate-400 leading-7 mt-5">
-                Need a private recommendation, custom allocation or assistance
-                selecting an object from the collection?
-            </p>
-
-            <button onclick="showConcierge()" class="lux-btn mt-7 px-7 py-4 rounded-full text-[10px] uppercase tracking-[.2em] font-bold">
-                Contact Private Concierge
-            </button>
-        </div>
-    </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="relative z-10 border-t border-white/5 py-14">
-    <div class="max-w-[1500px] mx-auto px-5 sm:px-8">
-        <div class="grid md:grid-cols-3 gap-10">
-
-            <div>
-                <div class="cinzel text-sm tracking-[.25em] text-white">VORTEX PRIVÉ</div>
-                <p class="text-[10px] text-slate-600 leading-6 mt-4 max-w-sm">
-                    Private luxury marketplace concept.
-                    Every object is presented as part of a curated digital collection.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="text-[9px] uppercase tracking-[.3em] text-amber-400">House</h4>
-                <div class="space-y-3 mt-5 text-[10px] text-slate-500">
-                    <a href="#collection" class="block hover:text-white">Collection</a>
-                    <a href="#prestige" class="block hover:text-white">Prestige</a>
-                    <a href="#concierge" class="block hover:text-white">Concierge</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="text-[9px] uppercase tracking-[.3em] text-amber-400">Private Standard</h4>
-                <p class="text-[10px] text-slate-600 leading-6 mt-5">
-                    Crafted for a digital experience inspired by private luxury houses.
-                </p>
-            </div>
-
-        </div>
-
-        <div class="border-t border-white/5 mt-12 pt-7 flex flex-col sm:flex-row justify-between gap-3">
-            <span class="text-[8px] text-slate-700 tracking-widest">
-                © 2026 VORTEX PRIVÉ
-            </span>
-            <span class="text-[8px] text-slate-700 tracking-widest">
-                PRIVATE DIGITAL VAULT
-            </span>
-        </div>
-    </div>
-</footer>
-
-<!-- QUICK VIEW -->
-<div id="quickModal" class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl p-4 flex items-center justify-center">
-    <div class="modal-box glass rounded-[2rem] max-w-5xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 relative">
-        <button onclick="closeModal('quickModal')" class="absolute right-5 top-5 w-10 h-10 rounded-full bg-black/40 border border-white/10 text-slate-400 hover:text-white z-20">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div id="quickContent"></div>
-    </div>
-</div>
-
-<!-- CART -->
-<div id="cartModal" class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl">
-    <div class="absolute right-0 top-0 h-full w-full sm:max-w-md glass border-l border-amber-400/15 flex flex-col">
-        <div class="p-6 border-b border-white/10 flex justify-between items-center">
-            <div>
-                <span class="text-[8px] uppercase tracking-[.3em] text-amber-400">PRIVATE VAULT</span>
-                <h3 class="cinzel font-bold text-lg mt-1">Your Allocation</h3>
-            </div>
-            <button onclick="closeModal('cartModal')" class="w-9 h-9 rounded-full bg-white/5">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
-
-        <div class="p-5 border-t border-white/10 bg-black/30">
-            <div class="flex justify-between items-center mb-5">
-                <span class="text-[9px] uppercase tracking-widest text-slate-500">Total Valuation</span>
-                <span id="cartTotal" class="cinzel text-xl font-bold text-amber-400">Rs. 0</span>
-            </div>
-
-            <button onclick="checkout()" class="lux-btn w-full py-4 rounded-xl text-[10px] uppercase tracking-[.2em] font-bold">
-                <i class="fa-brands fa-whatsapp mr-2"></i>
-                Private Concierge Checkout
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- WISHLIST -->
-<div id="wishModal" class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl">
-    <div class="absolute right-0 top-0 h-full w-full sm:max-w-md glass border-l border-amber-400/15 flex flex-col">
-        <div class="p-6 border-b border-white/10 flex justify-between">
-            <div>
-                <span class="text-[8px] uppercase tracking-[.3em] text-amber-400">PRIVATE LIST</span>
-                <h3 class="cinzel font-bold text-lg mt-1">Wishlist</h3>
-            </div>
-            <button onclick="closeModal('wishModal')" class="w-9 h-9 rounded-full bg-white/5">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <div id="wishItems" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
-    </div>
-</div>
-
-<!-- CONCIERGE -->
-<div id="conciergeModal" class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl p-4 flex items-center justify-center">
-    <div class="modal-box glass rounded-[2rem] max-w-lg w-full p-7 sm:p-10 relative">
-        <button onclick="closeModal('conciergeModal')" class="absolute right-5 top-5 w-9 h-9 rounded-full bg-white/5">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <div class="text-center">
-            <div class="w-16 h-16 rounded-full border border-amber-400/30 bg-amber-400/5 flex items-center justify-center mx-auto text-amber-300 text-xl">
-                <i class="fa-solid fa-crown"></i>
-            </div>
-
-            <span class="block text-[8px] uppercase tracking-[.4em] text-amber-400 mt-6">
-                PRIVATE CONCIERGE
-            </span>
-
-            <h3 class="cinzel text-2xl font-bold mt-3">At your service.</h3>
-
-            <p class="text-xs text-slate-500 leading-6 mt-4">
-                Send a private request directly to the concierge team.
-            </p>
-
-            <button onclick="contactWhatsApp()" class="lux-btn w-full mt-7 py-4 rounded-xl text-[10px] uppercase tracking-[.2em] font-bold">
-                <i class="fa-brands fa-whatsapp mr-2"></i>
-                Open WhatsApp Concierge
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- TOAST -->
-<div id="toast">
-    <div class="glass gold-border rounded-2xl px-5 py-4 flex items-center gap-3">
-        <div class="w-8 h-8 rounded-full bg-amber-400/10 flex items-center justify-center text-amber-300">
-            <i class="fa-solid fa-check"></i>
-        </div>
-        <div>
-            <div class="text-[9px] uppercase tracking-widest text-amber-400">Vault Updated</div>
-            <div id="toastText" class="text-xs text-white mt-1"></div>
-        </div>
-    </div>
-</div>
-
-<script>
-
-/* =========================================================
-   PREMIUM PRODUCT DATABASE — 80 PRODUCTS
-========================================================= */
-
-const imageSets = {
-
-    watches:[
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1000",
-        "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1000",
-        "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=1000",
-        "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=1000"
-    ],
-
-    audio:[
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000",
-        "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1000",
-        "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1000",
-        "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=1000"
-    ],
-
-    leather:[
-        "https://images.unsplash.com/photo-1627123424574-724758594e93?w=1000",
-        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1000",
-        "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=1000",
-        "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1000"
-    ],
-
-    fashion:[
-        "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=1000",
-        "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1000",
-        "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=1000",
-        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=1000"
-    ],
-
-    perfume:[
-        "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1000",
-        "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1000",
-        "https://images.unsplash.com/photo-1541643600914-78b084683601?w=1000",
-        "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1000"
-    ],
-
-    grooming:[
-        "https://images.unsplash.com/photo-1621607512214-68297480165e?w=1000",
-        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1000",
-        "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1000",
-        "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=1000"
-    ],
-
-    tech:[
-        "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1000",
-        "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=1000",
-        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1000",
-        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000"
-    ],
-
-    jewelry:[
-        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1000",
-        "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1000",
-        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1000",
-        "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=1000"
-    ],
-
-    home:[
-        "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1000",
-        "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1000",
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000",
-        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1000"
-    ]
-};
-
-const products = [
-
-/* WATCHES 1-10 */
-["Celestial Tourbillon Titanium","Timepieces",185000,"watches"],
-["Obsidian Chronograph Atelier","Timepieces",142000,"watches"],
-["Imperial Moonphase Automatic","Timepieces",168000,"watches"],
-["Aurelius Skeleton Masterpiece","Timepieces",225000,"watches"],
-["Midnight GMT Grand Complication","Timepieces",198000,"watches"],
-["Vortex Perpetual Calendar","Timepieces",275000,"watches"],
-["Regent Rose-Gold Chronometer","Timepieces",159000,"watches"],
-["Noir Flying Tourbillon","Timepieces",310000,"watches"],
-["Astral Sapphire Automatic","Timepieces",214000,"watches"],
-["Royal Meridian Worldtimer","Timepieces",189000,"watches"],
-
-/* AUDIO 11-20 */
-["Aether Planar Master Headphones","Bespoke Audio",68000,"audio"],
-["Obsidian Reference Headphones","Bespoke Audio",82000,"audio"],
-["Aurora Electrostatic Headphones","Bespoke Audio",125000,"audio"],
-["Vortex Signature Studio Headphones","Bespoke Audio",76000,"audio"],
-["Imperial Walnut Listening Set","Bespoke Audio",94000,"audio"],
-["Noir Carbon Audiophile Headphones","Bespoke Audio",88000,"audio"],
-["Celestial Wireless Reference Set","Bespoke Audio",72000,"audio"],
-["Grand Atelier Open-Back Headphones","Bespoke Audio",115000,"audio"],
-["Aureum Gold-Trimmed Headphones","Bespoke Audio",135000,"audio"],
-["Private Reference Audio Set","Bespoke Audio",156000,"audio"],
-
-/* LEATHER 21-30 */
-["Nile Crocodile Passport Vault","Exotic Leather",32000,"leather"],
-["Obsidian Calfskin Briefcase","Exotic Leather",78000,"leather"],
-["Imperial Travel Document Case","Exotic Leather",42000,"leather"],
-["Aurelius Leather Card Vault","Exotic Leather",18500,"leather"],
-["Midnight Crocodile Weekender","Exotic Leather",95000,"leather"],
-["Vortex Executive Portfolio","Exotic Leather",56000,"leather"],
-["Royal Leather Watch Roll","Exotic Leather",29000,"leather"],
-["Private Jet Travel Wallet","Exotic Leather",38000,"leather"],
-["Noir Hand-Stitched Belt","Exotic Leather",24000,"leather"],
-["Atelier Leather Organizer","Exotic Leather",27500,"leather"],
-
-/* FASHION 31-40 */
-["500 GSM Cashmere Atelier Hoodie","Haute Couture",28000,"fashion"],
-["Imperial Cashmere Overcoat","Haute Couture",115000,"fashion"],
-["Midnight Silk Dinner Jacket","Haute Couture",88000,"fashion"],
-["Vortex Italian Wool Trousers","Haute Couture",46000,"fashion"],
-["Royal Cashmere Knit Polo","Haute Couture",42000,"fashion"],
-["Obsidian Tailored Blazer","Haute Couture",72000,"fashion"],
-["Aureum Silk Evening Shirt","Haute Couture",39000,"fashion"],
-["Private Atelier Suede Jacket","Haute Couture",99000,"fashion"],
-["Noir Cashmere Scarf","Haute Couture",26000,"fashion"],
-["Vortex Signature Bomber","Haute Couture",65000,"fashion"],
-
-/* PERFUME 41-50 */
-["Oud Royale Crystal Extrait","Fragrance",45000,"perfume"],
-["Imperial Amber No. 01","Fragrance",38000,"perfume"],
-["Midnight Oud Intense","Fragrance",52000,"perfume"],
-["Taif Rose Privé","Fragrance",41000,"perfume"],
-["Royal Saffron Extrait","Fragrance",47000,"perfume"],
-["Noir Leather Parfum","Fragrance",36000,"perfume"],
-["Aurelius Oud Collection","Fragrance",68000,"perfume"],
-["Velvet Amber Absolute","Fragrance",44000,"perfume"],
-["Celestial Musk Extrait","Fragrance",49000,"perfume"],
-["Private Reserve Oud","Fragrance",75000,"perfume"],
-
-/* GROOMING 51-58 */
-["Damascene Steel Razor Set","Grooming",24500,"grooming"],
-["Titanium Precision Clipper","Grooming",38000,"grooming"],
-["Aureum Barber Master Set","Grooming",49000,"grooming"],
-["Obsidian Shaving Vault","Grooming",31000,"grooming"],
-["Royal Badger Shaving Collection","Grooming",22000,"grooming"],
-["Vortex Executive Grooming Kit","Grooming",42000,"grooming"],
-["Carbon Fiber Travel Trimmer","Grooming",28000,"grooming"],
-["Private Atelier Razor","Grooming",35000,"grooming"],
-
-/* TECH 59-66 */
-["Aerospace Aluminum Keyboard","Private Technology",42000,"tech"],
-["Obsidian Mechanical Keyboard","Private Technology",48000,"tech"],
-["Vortex Creator MacBook Stand","Private Technology",24000,"tech"],
-["Titanium Desk Dock","Private Technology",19000,"tech"],
-["Aureum Wireless Charging Station","Private Technology",32000,"tech"],
-["Carbon Fiber Laptop Sleeve","Private Technology",28000,"tech"],
-["Executive Digital Desk Set","Private Technology",55000,"tech"],
-["Noir Studio Workstation Set","Private Technology",76000,"tech"],
-
-/* JEWELRY 67-73 */
-["Aurelius Signet Ring","Jewelry",58000,"jewelry"],
-["Obsidian Onyx Cufflinks","Jewelry",39000,"jewelry"],
-["Royal Sapphire Bracelet","Jewelry",92000,"jewelry"],
-["Midnight Gold Chain","Jewelry",76000,"jewelry"],
-["Celestial Diamond Pendant","Jewelry",145000,"jewelry"],
-["Vortex Imperial Cuff","Jewelry",68000,"jewelry"],
-["Private Emerald Signet","Jewelry",118000,"jewelry"],
-
-/* HOME 74-80 */
-["Obsidian Marble Desk Object","Luxury Living",34000,"home"],
-["Aureum Crystal Decanter","Luxury Living",46000,"home"],
-["Royal Smoked Glass Tray","Luxury Living",28000,"home"],
-["Midnight Stone Candle Set","Luxury Living",24000,"home"],
-["Vortex Executive Desk Clock","Luxury Living",52000,"home"],
-["Imperial Leather Valet Tray","Luxury Living",31000,"home"],
-["Private Atelier Home Set","Luxury Living",64000,"home"]
-].map((p,i)=>({
-    id:i+1,
-    title:p[0],
-    category:p[1],
-    price:p[2],
-    type:p[3],
-    status:["PRIVATE EDITION","LIMITED VAULT","ATELIER EDITION","COLLECTOR SERIES"][i%4],
-    rating:"VORTEX PRIVÉ SELECTION",
-    description:`An elevated ${p[0].toLowerCase()} selected for the Vortex Privé collection, presented with a refined private-client aesthetic.`,
-    features:[
-        "Private Collection Selection",
-        "Premium Presentation",
-        "Curated Luxury Finish",
-        "Vortex Privé Packaging"
-    ],
-    images:imageSets[p[3]]
-}));
-
-let cart=[];
-let wishlist=[];
-let activeCategory="All";
-let currentProducts=[...products];
-
-/* =========================================================
-   INIT
-========================================================= */
-
-window.addEventListener("load",()=>{
-    setTimeout(()=>{
-        document.getElementById("loader").classList.add("hide");
-    },900);
-
-    createParticles();
-    renderCategories();
-    renderProducts(products);
-    setupReveal();
-    animateCounters();
-});
-
-/* =========================================================
-   PARTICLES
-========================================================= */
-
-function createParticles(){
-    const box=document.getElementById("particles");
-
-    for(let i=0;i<65;i++){
-        const p=document.createElement("span");
-        p.className="particle";
-        p.style.left=Math.random()*100+"%";
-        p.style.animationDuration=(10+Math.random()*18)+"s";
-        p.style.animationDelay=(-Math.random()*20)+"s";
-        p.style.transform=`scale(${.5+Math.random()*2})`;
-        box.appendChild(p);
-    }
-}
-
-/* =========================================================
-   CURSOR
-========================================================= */
-
-document.addEventListener("mousemove",e=>{
-    const glow=document.getElementById("cursorGlow");
-    glow.style.left=e.clientX+"px";
-    glow.style.top=e.clientY+"px";
-});
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-function renderCategories(){
-
-    const cats=[
-        "All",
-        ...new Set(products.map(p=>p.category))
-    ];
-
-    document.getElementById("categories").innerHTML=cats.map(c=>`
-        <button
-            onclick="setCategory('${c}')"
-            class="category ${c==="All"?"active":""} glass px-5 py-3 rounded-full text-[9px] uppercase tracking-widest text-slate-400 border border-white/10"
-        >
-            ${c}
-        </button>
-    `).join("");
-}
-
-function setCategory(cat){
-
-    activeCategory=cat;
-
-    document.querySelectorAll(".category").forEach(x=>{
-        x.classList.remove("active");
-        if(x.textContent.trim()===cat) x.classList.add("active");
-    });
-
-    filterProducts();
-}
-
-/* =========================================================
-   FILTER / SEARCH
-========================================================= */
-
-function searchProducts(){
-    filterProducts();
-}
-
-function filterProducts(){
-
-    const q=document.getElementById("search").value.toLowerCase();
-
-    currentProducts=products.filter(p=>{
-
-        const categoryMatch=
-            activeCategory==="All" ||
-            p.category===activeCategory;
-
-        const searchMatch=
-            p.title.toLowerCase().includes(q) ||
-            p.category.toLowerCase().includes(q);
-
-        return categoryMatch && searchMatch;
-    });
-
-    renderProducts(currentProducts);
-}
-
-/* =========================================================
-   SORT
-========================================================= */
-
-function sortProducts(){
-
-    const value=document.getElementById("sort").value;
-
-    let arr=[...currentProducts];
-
-    if(value==="low") arr.sort((a,b)=>a.price-b.price);
-    if(value==="high") arr.sort((a,b)=>b.price-a.price);
-    if(value==="name") arr.sort((a,b)=>a.title.localeCompare(b.title));
-
-    renderProducts(arr);
-}
-
-/* =========================================================
-   PRODUCT RENDER
-========================================================= */
-
-function renderProducts(items){
-
-    const grid=document.getElementById("productGrid");
-    const no=document.getElementById("noResults");
-
-    if(!items.length){
-        grid.innerHTML="";
-        no.classList.remove("hidden");
-        return;
-    }
-
-    no.classList.add("hidden");
-
-    grid.innerHTML=items.map((p,index)=>`
-
-        <article
-            class="product-card glass rounded-[1.5rem] overflow-hidden group reveal"
-            data-id="${p.id}"
-            style="transition-delay:${Math.min(index*35,300)}ms"
-        >
-
-            <div
-                class="image-wrap relative h-72 overflow-hidden cursor-pointer bg-black"
-                onclick="openQuick(${p.id})"
-            >
-
-                <img
-                    src="${p.images[0]}"
-                    alt="${p.title}"
-                    class="product-image w-full h-full object-cover"
-                    loading="lazy"
-                >
-
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-
-                <span class="absolute left-4 top-4 text-[7px] uppercase tracking-[.2em] text-amber-200 border border-amber-400/20 bg-black/50 backdrop-blur-xl px-3 py-2 rounded-full">
-                    ${p.status}
-                </span>
-
-                <button
-                    onclick="event.stopPropagation();toggleWishlist(${p.id})"
-                    class="heart ${wishlist.includes(p.id)?"active":""} absolute right-4 top-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 text-white flex items-center justify-center"
-                >
-                    <i class="${wishlist.includes(p.id)?"fa-solid":"fa-regular"} fa-heart text-xs"></i>
-                </button>
-
-                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-                    <span class="text-[8px] uppercase tracking-[.25em] text-white/60">
-                        ${p.category}
-                    </span>
-
-                    <span class="text-[8px] text-amber-300">
-                        #${String(p.id).padStart(3,"0")}
-                    </span>
-                </div>
-
-            </div>
-
-            <div class="p-5">
-
-                <div class="text-[8px] uppercase tracking-[.22em] text-amber-400/70 mb-2">
-                    ${p.rating}
-                </div>
-
-                <h3
-                    onclick="openQuick(${p.id})"
-                    class="cinzel text-sm font-bold leading-6 text-white cursor-pointer hover:text-amber-300 transition"
-                >
-                    ${p.title}
-                </h3>
-
-                <div class="flex items-end justify-between gap-3 mt-5 pt-4 border-t border-white/5">
-
-                    <div>
-                        <div class="text-[7px] uppercase tracking-widest text-slate-600">
-                            Acquisition Value
-                        </div>
-
-                        <div class="text-base font-bold text-amber-400 mt-1">
-                            Rs. ${p.price.toLocaleString()}
-                        </div>
-                    </div>
-
-                    <button
-                        onclick="addToCart(${p.id})"
-                        class="lux-btn rounded-xl px-4 py-3 text-[8px] uppercase tracking-widest font-bold"
-                    >
-                        Allocate
-                    </button>
-
-                </div>
-            </div>
-
-        </article>
-
-    `).join("");
-
-    setTimeout(setupReveal,50);
-    setupTilt();
-}
-
-/* =========================================================
-   3D TILT
-========================================================= */
-
-function setupTilt(){
-
-    document.querySelectorAll(".product-card").forEach(card=>{
-
-        card.onmousemove=e=>{
-
-            if(window.innerWidth<900)return;
-
-            const rect=card.getBoundingClientRect();
-
-            const x=e.clientX-rect.left;
-            const y=e.clientY-rect.top;
-
-            const rx=((y/rect.height)-.5)*-7;
-            const ry=((x/rect.width)-.5)*7;
-
-            card.style.transform=
-                `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
-        };
-
-        card.onmouseleave=()=>{
-            card.style.transform="";
-        };
-    });
+.reveal.show{
+opacity:1;
+transform:none;
 }
 
 /* =========================================================
    QUICK VIEW
 ========================================================= */
 
-function openQuick(id){
+.modal{
+position:fixed;
+inset:0;
+z-index:500;
+display:none;
+align-items:center;
+justify-content:center;
+padding:15px;
+background:rgba(0,0,0,.78);
+backdrop-filter:blur(22px);
+}
 
-    const p=products.find(x=>x.id===id);
+.modal.show{
+display:flex;
+animation:modalFade .35s ease;
+}
 
-    document.getElementById("quickContent").innerHTML=`
+@keyframes modalFade{
+from{opacity:0}
+to{opacity:1}
+}
 
-        <div class="grid md:grid-cols-2 gap-7">
+.modal-card{
+width:min(900px,100%);
+max-height:92vh;
+overflow:auto;
+border-radius:28px;
+background:
+linear-gradient(
+145deg,
+rgba(30,32,34,.9),
+rgba(8,9,10,.92)
+);
+border:1px solid rgba(212,175,55,.3);
+box-shadow:
+0 50px 150px rgba(0,0,0,.75),
+0 0 60px rgba(212,175,55,.08);
+animation:modalUp .5s cubic-bezier(.2,.8,.2,1);
+}
 
-            <div>
-
-                <div class="rounded-3xl overflow-hidden h-[350px] sm:h-[500px] bg-black border border-white/10">
-                    <img id="quickMainImage"
-                         src="${p.images[0]}"
-                         class="w-full h-full object-cover">
-                </div>
-
-                <div class="grid grid-cols-4 gap-2 mt-3">
-
-                    ${p.images.map(img=>`
-                        <button
-                            onclick="document.getElementById('quickMainImage').src='${img}'"
-                            class="h-20 rounded-xl overflow-hidden border border-white/10 hover:border-amber-400 transition"
-                        >
-                            <img src="${img}" class="w-full h-full object-cover">
-                        </button>
-                    `).join("")}
-
-                </div>
-
-            </div>
-
-            <div class="flex flex-col justify-between">
-
-                <div>
-
-                    <span class="text-[8px] uppercase tracking-[.3em] text-amber-400">
-                        ${p.status}
-                    </span>
-
-                    <h2 class="cinzel text-2xl sm:text-3xl font-bold text-white leading-tight mt-4">
-                        ${p.title}
-                    </h2>
-
-                    <p class="text-xs text-slate-400 leading-7 mt-5">
-                        ${p.description}
-                    </p>
-
-                    <div class="mt-7">
-
-                        <div class="text-[8px] uppercase tracking-[.25em] text-slate-600">
-                            Masterpiece Specifications
-                        </div>
-
-                        <div class="space-y-3 mt-4">
-                            ${p.features.map(f=>`
-                                <div class="flex items-center gap-3 text-xs text-slate-300">
-                                    <i class="fa-solid fa-diamond text-[7px] text-amber-400"></i>
-                                    ${f}
-                                </div>
-                            `).join("")}
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="border-t border-white/10 mt-10 pt-6">
-
-                    <div class="text-[8px] uppercase tracking-widest text-slate-600">
-                        Private Acquisition Value
-                    </div>
-
-                    <div class="cinzel text-3xl font-bold text-amber-400 mt-1">
-                        Rs. ${p.price.toLocaleString()}
-                    </div>
-
-                    <button
-                        onclick="addToCart(${p.id});closeModal('quickModal')"
-                        class="lux-btn w-full mt-5 py-4 rounded-xl text-[10px] uppercase tracking-[.2em] font-bold"
-                    >
-                        Request Private Allocation
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-    `;
-
-    openModal("quickModal");
+@keyframes modalUp{
+from{
+opacity:0;
+transform:translateY(40px) scale(.95);
+}
+to{
+opacity:1;
+transform:none;
+}
 }
 
 /* =========================================================
    CART
 ========================================================= */
 
-function addToCart(id){
-
-    const p=products.find(x=>x.id===id);
-
-    const existing=cart.find(x=>x.id===id);
-
-    if(existing) existing.qty++;
-    else cart.push({...p,qty:1});
-
-    updateCart();
-
-    toast(`${p.title} added to your vault`);
+.drawer{
+position:fixed;
+inset:0;
+z-index:600;
+display:none;
+background:rgba(0,0,0,.72);
+backdrop-filter:blur(18px);
 }
 
-function removeFromCart(id){
-
-    cart=cart.filter(x=>x.id!==id);
-
-    updateCart();
+.drawer.show{
+display:block;
 }
 
-function changeQty(id,delta){
-
-    const item=cart.find(x=>x.id===id);
-
-    if(!item)return;
-
-    item.qty+=delta;
-
-    if(item.qty<=0){
-        removeFromCart(id);
-        return;
-    }
-
-    updateCart();
+.drawer-panel{
+position:absolute;
+right:0;
+top:0;
+height:100%;
+width:min(450px,94vw);
+background:
+linear-gradient(
+145deg,
+rgba(23,24,25,.97),
+rgba(3,4,5,.98)
+);
+border-left:1px solid rgba(212,175,55,.25);
+box-shadow:-30px 0 100px rgba(0,0,0,.65);
+animation:drawerIn .5s cubic-bezier(.2,.8,.2,1);
 }
 
-function updateCart(){
-
-    const count=cart.reduce((a,b)=>a+b.qty,0);
-
-    document.getElementById("cartCount").textContent=count;
-
-    const total=cart.reduce((a,b)=>a+b.price*b.qty,0);
-
-    document.getElementById("cartTotal").textContent=
-        `Rs. ${total.toLocaleString()}`;
-
-    const box=document.getElementById("cartItems");
-
-    if(!cart.length){
-
-        box.innerHTML=`
-            <div class="text-center py-24">
-                <div class="w-16 h-16 rounded-full glass flex items-center justify-center mx-auto text-amber-400/40">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                </div>
-
-                <h4 class="cinzel mt-5 text-sm">Your vault is empty</h4>
-
-                <p class="text-[10px] text-slate-600 mt-2">
-                    Begin your private allocation.
-                </p>
-            </div>
-        `;
-
-        return;
-    }
-
-    box.innerHTML=cart.map(i=>`
-
-        <div class="glass rounded-2xl p-3 flex gap-3">
-
-            <img
-                src="${i.images[0]}"
-                class="w-20 h-20 rounded-xl object-cover"
-            >
-
-            <div class="flex-1 min-w-0">
-
-                <h4 class="cinzel text-[10px] font-bold text-white line-clamp-2">
-                    ${i.title}
-                </h4>
-
-                <div class="text-[10px] text-amber-400 mt-2">
-                    Rs. ${i.price.toLocaleString()}
-                </div>
-
-                <div class="flex items-center gap-3 mt-3">
-
-                    <button onclick="changeQty(${i.id},-1)" class="w-6 h-6 rounded-full bg-white/5">
-                        −
-                    </button>
-
-                    <span class="text-[10px]">${i.qty}</span>
-
-                    <button onclick="changeQty(${i.id},1)" class="w-6 h-6 rounded-full bg-white/5">
-                        +
-                    </button>
-
-                </div>
-
-            </div>
-
-            <button onclick="removeFromCart(${i.id})" class="text-slate-600 hover:text-red-400">
-                <i class="fa-solid fa-trash text-[10px]"></i>
-            </button>
-
-        </div>
-
-    `).join("");
+@keyframes drawerIn{
+from{transform:translateX(100%)}
+to{transform:none}
 }
-
-function openCart(){
-    updateCart();
-    openModal("cartModal");
-}
-
-/* =========================================================
-   WISHLIST
-========================================================= */
-
-function toggleWishlist(id){
-
-    if(wishlist.includes(id)){
-        wishlist=wishlist.filter(x=>x!==id);
-        toast("Removed from private wishlist");
-    }else{
-        wishlist.push(id);
-        toast("Added to private wishlist");
-    }
-
-    document.getElementById("wishCount").textContent=wishlist.length;
-
-    renderProducts(currentProducts);
-}
-
-function openWishlist(){
-
-    const box=document.getElementById("wishItems");
-
-    const items=products.filter(p=>wishlist.includes(p.id));
-
-    if(!items.length){
-
-        box.innerHTML=`
-            <div class="text-center py-24 text-slate-600 text-xs">
-                Your private wishlist is empty.
-            </div>
-        `;
-
-    }else{
-
-        box.innerHTML=items.map(p=>`
-
-            <div class="glass rounded-2xl p-3 flex gap-3">
-
-                <img src="${p.images[0]}" class="w-20 h-20 object-cover rounded-xl">
-
-                <div class="flex-1">
-                    <h4 class="cinzel text-[10px] font-bold">
-                        ${p.title}
-                    </h4>
-
-                    <div class="text-[10px] text-amber-400 mt-2">
-                        Rs. ${p.price.toLocaleString()}
-                    </div>
-
-                    <button onclick="addToCart(${p.id})" class="text-[8px] uppercase tracking-widest text-white mt-3">
-                        Allocate
-                    </button>
-                </div>
-
-            </div>
-
-        `).join("");
-    }
-
-    openModal("wishModal");
-}
-
-/* =========================================================
-   CHECKOUT
-========================================================= */
-
-function checkout(){
-
-    if(!cart.length){
-        toast("Your private vault is empty");
-        return;
-    }
-
-    const total=cart.reduce((a,b)=>a+b.price*b.qty,0);
-
-    const list=cart.map(i=>
-        `• ${i.title} × ${i.qty} — Rs. ${(i.price*i.qty).toLocaleString()}`
-    ).join("\n");
-
-    const message=
-`VORTEX PRIVÉ — PRIVATE CONCIERGE REQUEST
-
-Requested Allocation:
-
-${list}
-
-Total Valuation:
-Rs. ${total.toLocaleString()}
-
-Please contact me regarding this private allocation.`;
-
-    window.open(
-        `https://wa.me/923234749637?text=${encodeURIComponent(message)}`,
-        "_blank"
-    );
-}
-
-function contactWhatsApp(){
-
-    const message=
-`Hello VORTEX PRIVÉ Concierge.
-
-I would like assistance with a private luxury allocation.`;
-
-    window.open(
-        `https://wa.me/923234749637?text=${encodeURIComponent(message)}`,
-        "_blank"
-    );
-}
-
-function showConcierge(){
-    openModal("conciergeModal");
-}
-
-/* =========================================================
-   MODALS
-========================================================= */
-
-function openModal(id){
-    document.getElementById(id).classList.add("open");
-    document.body.style.overflow="hidden";
-}
-
-function closeModal(id){
-    document.getElementById(id).classList.remove("open");
-    document.body.style.overflow="";
-}
-
-document.querySelectorAll(".modal").forEach(m=>{
-    m.addEventListener("click",e=>{
-        if(e.target===m){
-            m.classList.remove("open");
-            document.body.style.overflow="";
-        }
-    });
-});
 
 /* =========================================================
    TOAST
 ========================================================= */
 
+.toast{
+position:fixed;
+left:50%;
+bottom:25px;
+transform:translate(-50%,120px);
+z-index:1000;
+padding:13px 20px;
+border-radius:999px;
+background:rgba(20,20,20,.9);
+border:1px solid rgba(212,175,55,.3);
+backdrop-filter:blur(20px);
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+font-size:11px;
+transition:.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.toast.show{
+transform:translate(-50%,0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:640px){
+
+.topline{
+font-size:7px;
+letter-spacing:.18em;
+}
+
+.logo-text{
+display:none;
+}
+
+.hero{
+min-height:360px;
+}
+
+.hero-title{
+font-size:43px;
+}
+
+.product{
+border-radius:18px;
+}
+
+.product-info{
+padding:11px;
+}
+
+.product-title{
+font-size:10px;
+}
+
+.price{
+font-size:11px;
+}
+
+.buy-btn{
+font-size:7px;
+padding:8px 9px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="noise"></div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- =========================================================
+TOP BAR
+========================================================= -->
+
+<div class="topline">
+<span class="live-dot mr-2"></span>
+Private Client Access • Worldwide Concierge • Limited 2026 Allocation
+</div>
+
+<!-- =========================================================
+HEADER
+========================================================= -->
+
+<header class="header">
+<div class="max-w-[1500px] mx-auto px-4 py-4">
+
+<div class="flex items-center gap-4">
+
+<a href="#" class="flex items-center gap-3 shrink-0">
+
+<div class="logo-ring">
+<i class="fa-solid fa-crown"></i>
+</div>
+
+<div class="logo-text">
+<div class="font-cinzel font-bold tracking-[.22em] text-sm">
+MAISON VORTEX
+</div>
+<div class="text-[7px] tracking-[.3em] text-[#c9a52d] uppercase mt-1">
+Private Luxury Marketplace
+</div>
+</div>
+
+</a>
+
+<div class="searchbox flex items-center flex-1 max-w-2xl mx-auto rounded-full">
+
+<i class="fa-solid fa-magnifying-glass text-[#c9a52d] text-xs ml-4"></i>
+
+<input
+id="search"
+oninput="searchProducts()"
+placeholder="Search the private collection..."
+class="w-full bg-transparent outline-none px-4 py-3 text-xs text-white placeholder:text-zinc-600">
+
+<button class="hidden sm:block mr-1 px-4 py-2 rounded-full bg-[#d4af37] text-black text-[9px] font-black uppercase tracking-widest">
+Search
+</button>
+
+</div>
+
+<button
+onclick="openCart()"
+class="relative glass gold-border rounded-full px-4 py-3 flex items-center gap-2">
+
+<i class="fa-solid fa-bag-shopping text-[#d4af37]"></i>
+
+<span class="hidden sm:block text-[9px] uppercase tracking-widest">
+Vault
+</span>
+
+<span
+id="cartCount"
+class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#d4af37] text-black text-[8px] font-black grid place-items-center">
+0
+</span>
+
+</button>
+
+</div>
+
+</div>
+</header>
+
+<!-- =========================================================
+HERO
+========================================================= -->
+
+<section class="hero">
+
+<div class="hero-grid"></div>
+
+<div class="max-w-[1500px] w-full mx-auto px-5 sm:px-8">
+
+<div class="hero-content max-w-4xl">
+
+<div class="flex items-center gap-4 mb-7">
+<div class="hero-line"></div>
+<span class="text-[9px] tracking-[.35em] uppercase text-[#d4af37] font-bold">
+The Private Collection
+</span>
+</div>
+
+<h1 class="hero-title">
+Luxury<br>
+<span class="gold-text">Without Limits.</span>
+</h1>
+
+<p class="text-zinc-400 text-sm sm:text-base max-w-xl mt-7 leading-7">
+A curated marketplace for extraordinary objects,
+precision craftsmanship and private-client acquisitions.
+</p>
+
+<div class="flex flex-wrap gap-3 mt-8">
+
+<button
+onclick="document.getElementById('collection').scrollIntoView()"
+class="px-6 py-3 rounded-full bg-[#d4af37] text-black text-[9px] font-black tracking-[.18em] uppercase hover:scale-105 transition">
+Explore Collection
+</button>
+
+<button
+onclick="openCart()"
+class="glass gold-border px-6 py-3 rounded-full text-[9px] font-bold tracking-[.18em] uppercase hover:bg-white/10 transition">
+Private Vault
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+COLLECTION
+========================================================= -->
+
+<main id="collection" class="max-w-[1500px] mx-auto px-4 sm:px-7 py-10">
+
+<!-- category bar -->
+
+<div class="glass rounded-2xl p-3 mb-8 overflow-x-auto">
+
+<div class="flex gap-2 min-w-max">
+
+<button onclick="filterCategory('All',this)" class="category active px-5 py-2.5 rounded-full border border-[#d4af37]/30 text-[9px] uppercase tracking-widest">
+All
+</button>
+
+<button onclick="filterCategory('Watches',this)" class="category px-5 py-2.5 rounded-full border border-white/10 text-zinc-400 text-[9px] uppercase tracking-widest">
+Watches
+</button>
+
+<button onclick="filterCategory('Audio',this)" class="category px-5 py-2.5 rounded-full border border-white/10 text-zinc-400 text-[9px] uppercase tracking-widest">
+Audio
+</button>
+
+<button onclick="filterCategory('Fashion',this)" class="category px-5 py-2.5 rounded-full border border-white/10 text-zinc-400 text-[9px] uppercase tracking-widest">
+Fashion
+</button>
+
+<button onclick="filterCategory('Leather',this)" class="category px-5 py-2.5 rounded-full border border-white/10 text-zinc-400 text-[9px] uppercase tracking-widest">
+Leather
+</button>
+
+<button onclick="filterCategory('Grooming',this)" class="category px-5 py-2.5 rounded-full border border-white/10 text-zinc-400 text-[9px] uppercase tracking-widest">
+Grooming
+</button>
+
+<button onclick="filterCategory('Fragrance',this)" class="category px-5 py-2.5 rounded-full border border-white/10 text-zinc-400 text-[9px] uppercase tracking-widest">
+Fragrance
+</button>
+
+<button onclick="filterCategory('Tech',this)" class="category px-5 py-2.5 rounded-full border border-white/10 text-zinc-400 text-[9px] uppercase tracking-widest">
+Technology
+</button>
+
+</div>
+
+</div>
+
+<!-- collection header -->
+
+<div class="flex items-end justify-between mb-6 reveal">
+
+<div>
+<div class="text-[8px] uppercase tracking-[.3em] text-[#d4af37] mb-2">
+Maison Vortex / 2026
+</div>
+
+<h2 class="font-cinzel text-2xl sm:text-3xl font-bold">
+The Vault Collection
+</h2>
+</div>
+
+<div class="text-right">
+<div id="productCounter" class="font-mono text-[#d4af37] text-xs">
+80 pieces
+</div>
+<div class="text-[7px] uppercase tracking-widest text-zinc-600">
+Curated inventory
+</div>
+</div>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<div id="products" class="product-grid"></div>
+
+</main>
+
+<!-- =========================================================
+QUICK VIEW
+========================================================= -->
+
+<div id="quickModal" class="modal" onclick="closeQuickOutside(event)">
+
+<div class="modal-card">
+
+<div class="p-5 sm:p-7">
+
+<div class="flex justify-between items-center mb-5">
+
+<div class="text-[8px] uppercase tracking-[.3em] text-[#d4af37]">
+Private Product View
+</div>
+
+<button
+onclick="closeQuick()"
+class="w-9 h-9 rounded-full glass grid place-items-center text-zinc-400 hover:text-white">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+</div>
+
+<div id="quickContent"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+CART
+========================================================= -->
+
+<div id="cartDrawer" class="drawer" onclick="closeCartOutside(event)">
+
+<div class="drawer-panel">
+
+<div class="h-full flex flex-col">
+
+<div class="p-5 border-b border-white/10 flex items-center justify-between">
+
+<div>
+<div class="font-cinzel font-bold text-sm">
+Private Vault
+</div>
+<div class="text-[7px] uppercase tracking-widest text-[#d4af37] mt-1">
+Your allocation
+</div>
+</div>
+
+<button onclick="closeCart()" class="text-zinc-500 hover:text-white">
+<i class="fa-solid fa-xmark text-lg"></i>
+</button>
+
+</div>
+
+<div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+<div class="p-5 border-t border-white/10 bg-black/30">
+
+<div class="flex justify-between mb-4">
+
+<span class="text-xs text-zinc-500">
+Total Valuation
+</span>
+
+<span id="cartTotal" class="font-mono font-bold text-[#d4af37]">
+Rs. 0
+</span>
+
+</div>
+
+<input
+id="customerName"
+placeholder="Private Client Name"
+class="w-full mb-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 outline-none text-xs">
+
+<input
+id="customerPhone"
+placeholder="WhatsApp / Contact"
+class="w-full mb-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 outline-none text-xs">
+
+<button
+onclick="sendWhatsApp()"
+class="w-full py-4 rounded-xl bg-[#d4af37] text-black text-[9px] font-black tracking-[.18em] uppercase hover:scale-[1.01] transition">
+
+<i class="fa-brands fa-whatsapp mr-2"></i>
+Request Private Concierge
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+TOAST
+========================================================= -->
+
+<div id="toast" class="toast">
+<i class="fa-solid fa-check text-[#d4af37] mr-2"></i>
+<span id="toastText">Added to private vault</span>
+</div>
+
+<script>
+
+/* =========================================================
+80 PRODUCTS
+Names and categories are intentionally paired with relevant
+product imagery rather than arbitrary photos.
+========================================================= */
+
+const imageBank = {
+
+watch:[
+"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1000&q=90"
+],
+
+audio:[
+"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=1000&q=90"
+],
+
+fashion:[
+"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=90"
+],
+
+leather:[
+"https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=1000&q=90"
+],
+
+grooming:[
+"https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=90"
+],
+
+fragrance:[
+"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=1000&q=90"
+],
+
+tech:[
+"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1000&q=90",
+"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=90"
+]
+
+};
+
+const catalog = [
+
+["Celestial Tourbillon Noir","Watches",185000],
+["Aurelius Chronograph Gold","Watches",142000],
+["Obsidian Skeleton Automatic","Watches",118000],
+["Imperial Moonphase Platinum","Watches",225000],
+["Vortex GMT Titanium","Watches",97000],
+["Eclipse Perpetual Calendar","Watches",310000],
+["Royal Regulator Edition","Watches",176000],
+["Midnight Flying Tourbillon","Watches",265000],
+["Sovereign Automatic Gold","Watches",154000],
+["Astral Chronometer","Watches",198000],
+
+["AETHER Reference Headphones","Audio",68000],
+["Noir Planar Studio Headphones","Audio",74000],
+["Obsidian Wireless ANC","Audio",52000],
+["Maison Reference IEM","Audio",39000],
+["Titanium Audiophile Headset","Audio",81000],
+["Walnut Master Headphones","Audio",62000],
+["Vortex Signature Earphones","Audio",44000],
+["Imperial Bluetooth Headphones","Audio",57000],
+["Crystal Acoustic Headset","Audio",89000],
+["Monarch Studio Monitor","Audio",125000],
+
+["Cashmere Atelier Hoodie","Fashion",28000],
+["Italian Silk Evening Shirt","Fashion",34000],
+["Midnight Velvet Dinner Jacket","Fashion",72000],
+["Royal Cashmere Overcoat","Fashion",98000],
+["Black Label Tailored Blazer","Fashion",68000],
+["Sovereign Merino Knit","Fashion",42000],
+["Monarch Silk Trousers","Fashion",39000],
+["Private Atelier Bomber","Fashion",51000],
+["Imperial Wool Suit","Fashion",115000],
+["Maison Vortex Signature Coat","Fashion",132000],
+
+["Nile Crocodile Passport Vault","Leather",32000],
+["Obsidian Crocodile Card Case","Leather",26000],
+["Italian Calfskin Executive Wallet","Leather",22000],
+["Crocodile Travel Organizer","Leather",49000],
+["Handcrafted Leather Briefcase","Leather",76000],
+["Luxury Weekender Duffel","Leather",89000],
+["Full-Grain Leather Portfolio","Leather",41000],
+["Executive Document Folio","Leather",35000],
+["Bespoke Leather Belt","Leather",19000],
+["Private Client Travel Case","Leather",58000],
+
+["Titanium Precision Clipper","Grooming",38000],
+["Damascus Double Edge Razor","Grooming",24500],
+["Royal Barber Safety Razor","Grooming",18000],
+["Aerospace Grooming Trimmer","Grooming",43000],
+["Obsidian Beard Sculptor","Grooming",27000],
+["Professional Ceramic Clipper","Grooming",35000],
+["Luxury Shaving Atelier Set","Grooming",31000],
+["Gold Edition Grooming Kit","Grooming",46000],
+["Executive Beard Care Vault","Grooming",22500],
+["Titanium Barber Master Set","Grooming",59000],
+
+["Oud Royale Extrait","Fragrance",45000],
+["Imperial Amber Parfum","Fragrance",39000],
+["Black Rose Absolute","Fragrance",42000],
+["Saffron Noir Extrait","Fragrance",51000],
+["Royal Oud Collection","Fragrance",68000],
+["Velvet Musk Private Blend","Fragrance",37000],
+["Midnight Tobacco Parfum","Fragrance",44000],
+["Golden Amber Reserve","Fragrance",59000],
+["Maison Noir Elixir","Fragrance",48000],
+["Crown Signature Extrait","Fragrance",72000],
+
+["Aerospace Mechanical Keyboard","Tech",42000],
+["Titanium Creator Laptop Stand","Tech",18000],
+["Obsidian Wireless Workstation","Tech",76000],
+["Luxury 4K Creator Monitor","Tech",145000],
+["Aluminum Studio Dock","Tech",35000],
+["Executive Mechanical Keyboard","Tech",49000],
+["Carbon Fiber Desk Hub","Tech",27000],
+["Premium Thunderbolt Dock","Tech",39000],
+["Monarch Smart Display","Tech",82000],
+["Private Office Tech Vault","Tech",105000]
+
+];
+
+const products = catalog.map((x,i)=>{
+
+const category=x[1];
+
+const key={
+"Watches":"watch",
+"Audio":"audio",
+"Fashion":"fashion",
+"Leather":"leather",
+"Grooming":"grooming",
+"Fragrance":"fragrance",
+"Tech":"tech"
+}[category];
+
+const imgs=imageBank[key];
+
+return {
+id:i+1,
+name:x[0],
+category,
+price:x[2],
+image:imgs[i%imgs.length],
+rating:(4.7+(i%4)*.07).toFixed(1),
+status:i%5===0?"LIMITED EDITION":
+i%5===1?"PRIVATE ALLOCATION":
+i%5===2?"ATELIER EDITION":
+i%5===3?"COLLECTOR SERIES":
+"BESPOKE",
+description:`A meticulously presented ${category.toLowerCase()} piece curated for the Maison Vortex private collection. Designed around refined materials, distinctive finishing and an uncompromising luxury aesthetic.`,
+features:[
+"Private Collection Edition",
+"Premium Presentation",
+"Curated Quality Standard",
+"Maison Vortex Concierge Support"
+]
+};
+
+});
+
+/* =========================================================
+STATE
+========================================================= */
+
+let cart=[];
+let currentProducts=[...products];
+
+/* =========================================================
+RENDER
+========================================================= */
+
+function renderProducts(list){
+
+const container=document.getElementById("products");
+
+document.getElementById("productCounter").textContent=
+`${list.length} pieces`;
+
+container.innerHTML=list.map((p,index)=>`
+
+<article class="product reveal"
+style="animation-delay:${Math.min(index*35,500)}ms">
+
+<div class="product-image" onclick="openQuick(${p.id})">
+
+<img
+src="${p.image}"
+alt="${p.name}"
+loading="lazy">
+
+<div class="image-overlay"></div>
+
+<span class="badge">
+${p.status}
+</span>
+
+<button
+class="wishlist"
+onclick="event.stopPropagation();toggleWish(this)">
+<i class="fa-regular fa-heart"></i>
+</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="category-label">
+${p.category}
+</div>
+
+<h3
+class="product-title cursor-pointer"
+onclick="openQuick(${p.id})">
+${p.name}
+</h3>
+
+<div class="stars">
+★★★★★
+<span class="text-zinc-600 ml-1">${p.rating}</span>
+</div>
+
+<div class="flex items-end justify-between gap-2 mt-4">
+
+<div>
+
+<div class="text-[7px] uppercase tracking-widest text-zinc-600">
+Acquisition Value
+</div>
+
+<div class="price">
+Rs. ${p.price.toLocaleString()}
+</div>
+
+</div>
+
+<button
+onclick="addToCart(${p.id})"
+class="buy-btn">
+
+<i class="fa-solid fa-plus mr-1"></i>
+Add
+
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+observeReveal();
+
+}
+
+/* =========================================================
+QUICK VIEW
+========================================================= */
+
+function openQuick(id){
+
+const p=products.find(x=>x.id===id);
+
+document.getElementById("quickContent").innerHTML=`
+
+<div class="grid md:grid-cols-2 gap-7">
+
+<div>
+
+<div class="rounded-3xl overflow-hidden border border-white/10 bg-black">
+
+<img
+src="${p.image}"
+alt="${p.name}"
+class="w-full h-[390px] object-cover">
+
+</div>
+
+</div>
+
+<div class="flex flex-col justify-between">
+
+<div>
+
+<div class="text-[8px] uppercase tracking-[.3em] text-[#d4af37]">
+${p.status}
+</div>
+
+<h2 class="font-cinzel text-xl sm:text-2xl font-bold mt-3 leading-relaxed">
+${p.name}
+</h2>
+
+<div class="text-[#d4af37] text-xs mt-3">
+★★★★★ <span class="text-zinc-500">${p.rating}</span>
+</div>
+
+<p class="text-xs text-zinc-400 leading-7 mt-5">
+${p.description}
+</p>
+
+<div class="mt-6 space-y-3">
+
+${p.features.map(f=>`
+
+<div class="glass rounded-xl p-3 text-[10px] text-zinc-300">
+
+<i class="fa-solid fa-diamond text-[#d4af37] text-[7px] mr-2"></i>
+${f}
+
+</div>
+
+`).join("")}
+
+</div>
+
+</div>
+
+<div class="border-t border-white/10 mt-7 pt-6">
+
+<div class="font-mono text-2xl font-black text-[#d4af37] mb-4">
+Rs. ${p.price.toLocaleString()}
+</div>
+
+<button
+onclick="addToCart(${p.id});closeQuick()"
+class="w-full py-4 rounded-xl bg-[#d4af37] text-black text-[9px] font-black tracking-[.2em] uppercase hover:shadow-[0_0_35px_rgba(212,175,55,.25)] transition">
+
+Request Private Allocation
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+document.getElementById("quickModal").classList.add("show");
+
+}
+
+function closeQuick(){
+document.getElementById("quickModal").classList.remove("show");
+}
+
+function closeQuickOutside(e){
+if(e.target.id==="quickModal") closeQuick();
+}
+
+/* =========================================================
+CART
+========================================================= */
+
+function addToCart(id){
+
+const p=products.find(x=>x.id===id);
+
+const existing=cart.find(x=>x.id===id);
+
+if(existing){
+existing.qty++;
+}else{
+cart.push({...p,qty:1});
+}
+
+updateCart();
+
+showToast(`${p.name} added to your private vault`);
+
+}
+
+function updateCart(){
+
+document.getElementById("cartCount").textContent=
+cart.reduce((sum,p)=>sum+p.qty,0);
+
+const total=cart.reduce(
+(sum,p)=>sum+p.price*p.qty,0
+);
+
+document.getElementById("cartTotal").textContent=
+`Rs. ${total.toLocaleString()}`;
+
+const box=document.getElementById("cartItems");
+
+if(!cart.length){
+
+box.innerHTML=`
+
+<div class="h-full flex flex-col items-center justify-center text-center">
+
+<i class="fa-solid fa-crown text-[#d4af37] text-2xl mb-4"></i>
+
+<div class="font-cinzel text-sm">
+Vault Empty
+</div>
+
+<div class="text-[9px] text-zinc-600 mt-2">
+Begin your private allocation.
+</div>
+
+</div>
+
+`;
+
+return;
+}
+
+box.innerHTML=cart.map(p=>`
+
+<div class="glass rounded-2xl p-3 flex gap-3">
+
+<img
+src="${p.image}"
+class="w-16 h-16 object-cover rounded-xl">
+
+<div class="flex-1 min-w-0">
+
+<div class="font-cinzel text-[10px] font-bold truncate">
+${p.name}
+</div>
+
+<div class="text-[9px] text-[#d4af37] mt-1">
+Rs. ${p.price.toLocaleString()}
+</div>
+
+<div class="flex items-center gap-2 mt-2">
+
+<button
+onclick="changeQty(${p.id},-1)"
+class="w-6 h-6 rounded-full bg-white/5">
+−
+</button>
+
+<span class="text-[9px]">
+${p.qty}
+</span>
+
+<button
+onclick="changeQty(${p.id},1)"
+class="w-6 h-6 rounded-full bg-white/5">
++
+</button>
+
+</div>
+
+</div>
+
+<button
+onclick="removeItem(${p.id})"
+class="text-zinc-600 hover:text-red-400">
+<i class="fa-solid fa-trash text-xs"></i>
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+function changeQty(id,amount){
+
+const p=cart.find(x=>x.id===id);
+
+if(!p)return;
+
+p.qty+=amount;
+
+if(p.qty<=0){
+cart=cart.filter(x=>x.id!==id);
+}
+
+updateCart();
+
+}
+
+function removeItem(id){
+
+cart=cart.filter(x=>x.id!==id);
+updateCart();
+
+}
+
+function openCart(){
+
+document.getElementById("cartDrawer").classList.add("show");
+updateCart();
+
+}
+
+function closeCart(){
+
+document.getElementById("cartDrawer").classList.remove("show");
+
+}
+
+function closeCartOutside(e){
+
+if(e.target.id==="cartDrawer")closeCart();
+
+}
+
+/* =========================================================
+WHATSAPP
+========================================================= */
+
+function sendWhatsApp(){
+
+if(!cart.length){
+
+showToast("Your private vault is empty");
+return;
+
+}
+
+const name=
+document.getElementById("customerName").value.trim()||
+"Private Client";
+
+const phone=
+document.getElementById("customerPhone").value.trim()||
+"Not provided";
+
+const total=cart.reduce(
+(s,p)=>s+p.price*p.qty,0
+);
+
+const list=cart.map(p=>
+`• ${p.name} × ${p.qty} — Rs. ${(p.price*p.qty).toLocaleString()}`
+).join("\n");
+
+const message=
+`MAISON VORTEX — PRIVATE CONCIERGE REQUEST
+
+Client: ${name}
+Contact: ${phone}
+
+PRIVATE ALLOCATION:
+${list}
+
+TOTAL VALUATION:
+Rs. ${total.toLocaleString()}
+
+Please contact me regarding private acquisition.`;
+
+window.open(
+"https://wa.me/923234749637?text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+/*
+Replace 923234749637 with your actual WhatsApp
+business/concierge number before publishing.
+*/
+
+}
+
+/* =========================================================
+SEARCH
+========================================================= */
+
+function searchProducts(){
+
+const q=document
+.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+currentProducts=products.filter(p=>
+p.name.toLowerCase().includes(q)||
+p.category.toLowerCase().includes(q)
+);
+
+renderProducts(currentProducts);
+
+}
+
+/* =========================================================
+FILTER
+========================================================= */
+
+function filterCategory(category,button){
+
+document
+.querySelectorAll(".category")
+.forEach(x=>x.classList.remove("active"));
+
+button.classList.add("active");
+
+if(category==="All"){
+
+currentProducts=[...products];
+
+}else{
+
+currentProducts=products.filter(
+p=>p.category===category
+);
+
+}
+
+renderProducts(currentProducts);
+
+}
+
+/* =========================================================
+WISHLIST
+========================================================= */
+
+function toggleWish(button){
+
+button.classList.toggle("liked");
+
+const icon=button.querySelector("i");
+
+if(button.classList.contains("liked")){
+
+icon.className="fa-solid fa-heart";
+showToast("Saved to wishlist");
+
+}else{
+
+icon.className="fa-regular fa-heart";
+
+}
+
+}
+
+/* =========================================================
+TOAST
+========================================================= */
+
 let toastTimer;
 
-function toast(text){
+function showToast(text){
 
-    document.getElementById("toastText").textContent=text;
+document.getElementById("toastText").textContent=text;
 
-    const box=document.getElementById("toast");
+const toast=document.getElementById("toast");
 
-    box.classList.add("show");
+toast.classList.add("show");
 
-    clearTimeout(toastTimer);
+clearTimeout(toastTimer);
 
-    toastTimer=setTimeout(()=>{
-        box.classList.remove("show");
-    },2800);
+toastTimer=setTimeout(
+()=>toast.classList.remove("show"),
+2200
+);
+
 }
 
 /* =========================================================
-   SCROLL REVEALS
+SCROLL REVEAL
 ========================================================= */
 
-function setupReveal(){
+function observeReveal(){
 
-    const observer=new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-            if(entry.isIntersecting){
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-            }
-        });
-    },{
-        threshold:.08
-    });
+const observer=new IntersectionObserver(
+entries=>{
 
-    document.querySelectorAll(".reveal:not(.visible)").forEach(el=>{
-        observer.observe(el);
-    });
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+observer.unobserve(entry.target);
+
+}
+
+});
+
+},
+{
+threshold:.08
+}
+);
+
+document
+.querySelectorAll(".reveal:not(.show)")
+.forEach(el=>observer.observe(el));
+
 }
 
 /* =========================================================
-   COUNTERS
+MOUSE PARALLAX ON DESKTOP
 ========================================================= */
 
-function animateCounters(){
+document.addEventListener("mousemove",e=>{
 
-    document.querySelectorAll("[data-counter]").forEach(el=>{
+if(window.innerWidth<900)return;
 
-        const target=Number(el.dataset.counter);
-        let current=0;
+const x=(e.clientX/window.innerWidth-.5)*2;
+const y=(e.clientY/window.innerHeight-.5)*2;
 
-        const timer=setInterval(()=>{
+document.querySelector(".orb1").style.transform=
+`translate(${x*25}px,${y*18}px)`;
 
-            current+=Math.ceil(target/25);
+document.querySelector(".orb2").style.transform=
+`translate(${x*-20}px,${y*-15}px)`;
 
-            if(current>=target){
-                current=target;
-                clearInterval(timer);
-            }
+});
 
-            el.textContent=current;
+/* =========================================================
+INITIALIZE
+========================================================= */
 
-        },45);
-    });
-}
+document.addEventListener("DOMContentLoaded",()=>{
+
+renderProducts(products);
+observeReveal();
+
+});
 
 </script>
 
