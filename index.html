@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELORA MART | Premium Lifestyle & Electronics</title>
+    <title>VELORA MART | Premium Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -17,7 +16,7 @@
                             accent: '#6366F1',
                             glow: '#818CF8',
                             pink: '#F43F5E',
-                            dark: '#090D16',
+                            dark: '#0B0F19',
                             card: '#111827',
                             border: '#1F2937'
                         }
@@ -28,23 +27,25 @@
         }
     </script>
     <style>
-        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glow-effect { box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.4); }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-effect { box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35); }
         .hide-scroll::-webkit-scrollbar { display: none; }
+        @keyframes toastIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .animate-toast { animation: toastIn 0.4s ease-out forwards; }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased selection:bg-brand-accent selection:text-white">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-slate-200 text-xs font-semibold py-2.5 px-4 text-center border-b border-white/10 tracking-wider">
-        🚀 FAST SHIPPING ACROSS PAKISTAN • CASH ON DELIVERY AVAILABLE ⚡
+    <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-slate-200 text-xs font-bold py-2 px-4 text-center border-b border-white/10 tracking-widest uppercase">
+        🔥 FREE DELIVERY NATIONWIDE ON ORDERS OVER RS. 2,500 • CASH ON DELIVERY AVAILABLE 🔥
     </div>
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-40 bg-brand-dark/80 backdrop-blur-xl border-b border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-            <a href="#" class="text-2xl font-black tracking-wider flex items-center gap-2.5 group">
-                <div class="bg-gradient-to-br from-brand-accent to-brand-pink p-2 rounded-xl text-white group-hover:scale-105 transition-transform shadow-lg shadow-brand-accent/30">
+            <a href="#" class="text-2xl font-black tracking-wider flex items-center gap-2.5">
+                <div class="bg-gradient-to-br from-brand-accent to-brand-pink p-2 rounded-xl text-white shadow-lg shadow-brand-accent/30">
                     <i class="fa-solid fa-bolt-lightning text-lg"></i>
                 </div>
                 <span class="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">VELORA</span><span class="text-brand-accent">.</span>
@@ -54,8 +55,8 @@
             <div class="flex-1 max-w-md hidden md:block">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search from 500+ products..." 
-                        class="w-full bg-slate-900/90 border border-brand-border rounded-full py-2.5 pl-10 pr-4 text-xs font-medium text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all">
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search gadgets, grooming gear, fashion..." 
+                        class="w-full bg-slate-900/90 border border-brand-border rounded-full py-2.5 pl-10 pr-4 text-xs font-medium text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-all">
                 </div>
             </div>
 
@@ -71,15 +72,15 @@
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-10">
         
-        <!-- Hero Banner -->
-        <div class="relative rounded-3xl overflow-hidden glass-card p-8 sm:p-14 border border-white/10 shadow-2xl">
+        <!-- Hero Banner Slider -->
+        <div class="relative rounded-3xl overflow-hidden glass-card p-8 sm:p-12 border border-white/10 shadow-2xl">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 max-w-xl space-y-5">
-                <span class="inline-flex items-center gap-2 bg-brand-accent/10 border border-brand-accent/30 text-brand-glow text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
-                    <i class="fa-solid fa-fire text-brand-pink"></i> Mega Catalog (500 Items)
+            <div class="relative z-10 max-w-2xl space-y-4">
+                <span class="inline-flex items-center gap-2 bg-brand-accent/10 border border-brand-accent/30 text-brand-glow text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest">
+                    <i class="fa-solid fa-fire text-brand-pink"></i> Premium Catalog 2026
                 </span>
-                <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">Elevate Your Everyday Essentials.</h1>
-                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Discover top-tier tech, grooming gear, and fashion essentials crafted for performance.</p>
+                <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">Next-Gen Tech & Barber-Grade Grooming.</h1>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Upgrade your gear with handpicked electronics, grooming tools, and streetwear essentials.</p>
             </div>
         </div>
 
@@ -96,42 +97,49 @@
             <!-- Dynamic Injection -->
         </div>
 
-        <!-- Load More Section -->
-        <div class="text-center pt-6">
-            <button id="loadMoreBtn" onclick="loadMoreProducts()" class="px-8 py-3.5 bg-slate-900 hover:bg-brand-accent border border-brand-border hover:border-brand-accent text-white font-extrabold text-xs rounded-xl shadow-lg transition-all">
-                Load More Products
-            </button>
-        </div>
-
     </main>
+
+    <!-- Quick View Modal -->
+    <div id="quickViewModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-brand-card border border-brand-border rounded-3xl max-w-lg w-full p-6 relative space-y-5 shadow-2xl">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div id="quickViewContent"></div>
+        </div>
+    </div>
+
+    <!-- Live Order Toast Notification -->
+    <div id="liveToast" class="fixed bottom-5 left-5 z-40 hidden">
+        <div class="glass-card bg-slate-900/90 border border-brand-border p-3.5 rounded-2xl flex items-center gap-3 shadow-2xl animate-toast max-w-xs">
+            <div class="bg-emerald-500/20 text-emerald-400 p-2.5 rounded-xl text-sm"><i class="fa-solid fa-bag-shopping"></i></div>
+            <div class="text-[11px] space-y-0.5">
+                <p class="font-extrabold text-white" id="toastUser">Ali from Lahore</p>
+                <p class="text-slate-400 line-clamp-1" id="toastItem">Just purchased TWS Earbuds</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Cart Drawer -->
     <div id="cartModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex justify-end">
         <div class="bg-brand-card border-l border-brand-border w-full max-w-md h-full flex flex-col shadow-2xl">
             <div class="p-5 bg-slate-900/80 border-b border-brand-border flex justify-between items-center">
                 <h3 class="font-extrabold text-base text-white flex items-center gap-2">
-                    <i class="fa-solid fa-bag-shopping text-brand-accent"></i> Your Cart
+                    <i class="fa-solid fa-bag-shopping text-brand-accent"></i> Your Bag
                 </h3>
-                <button onclick="toggleCart()" class="text-slate-400 hover:text-white transition-colors">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
+                <button onclick="toggleCart()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
 
             <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
 
             <div class="p-5 border-t border-brand-border bg-slate-900/50 space-y-4">
                 <div class="flex justify-between font-black text-white text-lg">
-                    <span>Total Amount:</span>
+                    <span>Total Bill:</span>
                     <span id="cartTotal" class="text-brand-accent">Rs. 0</span>
                 </div>
                 
                 <form id="checkoutForm" onsubmit="processOrder(event)" class="space-y-3">
-                    <input type="text" id="custName" placeholder="Full Name" required 
-                        class="w-full text-xs p-3.5 bg-slate-900 border border-brand-border text-white rounded-xl focus:outline-none focus:border-brand-accent transition-all">
-                    <input type="tel" id="custPhone" placeholder="Phone / WhatsApp Number" required 
-                        class="w-full text-xs p-3.5 bg-slate-900 border border-brand-border text-white rounded-xl focus:outline-none focus:border-brand-accent transition-all">
-                    <textarea id="custAddress" placeholder="Complete Delivery Address" required 
-                        class="w-full text-xs p-3.5 bg-slate-900 border border-brand-border text-white rounded-xl focus:outline-none focus:border-brand-accent transition-all h-20 resize-none"></textarea>
+                    <input type="text" id="custName" placeholder="Full Name" required class="w-full text-xs p-3.5 bg-slate-900 border border-brand-border text-white rounded-xl focus:outline-none focus:border-brand-accent">
+                    <input type="tel" id="custPhone" placeholder="Phone / WhatsApp Number" required class="w-full text-xs p-3.5 bg-slate-900 border border-brand-border text-white rounded-xl focus:outline-none focus:border-brand-accent">
+                    <textarea id="custAddress" placeholder="Complete Delivery Address" required class="w-full text-xs p-3.5 bg-slate-900 border border-brand-border text-white rounded-xl focus:outline-none focus:border-brand-accent h-20 resize-none"></textarea>
                     
                     <button type="submit" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2.5">
                         <i class="fa-brands fa-whatsapp text-lg"></i> Confirm Order On WhatsApp
@@ -142,111 +150,69 @@
     </div>
 
     <script>
-        let products = [];
-        let filteredProducts = [];
+        const products = [
+            { id: 1, title: "TWS Earbuds Pro Max Active Noise Cancelling", category: "Electronics", price: 2499, original_price: 3999, discount: "38% OFF", rating: "4.9 ★", image_url: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600" },
+            { id: 2, title: "Smart Watch Ultra Series 9 OLED Display", category: "Electronics", price: 4200, original_price: 5999, discount: "30% OFF", rating: "4.8 ★", image_url: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600" },
+            { id: 3, title: "Vintage T9 Barber Metallic Hair Trimmer", category: "Grooming", price: 1850, original_price: 2500, discount: "26% OFF", rating: "5.0 ★", image_url: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=600" },
+            { id: 4, title: "Classic Double-Edge Safety Razor Handle", category: "Grooming", price: 1299, original_price: 1800, discount: "28% OFF", rating: "4.7 ★", image_url: "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=600" },
+            { id: 5, title: "Urban Oversized Streetwear Fleece Hoodie", category: "Fashion", price: 2999, original_price: 4500, discount: "33% OFF", rating: "4.9 ★", image_url: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600" },
+            { id: 6, title: "RGB Mechanical Keyboard Tactile Switches", category: "Electronics", price: 3800, original_price: 5000, discount: "24% OFF", rating: "4.8 ★", image_url: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600" },
+            { id: 7, title: "Matte Finish Barber Hair Clay Wax 100g", category: "Grooming", price: 999, original_price: 1500, discount: "33% OFF", rating: "4.9 ★", image_url: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600" },
+            { id: 8, title: "Polarized UV400 Protection Sunglasses", category: "Fashion", price: 1450, original_price: 2100, discount: "31% OFF", rating: "4.6 ★", image_url: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600" }
+        ];
+
         let cart = [];
-        let currentPage = 1;
-        const itemsPerPage = 20;
-
-        // Auto Generate 500 Premium Products
-        function generate500Products() {
-            const categories = ["Electronics", "Grooming", "Fashion"];
-            const images = {
-                Electronics: [
-                    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
-                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
-                    "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
-                    "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500"
-                ],
-                Grooming: [
-                    "https://images.unsplash.com/photo-1621607512214-68297480165e?w=500",
-                    "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=500",
-                    "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500"
-                ],
-                Fashion: [
-                    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500",
-                    "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500",
-                    "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500"
-                ]
-            };
-
-            const titles = {
-                Electronics: ["TWS Earbuds", "Smart Watch Ultra", "RGB Gaming Keyboard", "Wireless Gaming Mouse", "Fast Power Bank", "Bluetooth Speaker", "ANC Headphones", "Fast Charging Cable"],
-                Grooming: ["Vintage T9 Hair Trimmer", "Double-Edge Safety Razor", "Barber Hair Clay Spray", "Shaving Brush Set", "Beard Grooming Kit", "Pro Hair Clipper", "Electric Face Scrubber"],
-                Fashion: ["Urban Oversized Hoodie", "Luxury Leather Wallet", "UV Protection Sunglasses", "Minimalist Wrist Watch", "Cotton Streetwear Tee", "Denim Jacket", "Slim Fit Cargo Pants"]
-            };
-
-            let list = [];
-            for (let i = 1; i <= 500; i++) {
-                let cat = categories[i % 3];
-                let titleBase = titles[cat][i % titles[cat].length];
-                let imgList = images[cat];
-                let price = Math.floor(Math.random() * 4000) + 999;
-                let origPrice = price + Math.floor(Math.random() * 1500) + 500;
-                let disc = Math.round(((origPrice - price) / origPrice) * 100) + "% OFF";
-
-                list.push({
-                    id: i,
-                    title: `${titleBase} Edition #${i}`,
-                    category: cat,
-                    price: price,
-                    original_price: origPrice,
-                    discount: disc,
-                    image_url: imgList[i % imgList.length]
-                });
-            }
-            return list;
-        }
 
         document.addEventListener("DOMContentLoaded", () => {
-            products = generate500Products();
-            filteredProducts = [...products];
-            renderProducts();
+            renderProducts(products);
+            startLiveToasts();
         });
 
-        function renderProducts(append = false) {
+        function renderProducts(items) {
             const grid = document.getElementById("productsGrid");
-            const end = currentPage * itemsPerPage;
-            const itemsToRender = filteredProducts.slice(0, end);
-
-            if (itemsToRender.length === 0) {
-                grid.innerHTML = `<p class="col-span-full text-center py-16 text-slate-500 font-medium text-xs">No products found in this category.</p>`;
-                document.getElementById("loadMoreBtn").style.display = "none";
-                return;
-            }
-
-            grid.innerHTML = itemsToRender.map(p => `
+            grid.innerHTML = items.map(p => `
                 <div class="glass-card rounded-2xl p-3.5 border border-brand-border flex flex-col justify-between group hover:border-brand-accent/50 transition-all duration-300">
                     <div>
-                        <div class="relative h-44 overflow-hidden rounded-xl mb-3 bg-slate-900/50">
-                            <img src="${p.image_url}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            ${p.discount ? `<span class="absolute top-2.5 left-2.5 bg-brand-pink text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">${p.discount}</span>` : ''}
+                        <div class="relative h-48 overflow-hidden rounded-xl mb-3 bg-slate-900/50 cursor-pointer" onclick="openQuickView(${p.id})">
+                            <img src="${p.image_url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-2.5 left-2.5 bg-brand-pink text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase">${p.discount}</span>
+                            <span class="absolute bottom-2.5 right-2.5 bg-slate-900/80 backdrop-blur-md text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded-lg border border-white/10">${p.rating}</span>
                         </div>
                         <span class="text-[9px] font-extrabold text-brand-glow uppercase tracking-widest">${p.category}</span>
-                        <h4 class="text-xs font-bold text-slate-200 line-clamp-2 mt-1 group-hover:text-white transition-colors">${p.title}</h4>
+                        <h4 class="text-xs font-bold text-slate-200 line-clamp-2 mt-1 cursor-pointer hover:text-brand-glow" onclick="openQuickView(${p.id})">${p.title}</h4>
                     </div>
                     <div class="mt-4">
                         <div class="flex items-baseline gap-1.5 mb-3">
                             <span class="text-base font-black text-white">Rs. ${p.price}</span>
                             <span class="text-[11px] text-slate-500 line-through">Rs. ${p.original_price}</span>
                         </div>
-                        <button onclick="addToCart(${p.id})" class="w-full py-2.5 bg-slate-900 hover:bg-brand-accent text-white text-xs font-extrabold rounded-xl transition-all border border-brand-border hover:border-brand-accent flex items-center justify-center gap-2 shadow-sm">
+                        <button onclick="addToCart(${p.id})" class="w-full py-2.5 bg-slate-900 hover:bg-brand-accent text-white text-xs font-extrabold rounded-xl transition-all border border-brand-border hover:border-brand-accent flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plus text-[10px]"></i> Add To Cart
                         </button>
                     </div>
                 </div>
             `).join("");
-
-            if (end >= filteredProducts.length) {
-                document.getElementById("loadMoreBtn").style.display = "none";
-            } else {
-                document.getElementById("loadMoreBtn").style.display = "inline-block";
-            }
         }
 
-        function loadMoreProducts() {
-            currentPage++;
-            renderProducts();
+        function openQuickView(id) {
+            const p = products.find(x => x.id === id);
+            document.getElementById("quickViewContent").innerHTML = `
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <img src="${p.image_url}" class="w-full sm:w-1/2 h-52 object-cover rounded-2xl">
+                    <div class="space-y-3 sm:w-1/2">
+                        <span class="text-[10px] font-extrabold text-brand-glow uppercase">${p.category}</span>
+                        <h3 class="text-base font-extrabold text-white leading-snug">${p.title}</h3>
+                        <p class="text-xs text-slate-400">Barber-grade quality & top rated tech gear with guaranteed warranty.</p>
+                        <div class="text-lg font-black text-white">Rs. ${p.price} <span class="text-xs text-slate-500 line-through font-normal">Rs. ${p.original_price}</span></div>
+                        <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3 bg-brand-accent hover:bg-indigo-500 text-white font-extrabold text-xs rounded-xl shadow-lg">Add To Cart</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById("quickViewModal").classList.remove("hidden");
+        }
+
+        function closeQuickView() {
+            document.getElementById("quickViewModal").classList.add("hidden");
         }
 
         function toggleCart() {
@@ -310,9 +276,7 @@
 
         function handleSearch() {
             const q = document.getElementById("searchInput").value.toLowerCase();
-            currentPage = 1;
-            filteredProducts = products.filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
-            renderProducts();
+            renderProducts(products.filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)));
         }
 
         function filterCategory(cat) {
@@ -323,11 +287,22 @@
             event.target.classList.add('bg-brand-accent', 'text-white', 'shadow-lg');
             event.target.classList.remove('bg-slate-900', 'text-slate-400');
 
-            currentPage = 1;
-            if (cat === 'All') filteredProducts = [...products];
-            else filteredProducts = products.filter(p => p.category === cat);
+            if (cat === 'All') renderProducts(products);
+            else renderProducts(products.filter(p => p.category === cat));
+        }
+
+        function startLiveToasts() {
+            const users = ["Hamza from Karachi", "Usman from Islamabad", "Zainab from Lahore", "Bilal from Rawalpindi"];
+            const items = ["TWS Earbuds Pro", "Vintage T9 Trimmer", "Smart Watch Ultra", "Safety Razor Handle"];
             
-            renderProducts();
+            setInterval(() => {
+                const toast = document.getElementById("liveToast");
+                document.getElementById("toastUser").innerText = users[Math.floor(Math.random() * users.length)];
+                document.getElementById("toastItem").innerText = "Just ordered " + items[Math.floor(Math.random() * items.length)];
+                
+                toast.classList.remove("hidden");
+                setTimeout(() => toast.classList.add("hidden"), 4000);
+            }, 12000);
         }
     </script>
 </body>
