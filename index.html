@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AETHER LUXURY MALT | Ultra Glassmorphism Store</title>
+    <title>MAISON DE VORTEX | Private Ultra-Luxury Vault</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
                     colors: {
-                        glassBg: 'rgba(15, 23, 42, 0.65)',
-                        glassBorder: 'rgba(255, 255, 255, 0.12)',
-                        glassCard: 'rgba(255, 255, 255, 0.05)',
-                        glassHover: 'rgba(255, 255, 255, 0.1)',
+                        goldBase: '#D4AF37',
                         goldGlow: '#F59E0B',
+                        vaultDark: '#030508',
                     }
                 }
             }
@@ -24,194 +26,166 @@
     </script>
     <style>
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: radial-gradient(circle at top left, #0f172a, #020617, #090d16);
-            color: #f8fafc;
+            background: #030508;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.03) 0px, transparent 50%);
+            color: #E2E8F0;
             min-height: 100vh;
         }
-        .liquid-glass {
-            background: rgba(255, 255, 255, 0.04);
+        .vault-glass {
+            background: rgba(15, 20, 28, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .vault-card {
+            background: rgba(18, 24, 36, 0.4);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.07);
         }
-        .liquid-glass-modal {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .vault-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.12);
         }
-        .gold-glow-btn {
-            background: linear-gradient(135deg, #f59e0b, #b45309);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        .gold-btn {
+            background: linear-gradient(135deg, #D4AF37 0%, #996515 100%);
+            color: #030508;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
-        .gold-glow-btn:hover {
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.45);
+        .gold-btn:hover {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #FFF 30%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .hide-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="antialiased flex flex-col justify-between selection:bg-amber-500 selection:text-black">
+<body class="antialiased flex flex-col justify-between selection:bg-amber-400 selection:text-black">
 
-    <!-- Top Glow Bar -->
-    <div class="liquid-glass border-b border-white/10 text-amber-400 text-[11px] font-bold py-2 px-4 text-center tracking-widest flex items-center justify-center gap-2">
-        <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded text-[9px] font-black uppercase">Liquid Glass Edition</span>
-        <span>AETHER BOUTIQUE &bull; EXPRESS VIP DELIVERY &bull; CASH ON DELIVERY AVAILABLE</span>
+    <!-- Top Vault Announcement -->
+    <div class="border-b border-amber-500/10 bg-black/60 text-amber-200/80 text-[10px] font-semibold py-2 px-4 text-center tracking-[0.25em] uppercase flex items-center justify-center gap-3">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>By Private Invitation Only &bull; Worldwide White-Glove Armored Courier</span>
     </div>
 
-    <!-- Liquid Glass Header (Daraz Navigation Style) -->
-    <header class="sticky top-0 z-40 liquid-glass border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl font-black shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-                    <i class="fa-solid fa-gem"></i>
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-40 vault-glass border-b border-amber-500/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-6">
+            <a href="#" class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-full border border-amber-500/40 bg-amber-500/5 text-amber-400 flex items-center justify-center text-lg font-black shadow-[0_0_15px_rgba(212,175,55,0.15)]">
+                    <i class="fa-solid fa-crown"></i>
                 </div>
                 <div class="leading-none">
-                    <span class="font-black text-xl tracking-tight text-white">AETHER</span>
-                    <span class="text-[9px] font-extrabold text-amber-400 block uppercase tracking-widest">Luxury Mall</span>
+                    <span class="font-cinzel font-bold text-lg tracking-[0.2em] text-white block">MAISON VORTEX</span>
+                    <span class="text-[8px] font-bold text-amber-400/80 uppercase tracking-[0.3em]">Geneva &bull; Dubai &bull; London</span>
                 </div>
             </a>
 
             <!-- Search Bar -->
-            <div class="flex-1 max-w-2xl mx-2">
+            <div class="flex-1 max-w-xl mx-2 hidden md:block">
                 <div class="relative flex items-center">
-                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search luxury audio, razors, tech accessories, apparel..." 
-                        class="w-full bg-white/5 border border-white/15 rounded-2xl py-2.5 pl-4 pr-12 text-xs font-medium text-white placeholder-slate-400 focus:outline-none focus:border-amber-500/50 focus:bg-white/10 transition-all">
-                    <button class="absolute right-1.5 px-4 py-1.5 gold-glow-btn text-slate-950 rounded-xl text-xs font-extrabold transition-all">
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search private vault collection..." 
+                        class="w-full bg-white/[0.03] border border-amber-500/20 rounded-full py-2.5 pl-5 pr-12 text-xs font-light text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:bg-black/40 transition-all">
+                    <button class="absolute right-2.5 w-7 h-7 bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black rounded-full flex items-center justify-center text-xs transition-all">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Cart Button -->
-            <button onclick="toggleCart()" class="relative flex items-center gap-2.5 bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2.5 rounded-2xl text-xs font-bold text-white transition-all">
-                <i class="fa-solid fa-bag-shopping text-amber-400 text-sm"></i>
-                <span class="hidden sm:inline">Cart</span>
-                <span id="cartBadge" class="bg-amber-500 text-slate-950 text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            <!-- Private Bag Button -->
+            <button onclick="toggleCart()" class="relative flex items-center gap-3 bg-white/[0.03] hover:bg-amber-500/10 border border-amber-500/20 px-5 py-2.5 rounded-full text-xs font-semibold text-white transition-all">
+                <i class="fa-solid fa-vault text-amber-400 text-sm"></i>
+                <span class="font-cinzel uppercase tracking-widest text-[10px]">Private Vault</span>
+                <span id="cartBadge" class="bg-amber-400 text-black text-[9px] font-black rounded-full h-4 w-4 flex items-center justify-center">0</span>
             </button>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6 flex-1 w-full">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 flex-1 w-full">
 
-        <!-- Category Grid -->
-        <div class="grid grid-cols-4 sm:grid-cols-8 gap-3 liquid-glass p-4 rounded-3xl text-center">
-            <button onclick="filterCategory('All')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-border-all"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">All Items</span>
-            </button>
-            <button onclick="filterCategory('Electronics')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">Gadgets</span>
-            </button>
-            <button onclick="filterCategory('Grooming')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-scissors"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">Grooming</span>
-            </button>
-            <button onclick="filterCategory('Fashion')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-shirt"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">Apparel</span>
-            </button>
-            <button onclick="filterCategory('Audio')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-headphones"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">Audio</span>
-            </button>
-            <button onclick="filterCategory('Fragrance')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-spray-can"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">Fragrances</span>
-            </button>
-            <button onclick="filterCategory('Accessories')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-wallet"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">Leather</span>
-            </button>
-            <button onclick="filterCategory('Watches')" class="flex flex-col items-center gap-2 group">
-                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-amber-400 flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    <i class="fa-solid fa-clock"></i>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300">Timepieces</span>
-            </button>
+        <!-- Category Selectors -->
+        <div class="flex items-center justify-start sm:justify-center gap-3 overflow-x-auto pb-2 hide-scroll">
+            <button onclick="filterCategory('All')" class="px-5 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-[11px] font-bold tracking-widest uppercase hover:border-amber-400 transition-all flex-shrink-0">All Masterpieces</button>
+            <button onclick="filterCategory('Timepieces')" class="px-5 py-2 rounded-full border border-white/10 bg-white/[0.02] text-slate-300 text-[11px] font-bold tracking-widest uppercase hover:border-amber-500/40 hover:text-amber-300 transition-all flex-shrink-0">Timepieces</button>
+            <button onclick="filterCategory('Audio')" class="px-5 py-2 rounded-full border border-white/10 bg-white/[0.02] text-slate-300 text-[11px] font-bold tracking-widest uppercase hover:border-amber-500/40 hover:text-amber-300 transition-all flex-shrink-0">Bespoke Audio</button>
+            <button onclick="filterCategory('Grooming')" class="px-5 py-2 rounded-full border border-white/10 bg-white/[0.02] text-slate-300 text-[11px] font-bold tracking-widest uppercase hover:border-amber-500/40 hover:text-amber-300 transition-all flex-shrink-0">Grooming Couture</button>
+            <button onclick="filterCategory('Leather')" class="px-5 py-2 rounded-full border border-white/10 bg-white/[0.02] text-slate-300 text-[11px] font-bold tracking-widest uppercase hover:border-amber-500/40 hover:text-amber-300 transition-all flex-shrink-0">Exotic Leather</button>
+            <button onclick="filterCategory('Apparel')" class="px-5 py-2 rounded-full border border-white/10 bg-white/[0.02] text-slate-300 text-[11px] font-bold tracking-widest uppercase hover:border-amber-500/40 hover:text-amber-300 transition-all flex-shrink-0">Haute Couture</button>
         </div>
 
-        <!-- Flash Deals Glass Banner -->
-        <div class="liquid-glass rounded-3xl p-4 flex flex-wrap items-center justify-between gap-4 border border-amber-500/20">
-            <div class="flex items-center gap-3">
-                <span class="text-xs font-black bg-amber-500 text-slate-950 px-3 py-1 rounded-xl uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_10px_rgba(245,158,11,0.3)]">
-                    <i class="fa-solid fa-bolt"></i> VIP Flash Drop
-                </span>
-                <span class="text-xs font-bold text-slate-300 hidden sm:inline">Collector Items • Verified Authentic</span>
+        <!-- Banner Highlight -->
+        <div class="vault-glass rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-amber-500/25 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 text-center md:text-left z-10">
+                <span class="text-[9px] font-black uppercase tracking-[0.3em] text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full bg-amber-500/10">Vault Allocation 2026</span>
+                <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white tracking-wide mt-2">Bespoke Craftsmanship For The Elite</h2>
+                <p class="text-xs text-slate-400 font-light max-w-lg leading-relaxed">Each piece is individually numbered and issued with an encrypted Certificate of Authenticity on NFC titanium card.</p>
             </div>
-            <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-400">
-                <span>Ends In:</span>
-                <span class="bg-white/10 border border-white/15 px-2.5 py-1 rounded-lg">02</span> : 
-                <span class="bg-white/10 border border-white/15 px-2.5 py-1 rounded-lg">18</span> : 
-                <span class="bg-white/10 border border-white/15 px-2.5 py-1 rounded-lg">45</span>
+            <div class="flex items-center gap-4 z-10">
+                <div class="text-right font-mono text-xs text-amber-400/90 hidden sm:block">
+                    <span class="block text-[9px] uppercase tracking-widest text-slate-500">Concierge Active</span>
+                    <span>24/7 Priority Support</span>
+                </div>
             </div>
         </div>
 
-        <!-- Dynamic Product Grid -->
-        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Products Grid -->
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <!-- JS Injection -->
         </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="liquid-glass border-t border-white/10 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400 font-medium">
-            <p>&copy; 2026 AETHER Flagship Store. All rights reserved.</p>
+    <footer class="vault-glass border-t border-amber-500/15 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <p class="font-cinzel text-xs text-amber-400/80 tracking-[0.2em]">MAISON DE VORTEX &bull; PRIVATE CLIENT GROUP</p>
+            <p class="text-[10px] text-slate-600 font-light">&copy; 2026 All Rights Reserved. Armored Delivery & Private Vault Storage Available.</p>
         </div>
     </footer>
 
-    <!-- Glass Quick View Modal -->
-    <div id="quickViewModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-xl z-50 hidden flex items-center justify-center p-4">
-        <div class="liquid-glass-modal rounded-3xl max-w-2xl w-full p-6 relative space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto hide-scroll text-white">
-            <button onclick="closeQuickView()" class="absolute top-5 right-5 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center z-10 transition-colors">
+    <!-- Quick View Modal -->
+    <div id="quickViewModal" class="fixed inset-0 bg-black/85 backdrop-blur-2xl z-50 hidden flex items-center justify-center p-4">
+        <div class="vault-glass rounded-3xl max-w-2xl w-full p-6 relative space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto hide-scroll text-white border border-amber-500/30">
+            <button onclick="closeQuickView()" class="absolute top-5 right-5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-8 h-8 flex items-center justify-center z-10 transition-colors">
                 <i class="fa-solid fa-xmark text-base"></i>
             </button>
             <div id="quickViewContent"></div>
         </div>
     </div>
 
-    <!-- Glass Cart Drawer -->
-    <div id="cartModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-xl z-50 hidden flex justify-end">
-        <div class="liquid-glass-modal w-full max-w-md h-full flex flex-col shadow-2xl border-l border-white/10 text-white">
-            <div class="p-4 border-b border-white/10 flex justify-between items-center bg-white/5">
-                <h3 class="font-bold text-sm flex items-center gap-2 text-amber-400">
-                    <i class="fa-solid fa-bag-shopping"></i> VIP Shopping Bag
+    <!-- Private Bag / Concierge Drawer -->
+    <div id="cartModal" class="fixed inset-0 bg-black/85 backdrop-blur-2xl z-50 hidden flex justify-end">
+        <div class="vault-glass w-full max-w-md h-full flex flex-col shadow-2xl border-l border-amber-500/20 text-white">
+            <div class="p-5 border-b border-white/10 flex justify-between items-center bg-black/40">
+                <h3 class="font-cinzel font-bold text-sm tracking-widest flex items-center gap-2.5 text-amber-400">
+                    <i class="fa-solid fa-crown"></i> Private Allocation Bag
                 </h3>
                 <button onclick="toggleCart()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
 
-            <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+            <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
 
-            <div class="p-4 border-t border-white/10 bg-white/5 space-y-3">
-                <div class="flex justify-between font-extrabold text-white text-sm">
-                    <span>Total Amount:</span>
+            <div class="p-5 border-t border-white/10 bg-black/40 space-y-4">
+                <div class="flex justify-between font-cinzel font-bold text-white text-sm tracking-wider">
+                    <span>Total Valuation:</span>
                     <span id="cartTotal" class="text-amber-400">Rs. 0</span>
                 </div>
                 
-                <form id="checkoutForm" onsubmit="processOrder(event)" class="space-y-2.5">
-                    <input type="text" id="custName" placeholder="Full Name" required class="w-full text-xs p-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-amber-500">
-                    <input type="tel" id="custPhone" placeholder="WhatsApp / Mobile Number" required class="w-full text-xs p-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-amber-500">
-                    <textarea id="custAddress" placeholder="Complete Delivery Address" required class="w-full text-xs p-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-400 h-16 resize-none focus:outline-none focus:border-amber-500"></textarea>
+                <form id="checkoutForm" onsubmit="processOrder(event)" class="space-y-3">
+                    <input type="text" id="custName" placeholder="VIP Patron Full Name" required class="w-full text-xs p-3.5 bg-white/[0.03] border border-amber-500/20 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
+                    <input type="tel" id="custPhone" placeholder="Direct Contact / WhatsApp" required class="w-full text-xs p-3.5 bg-white/[0.03] border border-amber-500/20 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
+                    <textarea id="custAddress" placeholder="Private Residence / Vault Address" required class="w-full text-xs p-3.5 bg-white/[0.03] border border-amber-500/20 rounded-xl text-white placeholder-slate-500 h-16 resize-none focus:outline-none focus:border-amber-400"></textarea>
                     
-                    <button type="submit" class="w-full py-3.5 gold-glow-btn text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-base"></i> Confirm VIP Order via WhatsApp
+                    <button type="submit" class="w-full py-4 gold-btn font-cinzel text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i> Book Via Private Concierge
                     </button>
                 </form>
             </div>
@@ -222,202 +196,114 @@
         const products = [
             {
                 id: 1,
-                title: "AETHER Studio Active Noise-Cancelling Headphones",
-                category: "Audio",
-                price: 13500,
-                original_price: 18000,
-                discount: "-25%",
-                rating: "4.9 ★ (210 Reviews)",
-                stock: "5 left in stock",
-                description: "Pro-grade studio wireless headphones featuring active noise cancellation, custom titanium drivers, and custom memory foam cushions.",
-                features: ["40mm Custom Titanium Drivers", "Hybrid Active Noise Cancellation", "50 Hours Battery Backup", "Bluetooth 5.3 Low Latency"],
+                title: "VORTEX Celestial Tourbillon Titanium Timepiece",
+                category: "Timepieces",
+                price: 185000,
+                status: "Piece Unique #03/10",
+                rating: "Collector Certified",
+                description: "Hand-finished flying tourbillon movement encased in Grade-5 dark brushed titanium with a sapphire crystal caseback displaying 72-hour power reserve.",
+                features: ["Manual-Wind Flying Tourbillon", "Grade-5 Dark Titanium Casing", "Sapphire Crystal Front & Back", "Alligator Leather Strap with Titanium Clasp"],
                 images: [
-                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
-                    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800",
-                    "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800"
+                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+                    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800"
                 ]
             },
             {
                 id: 2,
-                title: "Heavyweight Precision Double Edge Safety Razor Handle",
+                title: "Bespoke Solid Damascene Steel Double Edge Razor Set",
                 category: "Grooming",
-                price: 3800,
-                original_price: 5000,
-                discount: "-24%",
-                rating: "5.0 ★ (140 Reviews)",
-                stock: "8 left in stock",
-                description: "Crafted from solid brass with matte gunmetal finish. Delivers zero-irritation barber grade shaves without razor bumps.",
-                features: ["Solid Brass Weight Balance", "Non-Slip Knurled Texture", "Zero Plastic Eco Shave", "Fits All Standard DE Blades"],
+                price: 24500,
+                status: "Artisan Hand-Forged",
+                rating: "Bespoke Grooming",
+                description: "Hand-forged 512-layer Damascus steel handle paired with a weighted solid brass core and custom mahogany display stand.",
+                features: ["512-Layer Hand-Forged Damascus Steel", "24k Gold Plated Accent Ring", "Includes 100 Swedish DE Blades", "Custom Hand-Carved Mahogany Stand"],
                 images: [
                     "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=800",
+                    "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800"
+                ]
+            },
+            {
+                id: 3,
+                title: "AETHER Planar Magnetic Master Studio Headphones",
+                category: "Audio",
+                price: 68000,
+                status: "Limited Vault Edition",
+                rating: "Hi-Fi Reference Standard",
+                description: "Open-back planar magnetic audiophile headphones crafted with solid walnut earcups and lambskin leather memory pads.",
+                features: ["100mm Ultra-Thin Planar Drivers", "Hand-Polished Walnut Wooden Housing", "Custom Braided Silver-Plated Cable", "Flight-Grade Aluminum Hard Case"],
+                images: [
+                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+                    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800"
+                ]
+            },
+            {
+                id: 4,
+                title: "Nile Crocodile Leather Bifold Passport Vault Wallet",
+                category: "Leather",
+                price: 32000,
+                status: "Bespoke Order",
+                rating: "Exotic Hide Certified",
+                description: "Hand-selected matte black Nile crocodile hide featuring 24k gold-plated corner guards and silk lining.",
+                features: ["Genuine Nile Crocodile Exterior", "French Calfskin Interior Lining", "24k Gold Plated Corner Protectors", "RFID Faraday Shielding Layer"],
+                images: [
+                    "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800",
+                    "https://images.unsplash.com/photo-1606503825008-909a63318290?w=800"
+                ]
+            },
+            {
+                id: 5,
+                title: "500 GSM Cashmere-Blended Heavyweight Hoodie",
+                category: "Apparel",
+                price: 28000,
+                status: "Private Atelier Cut",
+                rating: "Haute Couture",
+                description: "70% Organic Heavy Cotton and 30% Mongolian Cashmere blend. Tailored in Italy with subtle silk-embroidered emblem.",
+                features: ["Mongolian Cashmere & Organic Cotton", "Italian Tailored Drop-Shoulder Cut", "24k Gold Metallic Aglets on Drawstrings", "Custom Monogramming Included"],
+                images: [
+                    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800",
+                    "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=800"
+                ]
+            },
+            {
+                id: 6,
+                title: "Titanium Motorized Precision Clipper & Trimmer Vault",
+                category: "Grooming",
+                price: 38000,
+                status: "Barber Edition",
+                rating: "Professional Grade",
+                description: "Full titanium skeleton motor housing engineered with DLC (Diamond-Like Carbon) self-cooling blades.",
+                features: ["DLC Diamond-Coated Blades", "Brushless High-Torque Motor (8500 RPM)", "Wireless Induction Charging Pad", "Heavy Duty Metallic Briefcase"],
+                images: [
                     "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
                     "https://images.unsplash.com/photo-1503925802522-890a50c98456?w=800"
                 ]
             },
             {
-                id: 3,
-                title: "AETHER Onyx AMOLED Smartwatch Grade-5 Titanium",
-                category: "Watches",
-                price: 16500,
-                original_price: 21000,
-                discount: "-21%",
-                rating: "4.9 ★ (98 Reviews)",
-                stock: "4 left in stock",
-                description: "Titanium casing with Sapphire crystal display. Full biometric analytics, dual-GPS tracking, and 10-day endurance battery.",
-                features: ["Grade-5 Titanium Casing", "1.96-inch Ultra AMOLED", "Sapphire Scratchproof Glass", "Water Resistant 50M"],
-                images: [
-                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
-                    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800",
-                    "https://images.unsplash.com/photo-1510017803434-a899398421b3?w=800"
-                ]
-            },
-            {
-                id: 4,
-                title: "450 GSM Heavyweight French Terry Streetwear Hoodie",
-                category: "Fashion",
-                price: 6500,
-                original_price: 8500,
-                discount: "-23%",
-                rating: "4.8 ★ (165 Reviews)",
-                stock: "11 left in stock",
-                description: "Built with ultra-thick 450 GSM organic cotton. Oversized boxy silhouette, double-walled hood, pre-shrunk premium fabric.",
-                features: ["450 GSM Heavyweight Organic Cotton", "Custom Oversized Drop-Shoulder Fit", "Double-Layered Structured Hood", "Fade-Proof Deep Black Dye"],
-                images: [
-                    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800",
-                    "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=800",
-                    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800"
-                ]
-            },
-            {
-                id: 5,
-                title: "Pro Cordless Metallic Fade Hair Clipper Set",
-                category: "Grooming",
-                price: 4500,
-                original_price: 6200,
-                discount: "-27%",
-                rating: "4.9 ★ (310 Reviews)",
-                stock: "14 left in stock",
-                description: "All-metal cordless clipper engine built for sharp taper fades, line-ups, and clean zero-gap trimming.",
-                features: ["Carbon Steel Self-Sharpening Blade", "7200 RPM Heavy-Duty Motor", "2500mAh Li-ion Battery (4 Hrs)", "Full Metal Skeleton Housing"],
-                images: [
-                    "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
-                    "https://images.unsplash.com/photo-1503925802522-890a50c98456?w=800",
-                    "https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=800"
-                ]
-            },
-            {
-                id: 6,
-                title: "Handcrafted Italian Full-Grain Leather Wallet",
-                category: "Accessories",
-                price: 3400,
-                original_price: 4500,
-                discount: "-24%",
-                rating: "4.9 ★ (88 Reviews)",
-                stock: "7 left in stock",
-                description: "100% genuine vegetable-tanned leather wallet with integrated RFID protection layer and hand-stitched borders.",
-                features: ["Italian Full-Grain Leather", "RFID Blocking Technology", "Slim Profile Holds 12 Cards", "Rich Aged Patina Finish"],
-                images: [
-                    "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800",
-                    "https://images.unsplash.com/photo-1606503825008-909a63318290?w=800",
-                    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"
-                ]
-            },
-            {
                 id: 7,
-                title: "Noir Amber Eau De Parfum Exclusif (100ml)",
-                category: "Fragrance",
-                price: 8900,
-                original_price: 12000,
-                discount: "-25%",
-                rating: "5.0 ★ (175 Reviews)",
-                stock: "6 left in stock",
-                description: "Deep luxury fragrance blended with notes of rare amber, smoky oud, warm vanilla, and spiced cedarwood.",
-                features: ["30% High Oil Concentration", "14+ Hours Long Lasting Projection", "Hand-Poured Crystal Glass Bottle", "Unisex Warm Oriental Scent"],
+                title: "Oud Royale Extrait de Parfum (100ml Crystal Decanter)",
+                category: "Grooming",
+                price: 45000,
+                status: "Limited Batch 2026",
+                rating: "Pure Extrait 38%",
+                description: "Aged 25-year wild Assam oud oil distilled with Taif rose and rare black amber. Housed in hand-cut French crystal decanter.",
+                features: ["38% Pure Fragrance Oil Concentration", "25-Year Aged Wild Assam Oud Base", "Hand-Cut Heavy French Crystal Bottle", "Presented in Leather Lockbox"],
                 images: [
                     "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800",
-                    "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800",
-                    "https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=800"
+                    "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800"
                 ]
             },
             {
                 id: 8,
-                title: "Mechanical Tactile Wireless Low-Profile Keyboard",
-                category: "Electronics",
-                price: 11200,
-                original_price: 14500,
-                discount: "-22%",
-                rating: "4.9 ★ (130 Reviews)",
-                stock: "9 left in stock",
-                description: "CNC machined aluminum body keyboard with hot-swappable switches, RGB backlight, and ultra-fast wireless mode.",
-                features: ["Solid CNC Aluminum Chassis", "Hot-Swappable Tactile Switches", "Bluetooth + 2.4Ghz + Type-C", "Multi-Device Seamless Switch"],
+                title: "Solid Aerospace Aluminum Mechanical Keyboard",
+                category: "Audio",
+                price: 42000,
+                status: "Bespoke Tech",
+                rating: "Hand-Assembled",
+                description: "Milled from a solid block of aerospace-grade aluminum with brass weight plate and hand-lubricated silent switches.",
+                features: ["Solid 3.5kg Aluminum Chassis", "Raw Polished Brass Weight Plate", "Double-Shot PBT Keycaps", "Custom Custom-Tuned Dampening"],
                 images: [
                     "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",
-                    "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800",
-                    "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800"
-                ]
-            },
-            {
-                id: 9,
-                title: "Minimalist Matte Black Stainless Steel Flask",
-                category: "Accessories",
-                price: 2400,
-                original_price: 3200,
-                discount: "-25%",
-                rating: "4.7 ★ (65 Reviews)",
-                stock: "20 left in stock",
-                description: "Double-walled vacuum insulated thermal bottle keeping drinks cold for 24 hours or hot for 12 hours.",
-                features: ["18/8 Food Grade Stainless Steel", "BPA Free Thermal Vacuum Seal", "Sweat-Proof Powder Finish", "750ml Capacity"],
-                images: [
-                    "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800",
-                    "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=800"
-                ]
-            },
-            {
-                id: 10,
-                title: "Polarized Dark Metal Frame Sunglasses",
-                category: "Accessories",
-                price: 4100,
-                original_price: 5500,
-                discount: "-25%",
-                rating: "4.8 ★ (92 Reviews)",
-                stock: "10 left in stock",
-                description: "Ultra-lightweight aerospace metal frames equipped with UV400 anti-glare TAC polarized lenses.",
-                features: ["UV400 Category 3 Protection", "Scratch-Resistant Polarized Lenses", "Aerospace Metal Frame Build", "Includes Hard Leather Case"],
-                images: [
-                    "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800",
-                    "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800"
-                ]
-            },
-            {
-                id: 11,
-                title: "Magnetic Wireless Powerbank 10,000mAh",
-                category: "Electronics",
-                price: 5800,
-                original_price: 7500,
-                discount: "-22%",
-                rating: "4.9 ★ (210 Reviews)",
-                stock: "13 left in stock",
-                description: "Fast magnetic snap wireless charger with real-time LED battery percentage indicator and pass-through charging.",
-                features: ["Strong Magnetic Lock Snap", "15W Fast Wireless + 20W PD Type-C", "Ultra Slim Metallic Shell", "Multi-Safety Voltage Protection"],
-                images: [
-                    "https://images.unsplash.com/photo-1622445268465-84288046b581?w=800",
-                    "https://images.unsplash.com/photo-1609592424089-a29d6b2c24b9?w=800"
-                ]
-            },
-            {
-                id: 12,
-                title: "Pure Mulberry Silk Sleep Mask & Pillowcase Set",
-                category: "Fashion",
-                price: 4900,
-                original_price: 6500,
-                discount: "-24%",
-                rating: "5.0 ★ (74 Reviews)",
-                stock: "6 left in stock",
-                description: "100% 22 Momme Mulberry Silk set designed to reduce hair friction and skin moisture loss overnight.",
-                features: ["22 Momme Grade 6A Mulberry Silk", "Hypoallergenic & Breathable", "Protects Hair & Perm Extensions", "Includes Travel Pouch"],
-                images: [
-                    "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800",
-                    "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=800"
+                    "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800"
                 ]
             }
         ];
@@ -429,28 +315,23 @@
         function renderProducts(items) {
             const grid = document.getElementById("productsGrid");
             grid.innerHTML = items.map(p => `
-                <div class="liquid-glass rounded-3xl p-3 hover:border-amber-500/50 hover:shadow-[0_0_25px_rgba(245,158,11,0.15)] transition-all duration-300 flex flex-col justify-between group">
+                <div class="vault-card rounded-2xl p-4 transition-all duration-500 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-44 sm:h-52 overflow-hidden rounded-2xl mb-3 bg-white/5 cursor-pointer" onclick="openQuickView(${p.id})">
-                            <img src="${p.images[0]}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-2.5 left-2.5 bg-amber-500 text-slate-950 text-[9px] font-black px-2.5 py-0.5 rounded-lg uppercase tracking-wider shadow-md">${p.discount}</span>
+                        <div class="relative h-56 overflow-hidden rounded-xl mb-4 bg-black/40 cursor-pointer" onclick="openQuickView(${p.id})">
+                            <img src="${p.images[0]}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100">
+                            <span class="absolute top-3 left-3 text-[8px] font-bold text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-full bg-black/70 uppercase tracking-widest">${p.status}</span>
                         </div>
-                        <h4 class="text-xs font-bold text-slate-100 line-clamp-2 leading-snug cursor-pointer hover:text-amber-400 transition-colors" onclick="openQuickView(${p.id})">${p.title}</h4>
-                        <div class="text-[10px] text-amber-400 font-bold mt-1.5">${p.rating}</div>
+                        <span class="text-[9px] font-bold text-amber-400/70 uppercase tracking-[0.2em] block mb-1">${p.category}</span>
+                        <h4 class="font-cinzel text-xs font-bold text-white line-clamp-2 leading-relaxed cursor-pointer hover:text-amber-400 transition-colors" onclick="openQuickView(${p.id})">${p.title}</h4>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-white/10">
-                        <div class="flex items-baseline gap-1.5 mb-2.5">
-                            <span class="text-sm sm:text-base font-black text-amber-400">Rs. ${p.price.toLocaleString()}</span>
-                            <span class="text-[10px] text-slate-500 line-through">Rs. ${p.original_price.toLocaleString()}</span>
+                    <div class="mt-5 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[9px] text-slate-500 block font-mono">Valuation</span>
+                            <span class="text-sm font-extrabold text-amber-400 font-mono">Rs. ${p.price.toLocaleString()}</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button onclick="openQuickView(${p.id})" class="px-3 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl transition-all" title="View Details">
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button onclick="addToCart(${p.id})" class="flex-1 py-2 gold-glow-btn text-slate-950 text-xs font-extrabold rounded-xl transition-all">
-                                Add to Cart
-                            </button>
-                        </div>
+                        <button onclick="addToCart(${p.id})" class="gold-btn px-4 py-2 rounded-xl text-[10px] font-cinzel uppercase tracking-wider transition-all">
+                            Allocate
+                        </button>
                     </div>
                 </div>
             `).join("");
@@ -461,12 +342,12 @@
             document.getElementById("quickViewContent").innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-3">
-                        <div class="h-64 sm:h-72 rounded-2xl overflow-hidden bg-white/5 border border-white/10">
-                            <img id="mainGalleryImg" src="${p.images[0]}" class="w-full h-full object-cover transition-all duration-300">
+                        <div class="h-64 sm:h-72 rounded-2xl overflow-hidden bg-black/60 border border-amber-500/20">
+                            <img id="mainGalleryImg" src="${p.images[0]}" class="w-full h-full object-cover">
                         </div>
-                        <div class="flex gap-2 overflow-x-auto pb-1">
+                        <div class="flex gap-2">
                             ${p.images.map((img) => `
-                                <button onclick="switchImage('${img}')" class="w-16 h-16 rounded-xl border border-white/15 hover:border-amber-400 overflow-hidden flex-shrink-0 transition-all">
+                                <button onclick="switchImage('${img}')" class="w-16 h-16 rounded-xl border border-white/10 hover:border-amber-400 overflow-hidden transition-all">
                                     <img src="${img}" class="w-full h-full object-cover">
                                 </button>
                             `).join('')}
@@ -475,31 +356,25 @@
 
                     <div class="space-y-4 flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-lg">${p.category}</span>
-                                <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg">${p.stock}</span>
-                            </div>
-                            <h3 class="text-base sm:text-lg font-bold text-white mt-2 leading-snug">${p.title}</h3>
-                            <div class="text-xs font-bold text-amber-400 mt-1">${p.rating}</div>
-                            
-                            <p class="text-xs text-slate-300 mt-3 leading-relaxed">${p.description}</p>
+                            <span class="text-[9px] font-bold text-amber-400 uppercase tracking-[0.25em] bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">${p.status}</span>
+                            <h3 class="font-cinzel text-lg font-bold text-white mt-3 leading-snug">${p.title}</h3>
+                            <p class="text-xs text-slate-300 mt-3 font-light leading-relaxed">${p.description}</p>
                             
                             <div class="mt-4 space-y-2">
-                                <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Specifications:</span>
-                                <ul class="space-y-1">
-                                    ${p.features.map(f => `<li class="text-xs font-medium text-slate-200 flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> ${f}</li>`).join('')}
+                                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 block">Masterpiece Specifications:</span>
+                                <ul class="space-y-1.5">
+                                    ${p.features.map(f => `<li class="text-xs text-slate-200 font-light flex items-center gap-2"><i class="fa-solid fa-diamond text-amber-400 text-[8px]"></i> ${f}</li>`).join('')}
                                 </ul>
                             </div>
                         </div>
 
                         <div class="pt-4 border-t border-white/10">
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="text-2xl font-black text-amber-400">Rs. ${p.price.toLocaleString()}</span>
-                                <span class="text-xs text-slate-500 line-through">Rs. ${p.original_price.toLocaleString()}</span>
-                                <span class="text-xs font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded">${p.discount} OFF</span>
+                            <div class="mb-3">
+                                <span class="text-[9px] text-slate-400 uppercase tracking-widest block">Acquisition Value</span>
+                                <span class="text-2xl font-black text-amber-400 font-mono">Rs. ${p.price.toLocaleString()}</span>
                             </div>
-                            <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3.5 gold-glow-btn text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-bag-shopping"></i> Add To Bag
+                            <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3.5 gold-btn rounded-xl font-cinzel text-xs font-bold uppercase tracking-widest transition-all">
+                                Request Private Allocation
                             </button>
                         </div>
                     </div>
@@ -528,24 +403,24 @@
 
             const container = document.getElementById("cartItems");
             if (cart.length === 0) {
-                container.innerHTML = `<div class="text-center py-12 text-slate-500 text-xs">Your shopping bag is empty.</div>`;
+                container.innerHTML = `<div class="text-center py-12 text-slate-500 text-xs font-light">Your private allocation bag is empty.</div>`;
                 return;
             }
 
             container.innerHTML = cart.map(i => `
-                <div class="flex items-center justify-between bg-white/5 p-3 rounded-2xl border border-white/10">
+                <div class="flex items-center justify-between bg-white/[0.02] p-3.5 rounded-xl border border-amber-500/15">
                     <div>
-                        <h5 class="text-xs font-bold text-white line-clamp-1">${i.title}</h5>
-                        <p class="text-[11px] font-semibold text-amber-400">Rs. ${i.price.toLocaleString()} × ${i.qty}</p>
+                        <h5 class="font-cinzel text-xs font-bold text-white line-clamp-1">${i.title}</h5>
+                        <p class="text-[11px] font-mono text-amber-400">Rs. ${i.price.toLocaleString()} × ${i.qty}</p>
                     </div>
-                    <span class="text-xs font-black text-white">Rs. ${(i.price * i.qty).toLocaleString()}</span>
+                    <span class="text-xs font-mono font-bold text-white">Rs. ${(i.price * i.qty).toLocaleString()}</span>
                 </div>
             `).join("");
         }
 
         function processOrder(e) {
             e.preventDefault();
-            if (cart.length === 0) return alert("Cart empty hai!");
+            if (cart.length === 0) return alert("Your private bag is empty!");
 
             const name = document.getElementById("custName").value;
             const phone = document.getElementById("custPhone").value;
@@ -553,7 +428,7 @@
             const total = cart.reduce((a, b) => a + (b.price * b.qty), 0);
 
             let orderList = cart.map(i => `• ${i.title} (x${i.qty}) - Rs. ${i.price * i.qty}`).join('\n');
-            let message = `*AETHER LUXURY STORE ORDER*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n${orderList}\n\n*Total Payable:* Rs. ${total.toLocaleString()}`;
+            let message = `*MAISON DE VORTEX - PRIVATE CONCIERGE REQUEST*\n\n*VIP Patron:* ${name}\n*Contact:* ${phone}\n*Residence Address:* ${address}\n\n*Allocated Masterpieces:*\n${orderList}\n\n*Total Acquisition Value:* Rs. ${total.toLocaleString()}`;
 
             window.open(`https://wa.me/923234749637?text=${encodeURIComponent(message)}`, '_blank');
         }
