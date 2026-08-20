@@ -1,1 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora Mart | Ultra Premium Gourmet & Fine Foods</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF2C6',
+                            300: '#F3D079',
+                            500: '#D4AF37',
+                            700: '#AA820A',
+                        },
+                        velora: {
+                            black: '#080808',
+                            dark: '#121212',
+                            card: '#1A1A1A',
+                            border: '#2A2A2A'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #080808;
+            color: #E5E5E5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF2C6 0%, #D4AF37 50%, #AA820A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, #D4AF37, #2A2A2A) 1;
+        }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl font-serif font-black tracking-widest gold-gradient-text uppercase">Velora Mart</span>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+                <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search caviar, truffle, wagyu, chocolates..." 
+                    class="w-full bg-velora-dark border border-velora-border rounded-full py-2.5 pl-10 pr-4 text-sm text-gray-200 focus:outline-none focus:border-gold-500 transition-colors">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-500 text-sm"></i>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-6">
+                <button onclick="toggleCart()" class="relative text-gray-300 hover:text-gold-500 transition-colors">
+                    <i class="fa-solid fa-bag-shopping text-2xl"></i>
+                    <span id="cartBadge" class="absolute -top-2 -right-2 bg-gold-500 text-velora-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Search Bar -->
+        <div class="md:hidden px-4 pb-4">
+            <div class="relative w-full">
+                <input type="text" id="mobileSearchInput" oninput="syncMobileSearch()" placeholder="Search gourmet foods..." 
+                    class="w-full bg-velora-dark border border-velora-border rounded-full py-2 pl-10 pr-4 text-sm text-gray-200 focus:outline-none focus:border-gold-500">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-500 text-sm"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 overflow-hidden border-b border-velora-border">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="text-gold-500 font-semibold tracking-widest uppercase text-xs mb-3 block">Ultra-Max Luxury Dining at Home</span>
+            <h1 class="text-4xl sm:text-6xl font-serif font-bold text-white mb-6">Exquisite Culinary Masterpieces</h1>
+            <p class="max-w-2xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed mb-8">
+                Indulge in Pakistan's finest handpicked gourmet selection, from rare black truffles to artisanal chocolates and A5 Wagyu beef.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="filterCategory('All')" class="px-6 py-2.5 rounded-full bg-gold-500 text-velora-black font-semibold hover:bg-gold-300 transition-all text-sm">Explore Collection</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Storefront Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Category Filters -->
+        <div class="flex items-center space-x-2 overflow-x-auto pb-6 custom-scrollbar mb-8" id="categoryContainer">
+            <!-- Dynamic Categories injected here -->
+        </div>
+
+        <!-- Products Grid -->
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Dynamic Products injected here -->
+        </div>
+    </main>
+
+    <!-- Slide-over Cart Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-velora-dark border-l border-gold-500/20 text-white flex flex-col">
+                <div class="p-6 border-b border-velora-border flex items-center justify-between">
+                    <h2 class="text-xl font-serif font-bold gold-gradient-text">Your Selection</h2>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cartItemsList" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
+                    <p class="text-gray-500 text-center py-8">Your shopping bag is empty.</p>
+                </div>
+
+                <!-- Cart Footer -->
+                <div class="p-6 border-t border-velora-border bg-velora-black space-y-4">
+                    <div class="flex justify-between text-base font-semibold">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal" class="text-gold-500">PKR 0</span>
+                    </div>
+                    <p class="text-xs text-gray-500">Taxes & doorstep delivery calculated at checkout.</p>
+                    <button class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-velora-black font-bold uppercase tracking-wider text-sm rounded hover:brightness-110 transition-all">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-velora-border bg-velora-black py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <span class="text-xl font-serif font-bold gold-gradient-text">VELORA MART</span>
+                <p class="text-xs text-gray-500 mt-1">Ultra-Max Premium Food & Fine Grocery Experience.</p>
+            </div>
+            <div class="text-xs text-gray-400 text-center md:text-right">
+                <p>Support: <a href="mailto:imadgotmeta@gmail.com" class="text-gold-500 hover:underline">imadgotmeta@gmail.com</a></p>
+                <p class="mt-1">&copy; 2026 Velora Mart. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Sample Products Database
+        const products = [
+            {
+                id: 1,
+                title: "Beluga Caviar Imperial",
+                category: "Caviar & Seafood",
+                price: 145000,
+                rating: 5.0,
+                image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
+                desc: "Wild Beluga caviar harvested from mature Caspian Sea sturgeon, rich and buttery."
+            },
+            {
+                id: 2,
+                title: "Japanese A5 Wagyu Ribeye (500g)",
+                category: "Meat & Poultry",
+                price: 68000,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+                desc: "Authentic Miyazaki A5 Wagyu with unmatched marbling and velvety texture."
+            },
+            {
+                id: 3,
+                title: "Italian Black Truffle Oil (250ml)",
+                category: "Oils & Spices",
+                price: 18500,
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80",
+                desc: "Cold-pressed extra virgin olive oil infused with authentic Umbrian black winter truffles."
+            },
+            {
+                id: 4,
+                title: "Saffron Filaments Super Negin (10g)",
+                category: "Oils & Spices",
+                price: 24000,
+                rating: 5.0,
+                image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80",
+                desc: "Grade 1 Persian Saffron threads with deep crimson aroma and intense flavor profile."
+            },
+            {
+                id: 5,
+                title: "Gold Leaf Artisan Chocolates (12 Pcs)",
+                category: "Sweets & Desserts",
+                price: 12500,
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80",
+                desc: "Handcrafted Swiss dark truffles coated in edible 24K gold leaf foil."
+            },
+            {
+                id: 6,
+                title: "Manuka Honey UMF 20+ (250g)",
+                category: "Sweets & Desserts",
+                price: 38000,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=600&q=80",
+                desc: "Ultra-rare raw New Zealand Manuka honey with guaranteed therapeutic UMF rating."
+            },
+            {
+                id: 7,
+                title: "Artisanal Aged Parmesan Reggiano",
+                category: "Dairy & Cheese",
+                price: 15500,
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=600&q=80",
+                desc: "Aged 36 months in Modena, offering deep nutty notes and crystalline crunch."
+            },
+            {
+                id: 8,
+                title: "Organic Blue Mountain Coffee Beans",
+                category: "Beverages",
+                price: 22000,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80",
+                desc: "Jamaican single-origin roasted beans known for mild flavor and lack of bitterness."
+            }
+        ];
+
+        let cart = [];
+        let activeCategory = "All";
+
+        // Initialize Storefront
+        document.addEventListener("DOMContentLoaded", () => {
+            renderCategories();
+            renderProducts();
+        });
+
+        // Render Category Filter Buttons
+        function renderCategories() {
+            const categories = ["All", ...new Set(products.map(p => p.category))];
+            const container = document.getElementById("categoryContainer");
+            
+            container.innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat}')" 
+                    class="px-5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${
+                        activeCategory === cat 
+                        ? 'bg-gold-500 text-velora-black border-gold-500 shadow-lg shadow-gold-500/20' 
+                        : 'bg-velora-card text-gray-400 border-velora-border hover:border-gold-500/50 hover:text-white'
+                    }">
+                    ${cat}
+                </button>
+            `).join("");
+        }
+
+        // Filter Categories
+        function filterCategory(cat) {
+            activeCategory = cat;
+            renderCategories();
+            filterProducts();
+        }
+
+        // Render Product Cards
+        function renderProducts(items = products) {
+            const grid = document.getElementById("productsGrid");
+            
+            if (items.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">No ultra-premium items match your search.</div>`;
+                return;
+            }
+
+            grid.innerHTML = items.map(p => `
+                <div class="glass-panel rounded-xl overflow-hidden group hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-52">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-velora-black/80 backdrop-blur text-gold-500 text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded border border-gold-500/30">
+                                ${p.category}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center justify-between text-xs text-gold-500 mb-2">
+                                <span><i class="fa-solid fa-star text-xs"></i> ${p.rating}</span>
+                                <span class="text-gray-400">In Stock</span>
+                            </div>
+                            <h3 class="font-serif font-bold text-lg text-white mb-2 group-hover:text-gold-300 transition-colors">${p.title}</h3>
+                            <p class="text-gray-400 text-xs line-clamp-2 mb-4">${p.desc}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 flex items-center justify-between border-t border-velora-border/50 mt-auto">
+                        <div>
+                            <span class="text-[10px] text-gray-500 block uppercase">Price</span>
+                            <span class="text-gold-500 font-bold text-base">PKR ${p.price.toLocaleString()}</span>
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="bg-velora-dark hover:bg-gold-500 hover:text-velora-black text-gold-500 border border-gold-500/40 p-2.5 rounded-lg transition-all">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        // Search & Filter Handler
+        function filterProducts() {
+            const query = (document.getElementById("searchInput").value || document.getElementById("mobileSearchInput").value).toLowerCase();
+            
+            const filtered = products.filter(p => {
+                const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+                const matchesSearch = p.title.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            renderProducts(filtered);
+        }
+
+        function syncMobileSearch() {
+            document.getElementById("searchInput").value = document.getElementById("mobileSearchInput").value;
+            filterProducts();
+        }
+
+        // Cart Drawer Handlers
+        function toggleCart() {
+            document.getElementById("cartDrawer").classList.toggle("hidden");
+        }
+
+        function addToCart(productId) {
+            const item = products.find(p => p.id === productId);
+            const existing = cart.find(c => c.id === productId);
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+
+            updateCartUI();
+            toggleCart();
+        }
+
+        function updateCartQty(productId, delta) {
+            const item = cart.find(c => c.id === productId);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(c => c.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById("cartItemsList");
+            const badge = document.getElementById("cartBadge");
+            const subtotalEl = document.getElementById("cartSubtotal");
+
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            badge.innerText = totalCount;
+            badge.classList.toggle("hidden", totalCount === 0);
+            subtotalEl.innerText = `PKR ${subtotal.toLocaleString()}`;
+
+            if (cart.length === 0) {
+                list.innerHTML = `<p class="text-gray-500 text-center py-8">Your shopping bag is empty.</p>`;
+                return;
+            }
+
+            list.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-4 bg-velora-card p-3 rounded-lg border border-velora-border">
+                    <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-sm font-semibold text-white truncate">${item.title}</h4>
+                        <span class="text-xs text-gold-500 font-bold block mt-1">PKR ${(item.price * item.qty).toLocaleString()}</span>
+                        <div class="flex items-center space-x-2 mt-2">
+                            <button onclick="updateCartQty(${item.id}, -1)" class="w-5 h-5 bg-velora-dark text-gray-300 rounded flex items-center justify-center text-xs hover:text-white">-</button>
+                            <span class="text-xs text-white">${item.qty}</span>
+                            <button onclick="updateCartQty(${item.id}, 1)" class="w-5 h-5 bg-velora-dark text-gray-300 rounded flex items-center justify-center text-xs hover:text-white">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+    </script>
+</body>
+</html>
 
