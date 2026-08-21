@@ -1692,4 +1692,861 @@ category:"Apparel",
 price:39000,
 status:"Evening Collection",
 desc:"Silk evening shirt with an understated couture silhouette.",
-img:"https://images.unsplash.com/photo-160
+img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=1400"
+},
+
+{
+id:20,
+title:"ÉLVARA Nocturne Eau de Parfum",
+category:"Fragrance",
+price:32000,
+status:"Signature Scent",
+desc:"A dark, refined fragrance presented in a sculptural glass bottle.",
+img:"https://images.unsplash.com/photo-1541643600914-78b084683601?w=1400"
+},
+
+{
+id:21,
+title:"Imperial Oud Private Reserve",
+category:"Fragrance",
+price:48000,
+status:"Private Reserve",
+desc:"A sophisticated oud-inspired composition for evening wear.",
+img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1400"
+},
+
+{
+id:22,
+title:"Maison Éclat Crystal Parfum",
+category:"Fragrance",
+price:36000,
+status:"Collector Bottle",
+desc:"Elegant fragrance presentation with a luminous crystal-inspired bottle.",
+img:"https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=1400"
+},
+
+{
+id:23,
+title:"ÉLVARA Executive Sunglasses",
+category:"Apparel",
+price:29500,
+status:"Private Edition",
+desc:"Architectural black sunglasses with a refined metal frame.",
+img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1400"
+},
+
+{
+id:24,
+title:"Sovereign Atelier Travel Case",
+category:"Leather",
+price:52000,
+status:"Limited Atelier",
+desc:"Luxury travel case designed for watches and private accessories.",
+img:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1400"
+}
+
+];
+
+let cart=[];
+let currentCategory="All";
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleContainer=document.getElementById("particles");
+
+for(let i=0;i<55;i++){
+
+    const p=document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left=Math.random()*100+"%";
+
+    p.style.animationDuration=
+        (9+Math.random()*18)+"s";
+
+    p.style.animationDelay=
+        (-Math.random()*20)+"s";
+
+    p.style.width=
+        (Math.random()>.85?3:2)+"px";
+
+    p.style.height=p.style.width;
+
+    particleContainer.appendChild(p);
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+let loaderProgress=0;
+
+const loaderNumber=
+document.getElementById("loaderNumber");
+
+const loaderTimer=setInterval(()=>{
+
+    loaderProgress+=Math.floor(Math.random()*8)+3;
+
+    if(loaderProgress>=100){
+        loaderProgress=100;
+        clearInterval(loaderTimer);
+    }
+
+    loaderNumber.textContent=
+        String(loaderProgress).padStart(3,"0")+"%";
+
+},70);
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("luxuryLoader")
+        .classList.add("loaded");
+
+        document.body.classList.remove("loading");
+
+        revealObserver();
+
+    },3000);
+
+});
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+const cursorGlow=
+document.getElementById("cursorGlow");
+
+const cursorDot=
+document.getElementById("cursorDot");
+
+document.addEventListener("mousemove",(e)=>{
+
+    cursorGlow.style.left=e.clientX+"px";
+    cursorGlow.style.top=e.clientY+"px";
+
+    cursorDot.style.left=e.clientX+"px";
+    cursorDot.style.top=e.clientY+"px";
+
+});
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+window.addEventListener("scroll",()=>{
+
+    document
+    .getElementById("navbar")
+    .classList.toggle(
+        "scrolled",
+        window.scrollY>30
+    );
+
+});
+
+/* =========================================================
+   REVEAL OBSERVER
+========================================================= */
+
+function revealObserver(){
+
+    const elements=
+        document.querySelectorAll(".reveal");
+
+    const observer=
+        new IntersectionObserver(
+            (entries)=>{
+                entries.forEach(entry=>{
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+            },
+            {
+                threshold:.12
+            }
+        );
+
+    elements.forEach(el=>{
+        observer.observe(el);
+    });
+
+}
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts(items){
+
+    const grid=
+        document.getElementById("productsGrid");
+
+    grid.innerHTML="";
+
+    document.getElementById("collectionCount")
+    .textContent=items.length;
+
+    if(!items.length){
+
+        grid.innerHTML=`
+
+        <div class="col-span-full text-center py-28 reveal">
+
+            <i class="fa-solid fa-gem text-amber-400/30 text-4xl"></i>
+
+            <p class="font-cinzel text-sm text-slate-500 mt-5">
+                No masterpiece found.
+            </p>
+
+        </div>
+
+        `;
+
+        setTimeout(revealObserver,50);
+
+        return;
+    }
+
+    items.forEach((p,index)=>{
+
+        const card=
+            document.createElement("div");
+
+        card.className=
+            "product-card glass rounded-2xl p-2.5 sm:p-4 reveal";
+
+        card.style.transitionDelay=
+            Math.min(index*45,500)+"ms";
+
+        card.innerHTML=`
+
+        <div
+        class="product-image-wrap relative h-48 sm:h-64 overflow-hidden rounded-xl cursor-pointer"
+        onclick="openQuickView(${p.id})">
+
+            <img
+            src="${p.img}"
+            alt="${p.title}"
+            loading="lazy"
+            class="product-image w-full h-full object-cover">
+
+            <div class="image-vignette absolute inset-0"></div>
+
+            <div class="image-sweep"></div>
+
+            <span
+            class="absolute top-3 left-3 text-[7px] sm:text-[8px] font-bold text-amber-100 border border-amber-500/30 px-2 py-1 rounded-full bg-black/65 backdrop-blur-md uppercase tracking-widest">
+
+                ${p.status}
+
+            </span>
+
+            <span class="product-number">
+                ${String(p.id).padStart(2,"0")}
+            </span>
+
+        </div>
+
+        <div class="px-1 pt-3">
+
+            <span
+            class="text-[7px] sm:text-[8px] font-bold text-amber-400/70 uppercase tracking-[.2em]">
+
+                ${p.category}
+
+            </span>
+
+            <h3
+            onclick="openQuickView(${p.id})"
+            class="font-cinzel text-[10px] sm:text-xs font-bold text-white leading-relaxed mt-1.5 line-clamp-2 hover:text-amber-400 cursor-pointer transition-colors">
+
+                ${p.title}
+
+            </h3>
+
+            <p class="hidden sm:block text-[9px] text-slate-600 mt-2 leading-5 line-clamp-2">
+                ${p.desc}
+            </p>
+
+            <div
+            class="flex items-center justify-between gap-2 border-t border-white/5 mt-3 pt-3">
+
+                <div>
+
+                    <span class="block text-[7px] uppercase tracking-widest text-slate-600">
+                        VALUATION
+                    </span>
+
+                    <strong class="text-[10px] sm:text-sm font-mono text-amber-400">
+                        Rs. ${p.price.toLocaleString()}
+                    </strong>
+
+                </div>
+
+                <button
+                onclick="addToCart(${p.id})"
+                class="acquire gold-btn px-3 sm:px-4 py-2 rounded-lg text-[7px] sm:text-[9px] font-cinzel font-bold tracking-widest">
+
+                    <span>ACQUIRE</span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+        grid.appendChild(card);
+
+        enableTilt(card);
+
+    });
+
+    setTimeout(revealObserver,50);
+
+}
+
+/* =========================================================
+   3D PRODUCT TILT
+========================================================= */
+
+function enableTilt(card){
+
+    if(window.innerWidth<768) return;
+
+    card.addEventListener("mousemove",(e)=>{
+
+        const rect=
+            card.getBoundingClientRect();
+
+        const x=
+            e.clientX-rect.left;
+
+        const y=
+            e.clientY-rect.top;
+
+        const rotateY=
+            ((x/rect.width)-.5)*7;
+
+        const rotateX=
+            ((y/rect.height)-.5)*-7;
+
+        card.style.transform=
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-5px)`;
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform="";
+
+    });
+
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function handleSearch(){
+
+    const q=
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    let result=
+        products.filter(p=>{
+
+            return(
+                p.title.toLowerCase().includes(q) ||
+                p.category.toLowerCase().includes(q) ||
+                p.status.toLowerCase().includes(q)
+            );
+
+        });
+
+    if(currentCategory!=="All"){
+
+        result=
+            result.filter(
+                p=>p.category===currentCategory
+            );
+
+    }
+
+    renderProducts(result);
+
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function filterCategory(category){
+
+    currentCategory=category;
+
+    document
+    .querySelectorAll(".category-btn")
+    .forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    const buttons=
+        document.querySelectorAll(".category-btn");
+
+    const index=
+        ["All","Timepieces","Audio","Grooming","Leather","Apparel","Fragrance"]
+        .indexOf(category);
+
+    if(buttons[index]){
+        buttons[index].classList.add("active");
+    }
+
+    const search=
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    let result=
+        category==="All"
+        ? products
+        : products.filter(
+            p=>p.category===category
+        );
+
+    if(search){
+
+        result=
+            result.filter(p=>
+                p.title.toLowerCase().includes(search) ||
+                p.category.toLowerCase().includes(search)
+            );
+
+    }
+
+    renderProducts(result);
+
+}
+
+/* =========================================================
+   QUICK VIEW
+========================================================= */
+
+function openQuickView(id){
+
+    const p=
+        products.find(x=>x.id===id);
+
+    if(!p) return;
+
+    document
+    .getElementById("quickViewContent")
+    .innerHTML=`
+
+    <div class="grid md:grid-cols-2 gap-7">
+
+        <div
+        class="relative h-80 sm:h-[460px] rounded-2xl overflow-hidden border border-amber-500/15">
+
+            <img
+            src="${p.img}"
+            class="w-full h-full object-cover">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-amber-500/[.03]"></div>
+
+            <span class="absolute bottom-4 left-4 text-[8px] tracking-[.3em] uppercase text-amber-300">
+                ${p.status}
+            </span>
+
+        </div>
+
+        <div class="flex flex-col justify-between">
+
+            <div>
+
+                <span class="text-[8px] text-amber-400 uppercase tracking-[.3em]">
+                    ${p.category}
+                </span>
+
+                <h2 class="font-cinzel text-xl sm:text-3xl font-bold mt-3 leading-relaxed">
+                    ${p.title}
+                </h2>
+
+                <div class="gold-line my-5"></div>
+
+                <p class="text-xs text-slate-400 leading-7">
+                    ${p.desc}
+                </p>
+
+                <div class="mt-6 space-y-3">
+
+                    <div class="flex justify-between border-b border-white/5 pb-3">
+                        <span class="text-[8px] text-slate-600 uppercase tracking-widest">
+                            Availability
+                        </span>
+
+                        <span class="text-[8px] text-amber-400">
+                            PRIVATE ALLOCATION
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between border-b border-white/5 pb-3">
+                        <span class="text-[8px] text-slate-600 uppercase tracking-widest">
+                            Collection
+                        </span>
+
+                        <span class="text-[8px]">
+                            ${p.category}
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 mt-7 pt-5">
+
+                <div class="text-2xl font-black font-mono text-amber-400 mb-4">
+                    Rs. ${p.price.toLocaleString()}
+                </div>
+
+                <button
+                onclick="addToCart(${p.id});closeQuickView();"
+                class="gold-btn w-full py-4 rounded-xl font-cinzel text-[9px] tracking-[.25em]">
+
+                    REQUEST PRIVATE ALLOCATION
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+    const modal=
+        document.getElementById("quickViewModal");
+
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+
+    document.body.style.overflow="hidden";
+
+}
+
+function closeQuickView(){
+
+    const modal=
+        document.getElementById("quickViewModal");
+
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+
+    if(
+        document
+        .getElementById("cartModal")
+        .classList.contains("hidden")
+    ){
+        document.body.style.overflow="";
+    }
+
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+function toggleCart(){
+
+    const modal=
+        document.getElementById("cartModal");
+
+    const opening=
+        modal.classList.contains("hidden");
+
+    modal.classList.toggle("hidden");
+
+    updateCart();
+
+    document.body.style.overflow=
+        opening ? "hidden" : "";
+
+}
+
+function addToCart(id){
+
+    const product=
+        products.find(
+            p=>p.id===id
+        );
+
+    if(!product) return;
+
+    const existing=
+        cart.find(
+            p=>p.id===id
+        );
+
+    if(existing){
+
+        existing.qty++;
+
+    }else{
+
+        cart.push({
+            ...product,
+            qty:1
+        });
+
+    }
+
+    updateCart();
+
+    const badge=
+        document.getElementById("cartBadge");
+
+    badge.animate(
+        [
+            {transform:"scale(1)"},
+            {transform:"scale(1.45)"},
+            {transform:"scale(1)"}
+        ],
+        {
+            duration:450,
+            easing:"cubic-bezier(.2,.8,.2,1)"
+        }
+    );
+
+}
+
+function updateCart(){
+
+    const totalQty=
+        cart.reduce(
+            (sum,item)=>sum+item.qty,
+            0
+        );
+
+    document
+    .getElementById("cartBadge")
+    .textContent=totalQty;
+
+    const total=
+        cart.reduce(
+            (sum,item)=>
+                sum+(item.price*item.qty),
+            0
+        );
+
+    document
+    .getElementById("cartTotal")
+    .textContent=
+        "Rs. "+total.toLocaleString();
+
+    const container=
+        document.getElementById("cartItems");
+
+    if(!cart.length){
+
+        container.innerHTML=`
+
+        <div class="text-center py-20">
+
+            <i class="fa-solid fa-gem text-amber-400/20 text-3xl"></i>
+
+            <p class="font-cinzel text-xs text-slate-600 mt-4">
+                Your private vault is empty.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML=
+        cart.map(item=>`
+
+        <div class="glass rounded-xl p-3 flex gap-3">
+
+            <img
+            src="${item.img}"
+            class="w-16 h-16 rounded-lg object-cover">
+
+            <div class="flex-1 min-w-0">
+
+                <div class="font-cinzel text-[9px] font-bold text-white line-clamp-2">
+                    ${item.title}
+                </div>
+
+                <div class="text-[9px] text-amber-400 font-mono mt-1">
+                    Rs. ${item.price.toLocaleString()} × ${item.qty}
+                </div>
+
+            </div>
+
+            <button
+            onclick="removeFromCart(${item.id})"
+            class="text-slate-600 hover:text-red-400 transition">
+
+                <i class="fa-solid fa-trash text-[9px]"></i>
+
+            </button>
+
+        </div>
+
+        `).join("");
+
+}
+
+function removeFromCart(id){
+
+    cart=
+        cart.filter(
+            item=>item.id!==id
+        );
+
+    updateCart();
+
+}
+
+/* =========================================================
+   ORDER
+========================================================= */
+
+function processOrder(e){
+
+    e.preventDefault();
+
+    if(!cart.length){
+
+        alert("Your private vault is empty.");
+
+        return;
+
+    }
+
+    const name=
+        document.getElementById("custName").value;
+
+    const phone=
+        document.getElementById("custPhone").value;
+
+    const address=
+        document.getElementById("custAddress").value;
+
+    const total=
+        cart.reduce(
+            (sum,item)=>
+                sum+(item.price*item.qty),
+            0
+        );
+
+    const items=
+        cart.map(item=>
+            `• ${item.title} x${item.qty} — Rs. ${(item.price*item.qty).toLocaleString()}`
+        ).join("\n");
+
+    const message=
+`*ÉLVARA PRIVÉ — PRIVATE CONCIERGE REQUEST*
+
+*Client:* ${name}
+*Contact:* ${phone}
+*Delivery:* ${address}
+
+*PRIVATE COLLECTION:*
+${items}
+
+*TOTAL VALUATION:* Rs. ${total.toLocaleString()}`;
+
+    window.open(
+        "https://wa.me/923234749637?text="+
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+}
+
+/* =========================================================
+   CONCIERGE
+========================================================= */
+
+function toggleConcierge(){
+
+    toggleCart();
+
+}
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        closeQuickView();
+
+        document
+        .getElementById("cartModal")
+        .classList.add("hidden");
+
+        document.body.style.overflow="";
+
+    }
+
+});
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        renderProducts(products);
+
+        setTimeout(
+            revealObserver,
+            100
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
