@@ -1,5 +1,4 @@
-<!
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
@@ -9,11 +8,8 @@ DOCTYPE html>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script>
 tailwind.config = {
@@ -499,20 +495,15 @@ body{
 }
 
 /* =========================================================
-   SCROLL REVEAL
+   SCROLL REVEAL (FIXED FOR VISIBILITY)
 ========================================================= */
 
 .reveal{
-    opacity:0;
-    transform:translateY(45px) scale(.97);
+    opacity:1 !important;
+    transform:translateY(0) scale(1) !important;
     transition:
-        opacity 1s cubic-bezier(.2,.8,.2,1),
-        transform 1s cubic-bezier(.2,.8,.2,1);
-}
-
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0) scale(1);
+        opacity .8s cubic-bezier(.2,.8,.2,1),
+        transform .8s cubic-bezier(.2,.8,.2,1);
 }
 
 /* =========================================================
@@ -654,2191 +645,372 @@ body{
 ========================================================= -->
 
 <div id="luxuryLoader">
-
     <div class="loader-content">
-
         <div class="relative">
-
             <div class="loader-ring"></div>
-
             <div class="loader-crown">
                 <i class="fa-solid fa-gem"></i>
             </div>
-
         </div>
-
-        <div class="loader-title">
-            ÉLVARA
-        </div>
-
-        <div class="loader-sub">
-            Private Luxury Maison
-        </div>
-
-        <div class="loader-line">
-            <span></span>
-        </div>
-
+        <div class="loader-title">ÉLVARA</div>
+        <div class="loader-sub">Private Luxury Maison</div>
+        <div class="loader-line"><span></span></div>
     </div>
-
 </div>
 
 <div id="particles"></div>
-
 <div class="cursor-glow" id="cursorGlow"></div>
-
 
 <!-- =========================================================
      ANNOUNCEMENT
 ========================================================= -->
 
-<div class="border-b border-amber-500/10 bg-black/60 text-amber-200/70
-text-[9px] font-semibold py-2.5 px-4 text-center tracking-[.3em]
-uppercase relative z-50">
-
+<div class="border-b border-amber-500/10 bg-black/60 text-amber-200/70 text-[9px] font-semibold py-2.5 px-4 text-center tracking-[.3em] uppercase relative z-50">
     <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse mr-2"></span>
-
     Private Client Access • Worldwide White-Glove Concierge • Est. 1998
-
 </div>
-
 
 <!-- =========================================================
      NAVIGATION
 ========================================================= -->
 
-<header id="navbar"
-class="navbar sticky top-0 z-40 glass border-b border-amber-500/10">
-
+<header id="navbar" class="navbar sticky top-0 z-40 glass border-b border-amber-500/10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-
 <div class="flex items-center justify-between gap-5">
 
 <a href="#" class="flex items-center gap-3">
-
-<div class="logo-orb w-11 h-11 rounded-full border
-border-amber-500/40 bg-amber-500/5
-text-amber-400 flex items-center justify-center">
-
+<div class="logo-orb w-11 h-11 rounded-full border border-amber-500/40 bg-amber-500/5 text-amber-400 flex items-center justify-center">
 <i class="fa-solid fa-gem"></i>
-
 </div>
-
 <div>
-
-<span class="font-cinzel font-bold text-lg
-tracking-[.25em] text-white block">
-
-ÉLVARA PRIVÉ
-
-</span>
-
-<span class="text-[7px] font-bold text-amber-400/70
-uppercase tracking-[.4em]">
-
-Private Luxury Maison
-
-</span>
-
+<span class="font-cinzel font-bold text-lg tracking-[.25em] text-white block">ÉLVARA PRIVÉ</span>
+<span class="text-[7px] font-bold text-amber-400/70 uppercase tracking-[.4em]">Private Luxury Maison</span>
 </div>
-
 </a>
-
 
 <div class="hidden md:block flex-1 max-w-xl">
-
-<div class="search-box relative flex items-center
-border border-amber-500/15 rounded-full
-bg-white/[.025] transition-all">
-
-<input
-id="searchInput"
-oninput="handleSearch()"
-type="text"
-placeholder="Search the private collection..."
-class="w-full bg-transparent py-3 pl-5 pr-12
-text-xs text-white placeholder-slate-600
-focus:outline-none">
-
-<button
-class="absolute right-2 w-8 h-8 rounded-full
-bg-amber-500/10 text-amber-400
-hover:bg-amber-400 hover:text-black transition-all">
-
+<div class="search-box relative flex items-center border border-amber-500/15 rounded-full bg-white/[.025] transition-all">
+<input id="searchInput" oninput="handleSearch()" type="text" placeholder="Search the private collection..." class="w-full bg-transparent py-3 pl-5 pr-12 text-xs text-white placeholder-slate-600 focus:outline-none">
+<button class="absolute right-2 w-8 h-8 rounded-full bg-amber-500/10 text-amber-400 hover:bg-amber-400 hover:text-black transition-all">
 <i class="fa-solid fa-magnifying-glass text-xs"></i>
-
 </button>
-
+</div>
 </div>
 
-</div>
-
-
-<button onclick="toggleCart()"
-class="flex items-center gap-2.5
-border border-amber-500/20
-bg-white/[.025] hover:bg-amber-500/10
-px-4 py-2.5 rounded-full transition-all">
-
+<button onclick="toggleCart()" class="flex items-center gap-2.5 border border-amber-500/20 bg-white/[.025] hover:bg-amber-500/10 px-4 py-2.5 rounded-full transition-all">
 <i class="fa-solid fa-bag-shopping text-amber-400"></i>
-
-<span class="hidden sm:block font-cinzel
-text-[9px] tracking-[.2em]">
-
-VAULT
-
-</span>
-
-<span id="cartBadge"
-class="w-4 h-4 rounded-full bg-amber-400
-text-black text-[8px] font-black
-flex items-center justify-center">
-
-0
-
-</span>
-
+<span class="hidden sm:block font-cinzel text-[9px] tracking-[.2em]">VAULT</span>
+<span id="cartBadge" class="w-4 h-4 rounded-full bg-amber-400 text-black text-[8px] font-black flex items-center justify-center">0</span>
 </button>
 
 </div>
-
 </div>
-
 </header>
 
-
 <!-- =========================================================
-     HERO
+     HERO (GAP FIXED)
 ========================================================= -->
 
-<section class="relative max-w-7xl mx-auto px-5
-pt-20 pb-16 overflow-hidden">
+<section class="relative max-w-7xl mx-auto px-5 pt-8 pb-10 overflow-hidden text-center">
+<div class="hero-orbit hidden lg:block left-1/2 top-10 -translate-x-1/2 pointer-events-none"></div>
 
-<div class="hero-orbit hidden lg:block
-left-1/2 top-16 -translate-x-1/2 pointer-events-none"></div>
-
-<div class="relative z-10 text-center reveal">
-
-<div class="inline-flex items-center gap-3
-border border-amber-500/20
-bg-amber-500/[.04]
-px-4 py-2 rounded-full mb-7">
-
-<span class="w-1.5 h-1.5 rounded-full
-bg-amber-400 animate-pulse"></span>
-
-<span class="text-[8px] uppercase
-tracking-[.35em] text-amber-300">
-
-THE PRIVATE COLLECTION · 2026
-
-</span>
-
+<div class="relative z-10 reveal">
+<div class="inline-flex items-center gap-2 border border-amber-500/20 bg-amber-500/[.04] px-4 py-1.5 rounded-full mb-5">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+<span class="text-[8px] uppercase tracking-[.35em] text-amber-300">THE PRIVATE COLLECTION · 2026</span>
 </div>
 
-
-<h1 class="hero-title font-cinzel
-font-bold text-4xl sm:text-6xl lg:text-7xl
-tracking-wide leading-tight">
-
-THE ART OF<br>
-PRIVATE LUXURY
-
+<h1 class="hero-title font-cinzel font-bold text-3xl sm:text-6xl lg:text-7xl tracking-wide leading-tight">
+THE ART OF<br>PRIVATE LUXURY
 </h1>
 
-
-<p class="max-w-2xl mx-auto mt-6
-text-xs sm:text-sm text-slate-400
-leading-7 font-light">
-
-A private digital maison curated for collectors
-who demand exceptional materials, extraordinary
-craftsmanship and absolute discretion.
-
+<p class="max-w-2xl mx-auto mt-4 text-xs sm:text-sm text-slate-400 leading-6 font-light">
+A private digital maison curated for collectors who demand exceptional materials, extraordinary craftsmanship and absolute discretion.
 </p>
 
-
-<div class="flex justify-center gap-3 mt-8">
-
-<a href="#collection"
-class="gold-btn px-7 py-3.5 rounded-full
-font-cinzel text-[9px] tracking-[.25em]">
-
-ENTER COLLECTION
-
-</a>
-
-<button onclick="toggleConcierge()"
-class="border border-white/10
-bg-white/[.025] px-7 py-3.5
-rounded-full font-cinzel text-[9px]
-tracking-[.25em] hover:border-amber-500/40
-transition-all">
-
-PRIVATE CONCIERGE
-
-</button>
-
+<div class="flex justify-center gap-3 mt-6">
+<a href="#collection" class="gold-btn px-6 py-3 rounded-full font-cinzel text-[9px] tracking-[.25em]">ENTER COLLECTION</a>
+<button onclick="toggleConcierge()" class="border border-white/10 bg-white/[.025] px-6 py-3 rounded-full font-cinzel text-[9px] tracking-[.25em] hover:border-amber-500/40 transition-all">PRIVATE CONCIERGE</button>
 </div>
-
 </div>
-
 </section>
-
 
 <!-- =========================================================
      COLLECTION
 ========================================================= -->
 
-<main id="collection"
-class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
-
-<div class="gold-line mb-10"></div>
-
+<main id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+<div class="gold-line mb-8"></div>
 
 <!-- CATEGORY BAR -->
-
-<div class="flex gap-2 overflow-x-auto pb-5 hide-scroll
-justify-start lg:justify-center">
-
-<button onclick="filterCategory('All')"
-class="category-btn px-5 py-2.5 rounded-full
-border border-amber-500/35 bg-amber-500/10
-text-amber-300 text-[9px] font-bold
-tracking-[.2em] uppercase whitespace-nowrap">
-
-ALL COLLECTION
-
-</button>
-
-<button onclick="filterCategory('Timepieces')"
-class="category-btn px-5 py-2.5 rounded-full
-border border-white/10 bg-white/[.025]
-text-slate-400 text-[9px] font-bold
-tracking-[.2em] uppercase whitespace-nowrap">
-
-TIMEPIECES
-
-</button>
-
-<button onclick="filterCategory('Audio')"
-class="category-btn px-5 py-2.5 rounded-full
-border border-white/10 bg-white/[.025]
-text-slate-400 text-[9px] font-bold
-tracking-[.2em] uppercase whitespace-nowrap">
-
-AUDIO
-
-</button>
-
-<button onclick="filterCategory('Grooming')"
-class="category-btn px-5 py-2.5 rounded-full
-border border-white/10 bg-white/[.025]
-text-slate-400 text-[9px] font-bold
-tracking-[.2em] uppercase whitespace-nowrap">
-
-GROOMING
-
-</button>
-
-<button onclick="filterCategory('Leather')"
-class="category-btn px-5 py-2.5 rounded-full
-border border-white/10 bg-white/[.025]
-text-slate-400 text-[9px] font-bold
-tracking-[.2em] uppercase whitespace-nowrap">
-
-LEATHER
-
-</button>
-
-<button onclick="filterCategory('Apparel')"
-class="category-btn px-5 py-2.5 rounded-full
-border border-white/10 bg-white/[.025]
-text-slate-400 text-[9px] font-bold
-tracking-[.2em] uppercase whitespace-nowrap">
-
-APPAREL
-
-</button>
-
+<div class="flex gap-2 overflow-x-auto pb-5 hide-scroll justify-start lg:justify-center">
+<button onclick="filterCategory('All')" class="category-btn px-5 py-2.5 rounded-full border border-amber-500/35 bg-amber-500/10 text-amber-300 text-[9px] font-bold tracking-[.2em] uppercase whitespace-nowrap">ALL COLLECTION</button>
+<button onclick="filterCategory('Timepieces')" class="category-btn px-5 py-2.5 rounded-full border border-white/10 bg-white/[.025] text-slate-400 text-[9px] font-bold tracking-[.2em] uppercase whitespace-nowrap">TIMEPIECES</button>
+<button onclick="filterCategory('Audio')" class="category-btn px-5 py-2.5 rounded-full border border-white/10 bg-white/[.025] text-slate-400 text-[9px] font-bold tracking-[.2em] uppercase whitespace-nowrap">AUDIO</button>
+<button onclick="filterCategory('Grooming')" class="category-btn px-5 py-2.5 rounded-full border border-white/10 bg-white/[.025] text-slate-400 text-[9px] font-bold tracking-[.2em] uppercase whitespace-nowrap">GROOMING</button>
+<button onclick="filterCategory('Leather')" class="category-btn px-5 py-2.5 rounded-full border border-white/10 bg-white/[.025] text-slate-400 text-[9px] font-bold tracking-[.2em] uppercase whitespace-nowrap">LEATHER</button>
+<button onclick="filterCategory('Apparel')" class="category-btn px-5 py-2.5 rounded-full border border-white/10 bg-white/[.025] text-slate-400 text-[9px] font-bold tracking-[.2em] uppercase whitespace-nowrap">APPAREL</button>
 </div>
-
 
 <!-- FEATURE BANNER -->
-
-<div class="glass rounded-3xl p-6 sm:p-9
-mb-10 relative overflow-hidden reveal">
-
-<div class="absolute -right-20 -top-20
-w-64 h-64 rounded-full
-bg-amber-400/[.04] blur-3xl"></div>
-
-<div class="relative z-10 flex flex-col
-md:flex-row justify-between gap-6">
-
+<div class="glass rounded-3xl p-6 sm:p-9 mb-10 relative overflow-hidden reveal">
+<div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-amber-400/[.04] blur-3xl"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between gap-6">
 <div>
-
-<span class="text-[8px] font-black
-uppercase tracking-[.35em] text-amber-400">
-
-VAULT ALLOCATION 2026
-
-</span>
-
-<h2 class="font-cinzel text-xl sm:text-2xl
-font-bold mt-2">
-
-Objects Worth Owning.
-
-</h2>
-
-<p class="text-xs text-slate-500 mt-2
-max-w-xl leading-6">
-
-Individually selected pieces presented
-through the ÉLVARA private client vault.
-
-</p>
-
+<span class="text-[8px] font-black uppercase tracking-[.35em] text-amber-400">VAULT ALLOCATION 2026</span>
+<h2 class="font-cinzel text-xl sm:text-2xl font-bold mt-2">Objects Worth Owning.</h2>
+<p class="text-xs text-slate-500 mt-2 max-w-xl leading-6">Individually selected pieces presented through the ÉLVARA private client vault.</p>
 </div>
-
 <div class="flex items-center gap-7">
-
 <div>
-
-<span class="block text-[8px]
-text-slate-600 uppercase tracking-widest">
-
-COLLECTION
-
-</span>
-
-<strong class="font-cinzel text-xl text-amber-400">
-
-80
-
-</strong>
-
+<span class="block text-[8px] text-slate-600 uppercase tracking-widest">COLLECTION</span>
+<strong class="font-cinzel text-xl text-amber-400">80</strong>
 </div>
-
 <div>
-
-<span class="block text-[8px]
-text-slate-600 uppercase tracking-widest">
-
-CONCIERGE
-
-</span>
-
-<strong class="font-cinzel text-xl">
-
-24/7
-
-</strong>
-
+<span class="block text-[8px] text-slate-600 uppercase tracking-widest">CONCIERGE</span>
+<strong class="font-cinzel text-xl">24/7</strong>
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 
 <!-- PRODUCTS -->
-
-<div id="productsGrid"
-class="grid grid-cols-2 lg:grid-cols-4
-gap-3 sm:gap-5">
-
-</div>
-
+<div id="productsGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5"></div>
 </main>
-
 
 <!-- =========================================================
      FOOTER
 ========================================================= -->
 
 <footer class="glass border-t border-amber-500/10 py-12">
-
-<div class="max-w-7xl mx-auto px-5">
-
-<div class="text-center">
-
-<div class="font-cinzel text-amber-400
-tracking-[.3em] text-sm">
-
-ÉLVARA PRIVÉ
-
-</div>
-
-<p class="text-[8px] text-slate-600
-uppercase tracking-[.35em] mt-2">
-
-Private Luxury Maison
-
-</p>
-
+<div class="max-w-7xl mx-auto px-5 text-center">
+<div class="font-cinzel text-amber-400 tracking-[.3em] text-sm">ÉLVARA PRIVÉ</div>
+<p class="text-[8px] text-slate-600 uppercase tracking-[.35em] mt-2">Private Luxury Maison</p>
 <div class="gold-line my-8"></div>
-
-<p class="text-[9px] text-slate-600">
-
-© 2026 ÉLVARA PRIVÉ · PRIVATE CLIENT GROUP
-
-</p>
-
+<p class="text-[9px] text-slate-600">© 2026 ÉLVARA PRIVÉ · PRIVATE CLIENT GROUP</p>
 </div>
-
-</div>
-
 </footer>
-
 
 <!-- =========================================================
      QUICK VIEW
 ========================================================= -->
 
-<div id="quickViewModal"
-class="fixed inset-0 z-[100]
-hidden items-center justify-center
-p-4 bg-black/85 backdrop-blur-2xl modal-bg">
-
-<div class="modal-panel glass rounded-3xl
-max-w-3xl w-full max-h-[92vh]
-overflow-y-auto p-5 sm:p-7 relative">
-
-<button onclick="closeQuickView()"
-class="absolute right-5 top-5 w-9 h-9
-rounded-full bg-white/5
-text-slate-400 hover:text-white
-hover:bg-amber-500/20 z-20">
-
+<div id="quickViewModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/85 backdrop-blur-2xl modal-bg">
+<div class="modal-panel glass rounded-3xl max-w-3xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-7 relative">
+<button onclick="closeQuickView()" class="absolute right-5 top-5 w-9 h-9 rounded-full bg-white/5 text-slate-400 hover:text-white hover:bg-amber-500/20 z-20">
 <i class="fa-solid fa-xmark"></i>
-
 </button>
-
 <div id="quickViewContent"></div>
-
 </div>
-
 </div>
-
 
 <!-- =========================================================
      CART
 ========================================================= -->
 
-<div id="cartModal"
-class="fixed inset-0 z-[110]
-hidden bg-black/75 backdrop-blur-xl">
-
-<div class="cart-drawer absolute right-0 top-0
-h-full w-full sm:max-w-md
-glass border-l border-amber-500/20
-flex flex-col">
-
-<div class="p-5 border-b border-white/10
-flex items-center justify-between">
-
+<div id="cartModal" class="fixed inset-0 z-[110] hidden bg-black/75 backdrop-blur-xl">
+<div class="cart-drawer absolute right-0 top-0 h-full w-full sm:max-w-md glass border-l border-amber-500/20 flex flex-col">
+<div class="p-5 border-b border-white/10 flex items-center justify-between">
 <div>
-
-<div class="font-cinzel text-xs
-tracking-[.2em] text-amber-400">
-
-PRIVATE VAULT
-
+<div class="font-cinzel text-xs tracking-[.2em] text-amber-400">PRIVATE VAULT</div>
+<div class="text-[8px] text-slate-600 uppercase tracking-widest mt-1">Allocation Request</div>
+</div>
+<button onclick="toggleCart()" class="text-slate-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
 </div>
 
-<div class="text-[8px] text-slate-600
-uppercase tracking-widest mt-1">
-
-Allocation Request
-
-</div>
-
-</div>
-
-<button onclick="toggleCart()"
-class="text-slate-500 hover:text-white">
-
-<i class="fa-solid fa-xmark"></i>
-
-</button>
-
-</div>
-
-
-<div id="cartItems"
-class="flex-1 overflow-y-auto p-5 space-y-3">
-
-</div>
-
+<div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
 
 <div class="p-5 border-t border-white/10">
-
 <div class="flex justify-between mb-4">
-
-<span class="text-[9px] uppercase
-tracking-widest text-slate-500">
-
-TOTAL VALUATION
-
-</span>
-
-<strong id="cartTotal"
-class="font-mono text-amber-400">
-
-Rs. 0
-
-</strong>
-
+<span class="text-[9px] uppercase tracking-widest text-slate-500">TOTAL VALUATION</span>
+<strong id="cartTotal" class="font-mono text-amber-400">Rs. 0</strong>
 </div>
 
-
-<form onsubmit="processOrder(event)"
-class="space-y-3">
-
-<input id="custName"
-required
-placeholder="Private Client Name"
-class="w-full bg-white/[.025]
-border border-white/10 rounded-xl
-p-3 text-xs text-white
-focus:outline-none focus:border-amber-400">
-
-<input id="custPhone"
-required
-placeholder="Direct Contact / WhatsApp"
-class="w-full bg-white/[.025]
-border border-white/10 rounded-xl
-p-3 text-xs text-white
-focus:outline-none focus:border-amber-400">
-
-<textarea id="custAddress"
-required
-placeholder="Private Delivery Address"
-class="w-full bg-white/[.025]
-border border-white/10 rounded-xl
-p-3 text-xs text-white h-20
-resize-none focus:outline-none
-focus:border-amber-400"></textarea>
-
-<button
-class="gold-btn w-full rounded-xl
-py-4 font-cinzel text-[9px]
-tracking-[.25em]">
-
-REQUEST PRIVATE ALLOCATION
-
-</button>
-
+<form onsubmit="processOrder(event)" class="space-y-3">
+<input id="custName" required placeholder="Private Client Name" class="w-full bg-white/[.025] border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400">
+<input id="custPhone" required placeholder="Direct Contact / WhatsApp" class="w-full bg-white/[.025] border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400">
+<textarea id="custAddress" required placeholder="Private Delivery Address" class="w-full bg-white/[.025] border border-white/10 rounded-xl p-3 text-xs text-white h-20 resize-none focus:outline-none focus:border-amber-400"></textarea>
+<button class="gold-btn w-full rounded-xl py-4 font-cinzel text-[9px] tracking-[.25em]">REQUEST PRIVATE ALLOCATION</button>
 </form>
-
 </div>
-
 </div>
-
 </div>
-
 
 <script>
 
-/* =========================================================
-   PRODUCT DATABASE — 80 PRODUCTS
-========================================================= */
-
 const products = [
-
-/* TIMEPIECES */
-
-{
-id:1,
-title:"ÉLVARA Celestial Tourbillon",
-category:"Timepieces",
-price:185000,
-status:"Piece Unique",
-desc:"Hand-finished flying tourbillon in dark titanium.",
-img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200"
-},
-
-{
-id:2,
-title:"Nocturne Grand Complication",
-category:"Timepieces",
-price:245000,
-status:"Limited 08",
-desc:"Black mechanical masterpiece with exhibition caseback.",
-img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=1200"
-},
-
-{
-id:3,
-title:"Imperial Rose Gold Chronograph",
-category:"Timepieces",
-price:198000,
-status:"Collector Edition",
-desc:"Rose gold chronograph with hand-finished detailing.",
-img:"https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200"
-},
-
-{
-id:4,
-title:"Obsidian Automatic Skeleton",
-category:"Timepieces",
-price:165000,
-status:"Vault Edition",
-desc:"Open-work automatic movement beneath sapphire crystal.",
-img:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1200"
-},
-
-{
-id:5,
-title:"Monarch Perpetual Calendar",
-category:"Timepieces",
-price:285000,
-status:"Private Allocation",
-desc:"Complicated calendar mechanism in a polished case.",
-img:"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1200"
-},
-
-{
-id:6,
-title:"Aurelius Moonphase",
-category:"Timepieces",
-price:155000,
-status:"Limited Series",
-desc:"Moonphase display with deep midnight dial.",
-img:"https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=1200"
-},
-
-{
-id:7,
-title:"Royal Eclipse GMT",
-category:"Timepieces",
-price:175000,
-status:"Travel Collection",
-desc:"Dual-time mechanical watch designed for international collectors.",
-img:"https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=1200"
-},
-
-{
-id:8,
-title:"Titanium Sovereign Chronometer",
-category:"Timepieces",
-price:210000,
-status:"Certified",
-desc:"Precision chronometer with lightweight titanium architecture.",
-img:"https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1200"
-},
-
-/* AUDIO */
-
-{
-id:9,
-title:"AETHER Planar Master Headphones",
-category:"Audio",
-price:68000,
-status:"Reference Edition",
-desc:"Open-back planar magnetic headphones with walnut housings.",
-img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200"
-},
-
-{
-id:10,
-title:"ÉLVARA Obsidian Wireless Headphones",
-category:"Audio",
-price:54000,
-status:"Private Edition",
-desc:"Premium wireless headphones with leather memory cushions.",
-img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1200"
-},
-
-{
-id:11,
-title:"Monarch Reference IEM",
-category:"Audio",
-price:72000,
-status:"Hand Tuned",
-desc:"Luxury in-ear monitors engineered for reference listening.",
-img:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=1200"
-},
-
-{
-id:12,
-title:"Aurelius Walnut Turntable",
-category:"Audio",
-price:125000,
-status:"Atelier Built",
-desc:"Hand-finished walnut turntable for private listening rooms.",
-img:"https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=1200"
-},
-
-{
-id:13,
-title:"Noir Reference Speaker Pair",
-category:"Audio",
-price:195000,
-status:"Audiophile Vault",
-desc:"Statement speakers with premium wooden cabinets.",
-img:"https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1200"
-},
-
-{
-id:14,
-title:"Titanium Studio DAC",
-category:"Audio",
-price:85000,
-status:"Studio Grade",
-desc:"Precision digital-to-analogue audio component.",
-img:"https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=1200"
-},
-
-{
-id:15,
-title:"Royal Concert Wireless Speaker",
-category:"Audio",
-price:92000,
-status:"Maison Edition",
-desc:"Luxury statement speaker designed for refined interiors.",
-img:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=1200"
-},
-
-{
-id:16,
-title:"Aether Silver Reference Cable",
-category:"Audio",
-price:32000,
-status:"Hand Braided",
-desc:"Premium silver-plated braided audio cable.",
-img:"https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1200"
-},
-
-/* GROOMING */
-
-{
-id:17,
-title:"Damascene Steel Double Edge Razor",
-category:"Grooming",
-price:24500,
-status:"Hand Forged",
-desc:"Luxury Damascus steel razor with brass detailing.",
-img:"https://images.unsplash.com/photo-1585232351009-aa87416fca90?w=1200"
-},
-
-{
-id:18,
-title:"Titanium Precision Clipper",
-category:"Grooming",
-price:38000,
-status:"Barber Edition",
-desc:"Professional titanium grooming machine.",
-img:"https://images.unsplash.com/photo-1621607512214-68297480165e?w=1200"
-},
-
-{
-id:19,
-title:"ÉLVARA Royal Shaving Set",
-category:"Grooming",
-price:29000,
-status:"Gentleman's Set",
-desc:"Complete premium shaving ritual set.",
-img:"https://images.unsplash.com/photo-1621607512022-6aecc4fed814?w=1200"
-},
-
-{
-id:20,
-title:"Obsidian Grooming Box",
-category:"Grooming",
-price:42000,
-status:"Collector Box",
-desc:"Luxury grooming essentials presented in a hard case.",
-img:"https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1200"
-},
-
-{
-id:21,
-title:"Royal Oud Extrait",
-category:"Grooming",
-price:45000,
-status:"Limited Batch",
-desc:"Rich oud composition presented in crystal.",
-img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200"
-},
-
-{
-id:22,
-title:"Noir Leather Perfume Vault",
-category:"Grooming",
-price:52000,
-status:"Private Reserve",
-desc:"Dark leather and amber fragrance in a luxury decanter.",
-img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1200"
-},
-
-{
-id:23,
-title:"Royal Hair & Beard Atelier Kit",
-category:"Grooming",
-price:27000,
-status:"Atelier Edition",
-desc:"Curated grooming tools in a leather presentation case.",
-img:"https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200"
-},
-
-{
-id:24,
-title:"ÉLVARA Crystal Fragrance Duo",
-category:"Grooming",
-price:58000,
-status:"Collector Duo",
-desc:"Two extrait fragrances presented in crystal bottles.",
-img:"https://images.unsplash.com/photo-1619994403073-2b8f3d2f1b9b?w=1200"
-},
-
-/* LEATHER */
-
-{
-id:25,
-title:"Nile Crocodile Passport Vault",
-category:"Leather",
-price:32000,
-status:"Bespoke",
-desc:"Matte black exotic leather passport wallet.",
-img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=1200"
-},
-
-{
-id:26,
-title:"Italian Full-Grain Executive Briefcase",
-category:"Leather",
-price:76000,
-status:"Executive",
-desc:"Hand-crafted Italian leather briefcase.",
-img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200"
-},
-
-{
-id:27,
-title:"Royal Leather Weekender",
-category:"Leather",
-price:68000,
-status:"Travel Atelier",
-desc:"Luxury weekend travel bag with structured silhouette.",
-img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200"
-},
-
-{
-id:28,
-title:"Obsidian Card Holder",
-category:"Leather",
-price:18000,
-status:"Minimal Collection",
-desc:"Slim luxury leather card holder.",
-img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=1200"
-},
-
-{
-id:29,
-title:"Crocodile Executive Portfolio",
-category:"Leather",
-price:92000,
-status:"Private Client",
-desc:"Statement portfolio crafted from exotic leather.",
-img:"https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=1200"
-},
-
-{
-id:30,
-title:"Aurelius Leather Belt",
-category:"Leather",
-price:21000,
-status:"Hand Finished",
-desc:"Premium Italian leather belt with metal buckle.",
-img:"https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=1200"
-},
-
-{
-id:31,
-title:"Monarch Leather Travel Case",
-category:"Leather",
-price:39000,
-status:"Travel Vault",
-desc:"Structured travel organizer in full-grain leather.",
-img:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=1200"
-},
-
-{
-id:32,
-title:"Noir Leather Document Case",
-category:"Leather",
-price:44000,
-status:"Executive Series",
-desc:"Slim document case for private correspondence.",
-img:"https://images.unsplash.com/photo-1591561954557-26941169b49e?w=1200"
-},
-
-/* APPAREL */
-
-{
-id:33,
-title:"500 GSM Cashmere Heavyweight Hoodie",
-category:"Apparel",
-price:28000,
-status:"Private Atelier",
-desc:"Heavyweight cotton cashmere blend hoodie.",
-img:"https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200"
-},
-
-{
-id:34,
-title:"ÉLVARA Italian Wool Overcoat",
-category:"Apparel",
-price:68000,
-status:"Made To Measure",
-desc:"Structured Italian wool overcoat.",
-img:"https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=1200"
-},
-
-{
-id:35,
-title:"Royal Cashmere Turtleneck",
-category:"Apparel",
-price:39000,
-status:"Cashmere Atelier",
-desc:"Ultra-soft cashmere knit for private evenings.",
-img:"https://images.unsplash.com/photo-1608234807905-4466023792f5?w=1200"
-},
-
-{
-id:36,
-title:"Obsidian Tailored Trousers",
-category:"Apparel",
-price:24000,
-status:"Tailored",
-desc:"Italian-cut formal trousers.",
-img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=1200"
-},
-
-{
-id:37,
-title:"Monarch Silk Evening Shirt",
-category:"Apparel",
-price:31000,
-status:"Silk Atelier",
-desc:"Luxury silk shirt with relaxed couture cut.",
-img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=1200"
-},
-
-{
-id:38,
-title:"Royal Suede Bomber",
-category:"Apparel",
-price:52000,
-status:"Limited",
-desc:"Premium suede bomber jacket.",
-img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1200"
-},
-
-{
-id:39,
-title:"Aurelius Merino Polo",
-category:"Apparel",
-price:22000,
-status:"Maison Essential",
-desc:"Fine merino wool polo.",
-img:"https://images.unsplash.com/photo-1625910513413-5fc45f2e2d2c?w=1200"
-},
-
-{
-id:40,
-title:"Noir Cashmere Scarf",
-category:"Apparel",
-price:19000,
-status:"Winter Atelier",
-desc:"Ultra-fine cashmere scarf.",
-img:"https://images.unsplash.com/photo-1601924928374-9d8d2a5a6f9a?w=1200"
-},
-
-/* EXTRA COLLECTION */
-
-{
-id:41,
-title:"Royal Sapphire Cufflinks",
-category:"Leather",
-price:26000,
-status:"Formal Collection",
-desc:"Luxury cufflinks with sapphire-inspired detailing.",
-img:"https://images.unsplash.com/photo-1627293509201-cd0c1e4f5e9a?w=1200"
-},
-
-{
-id:42,
-title:"Obsidian Executive Pen",
-category:"Leather",
-price:14500,
-status:"Writing Atelier",
-desc:"Premium executive writing instrument.",
-img:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=1200"
-},
-
-{
-id:43,
-title:"Titanium Signature Key Case",
-category:"Leather",
-price:12000,
-status:"Maison Essential",
-desc:"Compact titanium and leather key case.",
-img:"https://images.unsplash.com/photo-1612817288484-6f916006741a?w=1200"
-},
-
-{
-id:44,
-title:"Royal Travel Watch Roll",
-category:"Leather",
-price:18000,
-status:"Collector Travel",
-desc:"Luxury watch travel case.",
-img:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1200"
-},
-
-{
-id:45,
-title:"Aurelius Desk Organizer",
-category:"Leather",
-price:23000,
-status:"Office Collection",
-desc:"Leather desk organizer for executive spaces.",
-img:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200"
-},
-
-{
-id:46,
-title:"Noir Luxury Notebook",
-category:"Leather",
-price:9000,
-status:"Private Notes",
-desc:"Premium bound notebook.",
-img:"https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200"
-},
-
-{
-id:47,
-title:"ÉLVARA Gold Mechanical Keyboard",
-category:"Audio",
-price:42000,
-status:"Bespoke Tech",
-desc:"Solid aluminum mechanical keyboard.",
-img:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1200"
-},
-
-{
-id:48,
-title:"Obsidian Studio Microphone",
-category:"Audio",
-price:47000,
-status:"Studio Edition",
-desc:"Premium studio microphone.",
-img:"https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1200"
-},
-
-{
-id:49,
-title:"Royal Vinyl Listening Set",
-category:"Audio",
-price:62000,
-status:"Collector Audio",
-desc:"Curated vinyl listening setup.",
-img:"https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?w=1200"
-},
-
-{
-id:50,
-title:"Titanium Wireless DAC",
-category:"Audio",
-price:37000,
-status:"Portable Reference",
-desc:"Compact high-end audio DAC.",
-img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1200"
-},
-
-{
-id:51,
-title:"Royal Automatic Diver",
-category:"Timepieces",
-price:135000,
-status:"Ocean Series",
-desc:"Luxury automatic diver watch.",
-img:"https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200"
-},
-
-{
-id:52,
-title:"Noir Dress Chronograph",
-category:"Timepieces",
-price:145000,
-status:"Formal Series",
-desc:"Elegant dress chronograph.",
-img:"https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=1200"
-},
-
-{
-id:53,
-title:"Aurelius Gold Skeleton",
-category:"Timepieces",
-price:310000,
-status:"Masterpiece",
-desc:"Skeleton mechanical movement with gold architecture.",
-img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=1200"
-},
-
-{
-id:54,
-title:"Monarch Racing Chronograph",
-category:"Timepieces",
-price:172000,
-status:"Motorsport Edition",
-desc:"Sport chronograph inspired by racing instruments.",
-img:"https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1200"
-},
-
-{
-id:55,
-title:"Royal GMT Master",
-category:"Timepieces",
-price:188000,
-status:"Traveler Edition",
-desc:"Automatic GMT travel timepiece.",
-img:"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1200"
-},
-
-{
-id:56,
-title:"ÉLVARA Moonlit Automatic",
-category:"Timepieces",
-price:160000,
-status:"Night Collection",
-desc:"Midnight dial with polished indices.",
-img:"https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=1200"
-},
-
-{
-id:57,
-title:"Noir Ceramic Chronometer",
-category:"Timepieces",
-price:205000,
-status:"Black Edition",
-desc:"High-performance ceramic chronometer.",
-img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200"
-},
-
-{
-id:58,
-title:"Imperial Gold Timepiece",
-category:"Timepieces",
-price:275000,
-status:"Private Reserve",
-desc:"Statement gold luxury watch.",
-img:"https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200"
-},
-
-{
-id:59,
-title:"Royal Oud Intense",
-category:"Grooming",
-price:49000,
-status:"Extrait",
-desc:"Deep oud fragrance with amber undertones.",
-img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200"
-},
-
-{
-id:60,
-title:"Noir Amber Parfum",
-category:"Grooming",
-price:43000,
-status:"Private Reserve",
-desc:"Dark amber fragrance composition.",
-img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1200"
-},
-
-{
-id:61,
-title:"Maison Crystal Cologne",
-category:"Grooming",
-price:38000,
-status:"Crystal Edition",
-desc:"Fresh luxury fragrance in crystal glass.",
-img:"https://images.unsplash.com/photo-1619994403073-2b8f3d2f1b9b?w=1200"
-},
-
-{
-id:62,
-title:"Royal Shaving Brush",
-category:"Grooming",
-price:11000,
-status:"Hand Finished",
-desc:"Premium shaving brush with luxury handle.",
-img:"https://images.unsplash.com/photo-1621607512022-6aecc4fed814?w=1200"
-},
-
-{
-id:63,
-title:"Titanium Beard Trimmer",
-category:"Grooming",
-price:26000,
-status:"Precision Series",
-desc:"Precision titanium grooming tool.",
-img:"https://images.unsplash.com/photo-1621607512214-68297480165e?w=1200"
-},
-
-{
-id:64,
-title:"Obsidian Grooming Mirror",
-category:"Grooming",
-price:15000,
-status:"Atelier",
-desc:"Statement grooming mirror.",
-img:"https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1200"
-},
-
-{
-id:65,
-title:"Royal Leather Messenger",
-category:"Leather",
-price:54000,
-status:"Executive Travel",
-desc:"Structured Italian leather messenger bag.",
-img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200"
-},
-
-{
-id:66,
-title:"Noir Leather Laptop Sleeve",
-category:"Leather",
-price:21000,
-status:"Executive",
-desc:"Minimal premium laptop sleeve.",
-img:"https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=1200"
-},
-
-{
-id:67,
-title:"Crocodile Coin Case",
-category:"Leather",
-price:16000,
-status:"Exotic Collection",
-desc:"Small exotic leather coin case.",
-img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=1200"
-},
-
-{
-id:68,
-title:"Royal Leather Duffle",
-category:"Leather",
-price:73000,
-status:"Travel Vault",
-desc:"Large premium leather travel duffle.",
-img:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=1200"
-},
-
-{
-id:69,
-title:"ÉLVARA Cashmere Crewneck",
-category:"Apparel",
-price:33000,
-status:"Cashmere",
-desc:"Premium cashmere crewneck.",
-img:"https://images.unsplash.com/photo-1608234807905-4466023792f5?w=1200"
-},
-
-{
-id:70,
-title:"Monarch Italian Blazer",
-category:"Apparel",
-price:61000,
-status:"Tailored",
-desc:"Italian tailored luxury blazer.",
-img:"https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=1200"
-},
-
-{
-id:71,
-title:"Noir Silk Lounge Set",
-category:"Apparel",
-price:42000,
-status:"Private Lounge",
-desc:"Luxury silk lounge ensemble.",
-img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=1200"
-},
-
-{
-id:72,
-title:"Royal Suede Chelsea Boots",
-category:"Apparel",
-price:39000,
-status:"Italian Footwear",
-desc:"Premium suede Chelsea boots.",
-img:"https://images.unsplash.com/photo-1638247025967-b4e38f787b76?w=1200"
-},
-
-{
-id:73,
-title:"Aurelius Cashmere Hoodie",
-category:"Apparel",
-price:36000,
-status:"Luxury Knit",
-desc:"Ultra-soft luxury cashmere hoodie.",
-img:"https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200"
-},
-
-{
-id:74,
-title:"Imperial Wool Trousers",
-category:"Apparel",
-price:27000,
-status:"Tailored",
-desc:"Fine wool tailored trousers.",
-img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=1200"
-},
-
-{
-id:75,
-title:"Noir Velvet Dinner Jacket",
-category:"Apparel",
-price:58000,
-status:"Evening Collection",
-desc:"Luxury velvet dinner jacket.",
-img:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200"
-},
-
-{
-id:76,
-title:"Royal Silk Pocket Square",
-category:"Apparel",
-price:8500,
-status:"Formal Atelier",
-desc:"Fine silk pocket square.",
-img:"https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=1200"
-},
-
-{
-id:77,
-title:"ÉLVARA Titanium Fountain Pen",
-category:"Leather",
-price:17500,
-status:"Collector Writing",
-desc:"Precision titanium fountain pen.",
-img:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=1200"
-},
-
-{
-id:78,
-title:"Obsidian Valet Tray",
-category:"Leather",
-price:13500,
-status:"Desk Collection",
-desc:"Luxury leather valet tray.",
-img:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200"
-},
-
-{
-id:79,
-title:"Royal Travel Jewelry Case",
-category:"Leather",
-price:25000,
-status:"Travel Collection",
-desc:"Compact luxury travel jewelry case.",
-img:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=1200"
-},
-
-{
-id:80,
-title:"Aurelius Private Vault Box",
-category:"Leather",
-price:48000,
-status:"Collector Vault",
-desc:"Luxury presentation box for private collections.",
-img:"https://images.unsplash.com/photo-1591561954557-26941169b49e?w=1200"
-}
-
+{id:1,title:"ÉLVARA Celestial Tourbillon",category:"Timepieces",price:185000,status:"Piece Unique",desc:"Hand-finished flying tourbillon in dark titanium.",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200"},
+{id:2,title:"Nocturne Grand Complication",category:"Timepieces",price:245000,status:"Limited 08",desc:"Black mechanical masterpiece with exhibition caseback.",img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=1200"},
+{id:3,title:"Imperial Rose Gold Chronograph",category:"Timepieces",price:198000,status:"Collector Edition",desc:"Rose gold chronograph with hand-finished detailing.",img:"https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200"},
+{id:4,title:"Obsidian Automatic Skeleton",category:"Timepieces",price:165000,status:"Vault Edition",desc:"Open-work automatic movement beneath sapphire crystal.",img:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1200"},
+{id:5,title:"Monarch Perpetual Calendar",category:"Timepieces",price:285000,status:"Private Allocation",desc:"Complicated calendar mechanism in a polished case.",img:"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1200"},
+{id:6,title:"Aurelius Moonphase",category:"Timepieces",price:155000,status:"Limited Series",desc:"Moonphase display with deep midnight dial.",img:"https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=1200"},
+{id:7,title:"Royal Eclipse GMT",category:"Timepieces",price:175000,status:"Travel Collection",desc:"Dual-time mechanical watch designed for international collectors.",img:"https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=1200"},
+{id:8,title:"Titanium Sovereign Chronometer",category:"Timepieces",price:210000,status:"Certified",desc:"Precision chronometer with lightweight titanium architecture.",img:"https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1200"},
+{id:9,title:"AETHER Planar Master Headphones",category:"Audio",price:68000,status:"Reference Edition",desc:"Open-back planar magnetic headphones with walnut housings.",img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200"},
+{id:10,title:"ÉLVARA Obsidian Wireless Headphones",category:"Audio",price:54000,status:"Private Edition",desc:"Premium wireless headphones with leather memory cushions.",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1200"}
 ];
-
-
-/* =========================================================
-   STATE
-========================================================= */
 
 let cart=[];
 
-
-/* =========================================================
-   PARTICLES
-========================================================= */
-
 const particleContainer=document.getElementById("particles");
-
 for(let i=0;i<38;i++){
-
     const p=document.createElement("div");
-
     p.className="particle";
-
     p.style.left=Math.random()*100+"%";
     p.style.animationDuration=(8+Math.random()*15)+"s";
     p.style.animationDelay=(-Math.random()*15)+"s";
-
     particleContainer.appendChild(p);
-
 }
-
-
-/* =========================================================
-   LOADER
-========================================================= */
 
 window.addEventListener("load",()=>{
-
     setTimeout(()=>{
-
-        document
-        .getElementById("luxuryLoader")
-        .classList.add("loaded");
-
+        document.getElementById("luxuryLoader").classList.add("loaded");
         document.body.style.overflow="auto";
-
     },1800);
-
 });
-
-
-/* =========================================================
-   CURSOR
-========================================================= */
 
 const cursor=document.getElementById("cursorGlow");
-
 document.addEventListener("mousemove",(e)=>{
-
     cursor.style.left=e.clientX+"px";
     cursor.style.top=e.clientY+"px";
-
 });
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
 
 window.addEventListener("scroll",()=>{
-
-    document
-    .getElementById("navbar")
-    .classList.toggle("scrolled",window.scrollY>30);
-
+    document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>30);
 });
-
-
-/* =========================================================
-   RENDER
-========================================================= */
 
 function renderProducts(items){
-
     const grid=document.getElementById("productsGrid");
-
     grid.innerHTML="";
-
     if(!items.length){
-
-        grid.innerHTML=`
-
-        <div class="col-span-full text-center py-24">
-
-            <i class="fa-solid fa-gem
-            text-amber-400/30 text-3xl"></i>
-
-            <p class="font-cinzel text-sm
-            text-slate-500 mt-4">
-
-                No masterpiece found.
-
-            </p>
-
-        </div>
-
-        `;
-
+        grid.innerHTML=`<div class="col-span-full text-center py-24"><i class="fa-solid fa-gem text-amber-400/30 text-3xl"></i><p class="font-cinzel text-sm text-slate-500 mt-4">No masterpiece found.</p></div>`;
         return;
-
     }
-
-
     items.forEach((p,index)=>{
-
         const card=document.createElement("div");
-
-        card.className=
-        "product-card glass rounded-2xl p-2.5 sm:p-4 reveal";
-
-        card.style.transitionDelay=(index%8)*45+"ms";
-
-
+        card.className="product-card glass rounded-2xl p-2.5 sm:p-4 reveal";
         card.innerHTML=`
-
-        <div class="relative
-        h-44 sm:h-60 overflow-hidden
-        rounded-xl bg-black/50 cursor-pointer"
-        onclick="openQuickView(${p.id})">
-
-            <img
-            src="${p.img}"
-            alt="${p.title}"
-            loading="lazy"
-            class="product-image w-full h-full
-            object-cover">
-
+        <div class="relative h-44 sm:h-60 overflow-hidden rounded-xl bg-black/50 cursor-pointer" onclick="openQuickView(${p.id})">
+            <img src="${p.img}" alt="${p.title}" loading="lazy" class="product-image w-full h-full object-cover">
             <div class="image-overlay absolute inset-0"></div>
-
             <div class="shimmer"></div>
-
-            <span class="absolute top-2.5 left-2.5
-            text-[7px] sm:text-[8px]
-            font-bold text-amber-200
-            border border-amber-500/30
-            px-2 py-1 rounded-full
-            bg-black/65 backdrop-blur-md
-            uppercase tracking-widest">
-
-                ${p.status}
-
-            </span>
-
-            <button
-            onclick="event.stopPropagation();openQuickView(${p.id})"
-            class="absolute bottom-2.5 right-2.5
-            w-8 h-8 rounded-full
-            bg-black/55 backdrop-blur-xl
-            border border-white/10
-            text-white/70 hover:text-amber-400
-            transition-all">
-
-                <i class="fa-solid fa-expand text-[9px]"></i>
-
-            </button>
-
+            <span class="absolute top-2.5 left-2.5 text-[7px] sm:text-[8px] font-bold text-amber-200 border border-amber-500/30 px-2 py-1 rounded-full bg-black/65 backdrop-blur-md uppercase tracking-widest">${p.status}</span>
         </div>
-
-
         <div class="px-1 pt-3">
-
-            <span class="text-[7px] sm:text-[8px]
-            font-bold text-amber-400/70
-            uppercase tracking-[.2em]">
-
-                ${p.category}
-
-            </span>
-
-            <h3
-            onclick="openQuickView(${p.id})"
-            class="font-cinzel text-[10px]
-            sm:text-xs font-bold
-            text-white leading-relaxed
-            mt-1.5 line-clamp-2
-            hover:text-amber-400
-            cursor-pointer transition-colors">
-
-                ${p.title}
-
-            </h3>
-
-            <p class="hidden sm:block
-            text-[9px] text-slate-500
-            mt-2 line-clamp-2 leading-relaxed">
-
-                ${p.desc}
-
-            </p>
-
-
-            <div class="flex items-center
-            justify-between gap-2
-            border-t border-white/5
-            mt-3 pt-3">
-
-                <div>
-
-                    <span class="block text-[7px]
-                    uppercase tracking-widest
-                    text-slate-600">
-
-                        VALUATION
-
-                    </span>
-
-                    <strong class="text-[10px]
-                    sm:text-sm font-mono
-                    text-amber-400">
-
-                        Rs. ${p.price.toLocaleString()}
-
-                    </strong>
-
-                </div>
-
-
-                <button
-                onclick="addToCart(${p.id})"
-                class="gold-btn px-3 sm:px-4
-                py-2 rounded-lg
-                text-[7px] sm:text-[9px]
-                font-cinzel font-bold
-                tracking-widest">
-
-                    ACQUIRE
-
-                </button>
-
+            <span class="text-[7px] sm:text-[8px] font-bold text-amber-400/70 uppercase tracking-[.2em]">${p.category}</span>
+            <h3 onclick="openQuickView(${p.id})" class="font-cinzel text-[10px] sm:text-xs font-bold text-white leading-relaxed mt-1.5 line-clamp-2 hover:text-amber-400 cursor-pointer transition-colors">${p.title}</h3>
+            <div class="flex items-center justify-between gap-2 border-t border-white/5 mt-3 pt-3">
+                <div><span class="block text-[7px] uppercase tracking-widest text-slate-600">VALUATION</span><strong class="text-[10px] sm:text-sm font-mono text-amber-400">Rs. ${p.price.toLocaleString()}</strong></div>
+                <button onclick="addToCart(${p.id})" class="gold-btn px-3 sm:px-4 py-2 rounded-lg text-[7px] sm:text-[9px] font-cinzel font-bold tracking-widest">ACQUIRE</button>
             </div>
-
-        </div>
-
-        `;
-
-
+        </div>`;
         grid.appendChild(card);
-
-
-        setTimeout(()=>{
-
-            card.classList.add("visible");
-
-        },50+index*30);
-
-
-        /* 3D TILT */
-
-        card.addEventListener("mousemove",(e)=>{
-
-            if(window.innerWidth<768)return;
-
-            const rect=card.getBoundingClientRect();
-
-            const x=e.clientX-rect.left;
-            const y=e.clientY-rect.top;
-
-            const rotateY=((x/rect.width)-.5)*8;
-            const rotateX=-((y/rect.height)-.5)*8;
-
-            card.style.transform=
-            `perspective(900px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateY(-4px)`;
-
-        });
-
-
-        card.addEventListener("mouseleave",()=>{
-
-            card.style.transform="";
-
-        });
-
     });
-
 }
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
 
 function handleSearch(){
-
-    const q=document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
-
-    renderProducts(
-        products.filter(p=>
-            p.title.toLowerCase().includes(q) ||
-            p.category.toLowerCase().includes(q) ||
-            p.status.toLowerCase().includes(q)
-        )
-    );
-
+    const q=document.getElementById("searchInput").value.toLowerCase().trim();
+    renderProducts(products.filter(p=>p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)));
 }
-
-
-/* =========================================================
-   CATEGORY
-========================================================= */
 
 function filterCategory(category){
-
-    if(category==="All"){
-
-        renderProducts(products);
-
-    }else{
-
-        renderProducts(
-            products.filter(
-                p=>p.category===category
-            )
-        );
-
-    }
-
+    if(category==="All"){ renderProducts(products); }
+    else{ renderProducts(products.filter(p=>p.category===category)); }
 }
-
-
-/* =========================================================
-   QUICK VIEW
-========================================================= */
 
 function openQuickView(id){
-
     const p=products.find(x=>x.id===id);
-
     document.getElementById("quickViewContent").innerHTML=`
-
     <div class="grid md:grid-cols-2 gap-7">
-
-        <div>
-
-            <div class="relative h-72 sm:h-96
-            rounded-2xl overflow-hidden
-            border border-amber-500/15">
-
-                <img
-                src="${p.img}"
-                class="w-full h-full object-cover">
-
-                <div class="absolute inset-0
-                bg-gradient-to-t from-black/40
-                to-transparent"></div>
-
-            </div>
-
+        <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden border border-amber-500/15">
+            <img src="${p.img}" class="w-full h-full object-cover">
         </div>
-
-
         <div class="flex flex-col justify-between">
-
             <div>
-
-                <span class="text-[8px]
-                text-amber-400 uppercase
-                tracking-[.3em]">
-
-                    ${p.status}
-
-                </span>
-
-                <div class="text-[8px]
-                text-slate-600 uppercase
-                tracking-widest mt-2">
-
-                    ${p.category}
-
-                </div>
-
-                <h2 class="font-cinzel
-                text-xl sm:text-2xl
-                font-bold mt-3 leading-relaxed">
-
-                    ${p.title}
-
-                </h2>
-
-                <p class="text-xs text-slate-400
-                leading-7 mt-4">
-
-                    ${p.desc}
-
-                </p>
-
-
-                <div class="gold-line my-6"></div>
-
-
-                <div class="grid grid-cols-2 gap-3">
-
-                    <div class="bg-white/[.025]
-                    border border-white/5
-                    rounded-xl p-3">
-
-                        <span class="block text-[7px]
-                        uppercase tracking-widest
-                        text-slate-600">
-
-                            AUTHENTICITY
-
-                        </span>
-
-                        <span class="text-[9px]
-                        text-white">
-
-                            Maison Certified
-
-                        </span>
-
-                    </div>
-
-                    <div class="bg-white/[.025]
-                    border border-white/5
-                    rounded-xl p-3">
-
-                        <span class="block text-[7px]
-                        uppercase tracking-widest
-                        text-slate-600">
-
-                            DELIVERY
-
-                        </span>
-
-                        <span class="text-[9px]
-                        text-white">
-
-                            White-Glove
-
-                        </span>
-
-                    </div>
-
-                </div>
-
+                <span class="text-[8px] text-amber-400 uppercase tracking-[.3em]">${p.status}</span>
+                <h2 class="font-cinzel text-xl sm:text-2xl font-bold mt-3">${p.title}</h2>
+                <p class="text-xs text-slate-400 leading-7 mt-4">${p.desc}</p>
             </div>
-
-
-            <div class="border-t border-white/10
-            mt-6 pt-5">
-
-                <span class="text-[8px]
-                uppercase tracking-widest
-                text-slate-600">
-
-                    PRIVATE ACQUISITION VALUE
-
-                </span>
-
-                <div class="text-2xl
-                font-black font-mono
-                text-amber-400 mt-1 mb-4">
-
-                    Rs. ${p.price.toLocaleString()}
-
-                </div>
-
-                <button
-                onclick="addToCart(${p.id});closeQuickView();"
-                class="gold-btn w-full py-4
-                rounded-xl font-cinzel
-                text-[9px] tracking-[.25em]">
-
-                    REQUEST PRIVATE ALLOCATION
-
-                </button>
-
+            <div class="border-t border-white/10 mt-6 pt-5">
+                <div class="text-2xl font-black font-mono text-amber-400 mb-4">Rs. ${p.price.toLocaleString()}</div>
+                <button onclick="addToCart(${p.id});closeQuickView();" class="gold-btn w-full py-4 rounded-xl font-cinzel text-[9px] tracking-[.25em]">REQUEST PRIVATE ALLOCATION</button>
             </div>
-
         </div>
-
-    </div>
-
-    `;
-
-
+    </div>`;
     const modal=document.getElementById("quickViewModal");
-
     modal.classList.remove("hidden");
-
     modal.classList.add("flex");
-
 }
-
-
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
 
 function closeQuickView(){
-
     const modal=document.getElementById("quickViewModal");
-
     modal.classList.add("hidden");
-
     modal.classList.remove("flex");
-
 }
-
-
-/* =========================================================
-   CART
-========================================================= */
 
 function toggleCart(){
-
-    const modal=document.getElementById("cartModal");
-
-    modal.classList.toggle("hidden");
-
+    document.getElementById("cartModal").classList.toggle("hidden");
     updateCart();
-
 }
-
-
-/* =========================================================
-   ADD CART
-========================================================= */
 
 function addToCart(id){
-
     const product=products.find(p=>p.id===id);
-
     const existing=cart.find(p=>p.id===id);
-
-    if(existing){
-
-        existing.qty++;
-
-    }else{
-
-        cart.push({
-            ...product,
-            qty:1
-        });
-
-    }
-
+    if(existing){ existing.qty++; }
+    else{ cart.push({...product,qty:1}); }
     updateCart();
-
 }
-
-
-/* =========================================================
-   UPDATE CART
-========================================================= */
 
 function updateCart(){
-
-    const badge=document.getElementById("cartBadge");
-
-    const totalQty=cart.reduce(
-        (sum,item)=>sum+item.qty,0
-    );
-
-    badge.textContent=totalQty;
-
-
-    const total=cart.reduce(
-        (sum,item)=>sum+(item.price*item.qty),0
-    );
-
-    document.getElementById("cartTotal")
-    .textContent=
-    "Rs. "+total.toLocaleString();
-
-
-    const container=
-    document.getElementById("cartItems");
-
-
+    const totalQty=cart.reduce((sum,item)=>sum+item.qty,0);
+    document.getElementById("cartBadge").textContent=totalQty;
+    const total=cart.reduce((sum,item)=>sum+(item.price*item.qty),0);
+    document.getElementById("cartTotal").textContent="Rs. "+total.toLocaleString();
+    const container=document.getElementById("cartItems");
     if(!cart.length){
-
-        container.innerHTML=`
-
-        <div class="text-center py-20">
-
-            <i class="fa-solid fa-gem
-            text-amber-400/20 text-3xl"></i>
-
-            <p class="font-cinzel
-            text-xs text-slate-600 mt-4">
-
-                Your private vault is empty.
-
-            </p>
-
-        </div>
-
-        `;
-
+        container.innerHTML=`<div class="text-center py-20"><i class="fa-solid fa-gem text-amber-400/20 text-3xl"></i><p class="font-cinzel text-xs text-slate-600 mt-4">Your private vault is empty.</p></div>`;
         return;
-
     }
-
-
     container.innerHTML=cart.map(item=>`
-
-        <div class="glass rounded-xl p-3
-        flex gap-3">
-
-            <img
-            src="${item.img}"
-            class="w-16 h-16 rounded-lg
-            object-cover">
-
+        <div class="glass rounded-xl p-3 flex gap-3">
+            <img src="${item.img}" class="w-16 h-16 rounded-lg object-cover">
             <div class="flex-1 min-w-0">
-
-                <div class="font-cinzel
-                text-[9px] font-bold
-                text-white line-clamp-2">
-
-                    ${item.title}
-
-                </div>
-
-                <div class="text-[9px]
-                text-amber-400 font-mono mt-1">
-
-                    Rs. ${item.price.toLocaleString()}
-
-                    × ${item.qty}
-
-                </div>
-
+                <div class="font-cinzel text-[9px] font-bold text-white line-clamp-2">${item.title}</div>
+                <div class="text-[9px] text-amber-400 font-mono mt-1">Rs. ${item.price.toLocaleString()} × ${item.qty}</div>
             </div>
-
-            <button
-            onclick="removeFromCart(${item.id})"
-            class="text-slate-600
-            hover:text-red-400">
-
-                <i class="fa-solid fa-trash
-                text-[9px]"></i>
-
-            </button>
-
-        </div>
-
-    `).join("");
-
+            <button onclick="removeFromCart(${item.id})" class="text-slate-600 hover:text-red-400"><i class="fa-solid fa-trash text-[9px]"></i></button>
+        </div>`).join("");
 }
-
-
-/* =========================================================
-   REMOVE
-========================================================= */
 
 function removeFromCart(id){
-
     cart=cart.filter(item=>item.id!==id);
-
     updateCart();
-
 }
-
-
-/* =========================================================
-   WHATSAPP ORDER
-========================================================= */
 
 function processOrder(e){
-
     e.preventDefault();
-
-    if(!cart.length){
-
-        alert("Private vault is empty.");
-
-        return;
-
-    }
-
-
-    const name=
-    document.getElementById("custName").value;
-
-    const phone=
-    document.getElementById("custPhone").value;
-
-    const address=
-    document.getElementById("custAddress").value;
-
-
-    const total=cart.reduce(
-        (sum,item)=>
-        sum+(item.price*item.qty),0
-    );
-
-
-    const items=cart.map(item=>
-        `• ${item.title} x${item.qty} — Rs. ${(item.price*item.qty).toLocaleString()}`
-    ).join("\n");
-
-
-    const message=
-`*ÉLVARA PRIVÉ — PRIVATE CONCIERGE REQUEST*
-
-*Client:* ${name}
-*Contact:* ${phone}
-*Delivery:* ${address}
-
-*PRIVATE COLLECTION:*
-${items}
-
-*TOTAL VALUATION:* Rs. ${total.toLocaleString()}
-
-Please contact me regarding private allocation.`;
-
-
-    window.open(
-        "https://wa.me/923234749637?text="+
-        encodeURIComponent(message),
-        "_blank"
-    );
-
+    if(!cart.length) return;
+    const name=document.getElementById("custName").value;
+    const phone=document.getElementById("custPhone").value;
+    const address=document.getElementById("custAddress").value;
+    const total=cart.reduce((sum,item)=>sum+(item.price*item.qty),0);
+    const items=cart.map(item=>`• ${item.title} x${item.qty} — Rs. ${(item.price*item.qty).toLocaleString()}`).join("\n");
+    const message=`*ÉLVARA PRIVÉ — PRIVATE CONCIERGE REQUEST*\n\n*Client:* ${name}\n*Contact:* ${phone}\n*Delivery:* ${address}\n\n*PRIVATE COLLECTION:*\n${items}\n\n*TOTAL VALUATION:* Rs. ${total.toLocaleString()}`;
+    window.open("https://wa.me/923234749637?text="+encodeURIComponent(message),"_blank");
 }
 
-
-/* =========================================================
-   CONCIERGE
-========================================================= */
-
-function toggleConcierge(){
-
-    document.getElementById("cartModal")
-    .classList.remove("hidden");
-
-}
-
-
-/* =========================================================
-   ESC KEY
-========================================================= */
+function toggleConcierge(){ toggleCart(); }
 
 document.addEventListener("keydown",(e)=>{
-
     if(e.key==="Escape"){
-
         closeQuickView();
-
-        document
-        .getElementById("cartModal")
-        .classList.add("hidden");
-
+        document.getElementById("cartModal").classList.add("hidden");
     }
-
 });
 
-
-/* =========================================================
-   INITIAL RENDER
-========================================================= */
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-    renderProducts(products);
-
-});
+document.addEventListener("DOMContentLoaded",()=>{ renderProducts(products); });
 
 </script>
-
 </body>
 </html>
