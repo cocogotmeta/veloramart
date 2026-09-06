@@ -1,7 +1,7 @@
 let ytPlayer=null, ytReady=false;
 function hush(){
   if(!ytPlayer||!ytPlayer.setVolume) return;
-  ytPlayer.setVolume(4);
+  ytPlayer.setVolume(2);
 }
 function onYouTubeIframeAPIReady(){
   ytPlayer=new YT.Player("ytPlayer",{
@@ -30,8 +30,9 @@ function toggleSound(){
     ytPlayer.playVideo();
     setTimeout(hush, 200);
     setTimeout(hush, 800);
+    setTimeout(hush, 1600);
     b.dataset.on="1";
     b.innerHTML='<i class="fa-solid fa-volume-low"></i>';
-    toast("طويل الشوق · sped up · whisper");
+    toast("طويل الشوق · tiktok speed · whisper");
   }
 }
