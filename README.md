@@ -1,22 +1,28 @@
 # ÉLVARA PRIVÉ — VeloraMart
 
-Private luxury maison storefront. Allocation-only collection of timepieces, audio, leather, apparel, and grooming objects.
+Private luxury maison on GitHub Pages.
 
-## Live site
+## Live
 
 https://cocogotmeta.github.io/veloramart/
 
-## What it includes
+## Rooms
 
-- Cinematic loader, gold particle field, film grain, and cursor glow
-- Maison story, atelier featured row, and craft pillars
-- 24 products with origin, year, material, edition, SKU, and long descriptions
-- Search, category filters, and sorting
-- Quick view panel and WhatsApp concierge cart
-- 3D card tilt on desktop and reduced-motion support
+- Home — cinematic entry and featured allocations
+- Lookbook — season images
+- Collection — 24 pieces, search, filters, sort
+- Piece pages — specs, availability, pairings
+- Journal — atelier notes
+- Maison — visit request over WhatsApp
+- Saved — bookmarks stored in the browser
+- Compare — two pieces at a time
 
-## Run locally
+## Files
 
-Open `index.html` in a browser, or use GitHub Pages from the `main` branch.
+- `index.html` — maison shell
+- `styles.css` + `extra.css` — luxury motion
+- `data.js` — products, lookbook, journal
+- `maison.js` — routing, cart, favorites
+- `favicon.svg`
 
-This is a front-end concept store. Requests open WhatsApp; they are not a real checkout.
+Cart and visit forms open WhatsApp. This is a front-end concept store, not a payment system.
