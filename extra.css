@@ -23,3 +23,4 @@
 .pieceHero{min-height:70vh}
 .navLink.active{color:#F3E5AB}
 .iconBtn{width:40px;height:40px;border-radius:999px;border:1px solid rgba(212,175,55,.2);background:rgba(255,255,255,.03)}
+.ytHost{position:fixed;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
