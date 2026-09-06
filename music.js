@@ -1,12 +1,19 @@
 let ytPlayer=null, ytReady=false;
+function hush(){
+  if(!ytPlayer||!ytPlayer.setVolume) return;
+  ytPlayer.setVolume(4);
+}
 function onYouTubeIframeAPIReady(){
   ytPlayer=new YT.Player("ytPlayer",{
     height:"1", width:"1",
-    videoId:"o2W8_mvLuxU",
-    playerVars:{autoplay:0,controls:0,disablekb:1,fs:0,iv_load_policy:3,modestbranding:1,rel:0,loop:1,playlist:"o2W8_mvLuxU",playsinline:1},
+    videoId:"4AVDPYZ4E1A",
+    playerVars:{autoplay:0,controls:0,disablekb:1,fs:0,iv_load_policy:3,modestbranding:1,rel:0,loop:1,playlist:"4AVDPYZ4E1A",playsinline:1},
     events:{
-      onReady:function(e){ ytReady=true; e.target.setVolume(11); e.target.setPlaybackRate(0.8); },
-      onStateChange:function(e){ if(e.data===0){ e.target.setPlaybackRate(0.8); e.target.setVolume(11); e.target.playVideo(); } }
+      onReady:function(e){ ytReady=true; hush(); },
+      onStateChange:function(e){
+        hush();
+        if(e.data===0){ hush(); e.target.playVideo(); }
+      }
     }
   });
 }
@@ -19,11 +26,12 @@ function toggleSound(){
     b.innerHTML='<i class="fa-solid fa-volume-xmark"></i>';
     toast("Background paused");
   } else {
-    ytPlayer.setPlaybackRate(0.8);
-    ytPlayer.setVolume(11);
+    hush();
     ytPlayer.playVideo();
+    setTimeout(hush, 200);
+    setTimeout(hush, 800);
     b.dataset.on="1";
     b.innerHTML='<i class="fa-solid fa-volume-low"></i>';
-    toast("طويل الشوق · quiet · 0.8×");
+    toast("طويل الشوق · sped up · whisper");
   }
 }
