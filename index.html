@@ -4,73 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Cache-Control" content="no-cache" />
-  <title>Ask Bot</title>
+  <title>MAISON ASK — Private Desk</title>
   <link rel="icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #0b0a08;
+      --panel: #14110d;
+      --ink: #f3ead8;
+      --muted: #b7a78a;
+      --line: #3a3328;
+      --gold: #c8a96a;
+    }
     * { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; }
     body {
-      font-family: Arial, sans-serif;
-      background: #0e1116;
-      color: #e7ecf3;
+      background: radial-gradient(1200px 500px at 50% -10%, #2a2318, var(--bg));
+      color: var(--ink);
+      font-family: Manrope, sans-serif;
       display: flex;
       flex-direction: column;
     }
     header {
-      padding: 14px 16px;
-      border-bottom: 1px solid #2a3140;
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    header h1 { margin: 0; font-size: 18px; }
-    header p { margin: 3px 0 0; color: #93a0b5; font-size: 12px; }
+    .brand { font-family: "Cormorant Garamond", serif; font-size: 28px; letter-spacing: 0.08em; margin: 0; }
+    .sub { margin: 4px 0 0; color: var(--muted); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    header button, form button {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 9px 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    header button:hover, form button:hover { background: var(--gold); color: #111; }
     #log {
-      flex: 1; overflow-y: auto; padding: 16px;
-      display: flex; flex-direction: column; gap: 10px;
+      flex: 1;
+      overflow-y: auto;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
     .bubble {
-      max-width: min(740px, 94%);
-      padding: 10px 12px;
+      max-width: min(720px, 94%);
+      padding: 14px 16px;
       white-space: pre-wrap;
-      line-height: 1.5;
-      font-size: 15px;
-      border-radius: 10px;
+      line-height: 1.55;
+      font-size: 16px;
     }
-    .bot { background: #1b2230; align-self: flex-start; }
-    .me { background: #1f4e3a; align-self: flex-end; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 10px; }
+    .bot {
+      align-self: flex-start;
+      background: #16130f;
+      border: 1px solid var(--line);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 19px;
+    }
+    .me {
+      align-self: flex-end;
+      background: #1d1812;
+      border: 1px solid var(--gold);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 22px 12px; }
     .chips button {
-      background: #171b24; color: #e7ecf3; border: 1px solid #2a3140;
-      padding: 7px 10px; cursor: pointer;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 7px 11px;
+      cursor: pointer;
+      font-size: 12px;
     }
     form {
-      display: flex; gap: 8px; padding: 12px 16px 16px;
-      border-top: 1px solid #2a3140; background: #141821;
+      display: flex;
+      gap: 8px;
+      padding: 14px 22px 18px;
+      border-top: 1px solid var(--line);
+      background: var(--panel);
     }
     input {
-      flex: 1; background: #0e1116; color: #e7ecf3;
-      border: 1px solid #2a3140; padding: 12px; font-size: 16px;
+      flex: 1;
+      background: #0b0a08;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 14px;
+      font-size: 16px;
+      font-family: Manrope, sans-serif;
     }
-    form button, header button {
-      background: #7dd3a0; color: #0b1a12; border: 0;
-      padding: 12px 16px; font-weight: 700; cursor: pointer;
-    }
-    a { color: #7dd3a0; }
+    input:focus { outline: 1px solid var(--gold); }
   </style>
 </head>
 <body>
   <header>
     <div>
-      <h1>Ask Bot</h1>
-      <p>Ask any school-safe question. Coding + general facts.</p>
+      <h1 class="brand">MAISON ASK</h1>
+      <p class="sub">Private desk · school-safe answers</p>
     </div>
     <button type="button" id="clearBtn">Clear</button>
   </header>
   <div id="log"></div>
   <div class="chips" id="chips"></div>
   <form id="form">
-    <input id="input" type="text" placeholder="Ask anything: What is HTML? Who was Quaid-e-Azam?" autocomplete="off" />
+    <input id="input" type="text" placeholder="Ask a question..." autocomplete="off" />
     <button type="submit">Send</button>
   </form>
   <script>
@@ -78,21 +120,18 @@
     const form = document.getElementById("form");
     const input = document.getElementById("input");
     const chips = document.getElementById("chips");
-    const blocked = /\b(sex|sexy|porn|nude|naked|xxx|onlyfans|dating|hookup|kill|murder|suicide|self-harm|bomb|weapon|gun|drug|cocaine|hack into|password steal)\b/i;
-
+    const blocked = /\b(sex|sexy|porn|nude|naked|xxx|onlyfans|dating|hookup|kill|murder|suicide|self-harm|bomb|weapon|gun|drug|cocaine|hack into)\b/i;
     const local = [
-      { k: ["hello", "hi", "hey", "salam"], a: "Hi. Ask any question.\nExamples: What is JavaScript? What is photosynthesis? Who invented the computer?" },
-      { k: ["what is html", "html"], a: "HTML (HyperText Markup Language) is the structure of a web page. Tags mark headings, paragraphs, links, images, and buttons.\nExample:\n<h1>My Page</h1>\n<p>Hello</p>" },
-      { k: ["what is css", "css"], a: "CSS styles a page: colors, size, layout.\nselector { property: value; }\nh1 { color: navy; text-align: center; }" },
-      { k: ["what is javascript", "what is js", "javascript"], a: "JavaScript makes a page interactive: clicks, calculations, showing and hiding things.\nalert(\"Hello\");" },
-      { k: ["python"], a: "Python is a beginner-friendly language used for apps, data, and school work.\nprint(\"Hello\")\nname = \"Ali\"" },
+      { k: ["hello", "hi", "hey", "salam"], a: "Welcome. Ask anything school-safe.\nTry: What is JavaScript? Who was Quaid-e-Azam? What is gravity?" },
+      { k: ["what is html", "html"], a: "HTML is the structure of a web page. Tags mark headings, text, links, images, and buttons.\n<h1>Title</h1>\n<p>Hello</p>" },
+      { k: ["what is css", "css"], a: "CSS is style: color, type, space, layout.\nh1 { color: #c8a96a; text-align: center; }" },
+      { k: ["what is javascript", "javascript", "what is js"], a: "JavaScript adds behavior: clicks, numbers, showing and hiding parts of a page.\nalert(\"Hello\");" },
+      { k: ["python"], a: "Python is a clear language for school programs and later data work.\nprint(\"Hello\")" },
       { k: ["variable"], a: "A variable stores a value.\nJavaScript: let score = 10;\nPython: score = 10" },
-      { k: ["loop", "for loop", "while"], a: "A loop repeats work.\nJS: for (let i = 1; i <= 5; i++) { console.log(i); }\nPython: for i in range(1, 6): print(i)" },
-      { k: ["function"], a: "A function is a reusable set of steps.\nJS: function add(a, b) { return a + b; }\nPython: def add(a, b): return a + b" },
-      { k: ["if else", "if statement"], a: "if checks a condition.\nJS:\nif (marks >= 50) { alert(\"Pass\"); } else { alert(\"Try again\"); }" },
-      { k: ["array"], a: "An array is a list.\nlet fruits = [\"mango\", \"banana\"];\nfruits[0] is the first item." },
-      { k: ["git", "github"], a: "Git saves versions of your code. GitHub stores that code online. A commit is a snapshot. Push uploads it. GitHub Pages can host a website from the repo." },
-      { k: ["who are you", "what are you"], a: "I am a site bot. I answer coding questions directly, and look up other school-safe facts." }
+      { k: ["loop"], a: "A loop repeats steps.\nfor (let i = 1; i <= 5; i++) { console.log(i); }" },
+      { k: ["function"], a: "A function is a named set of steps you can reuse.\nfunction add(a, b) { return a + b; }" },
+      { k: ["git", "github"], a: "Git saves versions. GitHub hosts the project online. GitHub Pages can publish a static site." },
+      { k: ["who are you"], a: "Maison Ask. I answer coding questions from a built-in desk, and look up other public facts." }
     ];
 
     function add(who, text) {
@@ -103,23 +142,17 @@
       logEl.scrollTop = logEl.scrollHeight;
       return el;
     }
-
-    function cleanQ(q) {
-      return q.toLowerCase().replace(/[?!.,]/g, " ").replace(/\s+/g, " ").trim();
-    }
-
+    function clean(q) { return q.toLowerCase().replace(/[?!.,]/g, " ").replace(/\s+/g, " ").trim(); }
     function localAnswer(q) {
-      const s = " " + cleanQ(q) + " ";
+      const s = " " + clean(q) + " ";
       let best = null, n = 0;
       local.forEach(function (row) {
         row.k.forEach(function (k) {
           if (s.indexOf(k) !== -1 && k.length >= n) { best = row; n = k.length; }
         });
       });
-      if (best && n >= 3) return best.a;
-      return null;
+      return best && n >= 3 ? best.a : null;
     }
-
     function mathAnswer(q) {
       const t = q.replace(/what is|calculate|equals|=/gi, "").trim();
       if (!/^[0-9+\-*/().%\s]+$/.test(t) || !/[0-9]/.test(t) || t.length > 40) return null;
@@ -129,61 +162,44 @@
       } catch (e) {}
       return null;
     }
-
     async function wikiAnswer(q) {
       const searchUrl = "https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=1&srsearch=" + encodeURIComponent(q);
-      const sRes = await fetch(searchUrl);
-      const sData = await sRes.json();
+      const sData = await (await fetch(searchUrl)).json();
       const hit = sData && sData.query && sData.query.search && sData.query.search[0];
       if (!hit) return null;
-      const title = hit.title;
-      const sumUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(title);
-      const pRes = await fetch(sumUrl);
-      if (!pRes.ok) return hit.snippet.replace(/<[^>]+>/g, " ");
-      const p = await pRes.json();
-      if (p.type === "disambiguation") {
-        return title + " can mean more than one thing. Try a more specific question.";
-      }
-      const extract = p.extract || hit.snippet.replace(/<[^>]+>/g, " ");
-      return extract;
+      const p = await (await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(hit.title))).json();
+      if (p.type === "disambiguation") return hit.title + " has more than one meaning. Ask more specifically.";
+      return p.extract || null;
     }
-
     async function reply(q) {
-      if (blocked.test(q)) {
-        return "I cannot help with that topic.";
-      }
+      if (blocked.test(q)) return "That topic is not available.";
       const math = mathAnswer(q);
       if (math) return math;
       const loc = localAnswer(q);
-      const pending = add("bot", "Looking that up...");
+      const wait = add("bot", "One moment.");
       try {
         const wiki = await wikiAnswer(q);
-        pending.remove();
+        wait.remove();
         if (wiki && wiki.length > 40) return wiki;
         if (loc) return loc;
         if (wiki) return wiki;
-        return "I could not find a clear fact for that. Try a simpler question, like \"What is gravity?\" or \"What is a loop in JavaScript?\"";
+        return "No clear public fact found. Try a shorter question.";
       } catch (e) {
-        pending.remove();
-        if (loc) return loc;
-        return "Network lookup failed. Coding answers still work offline. Try: What is HTML?";
+        wait.remove();
+        return loc || "Lookup failed. Coding questions still work.";
       }
     }
-
     async function send(text) {
       add("me", text);
-      const ans = await reply(text);
-      add("bot", ans);
+      add("bot", await reply(text));
     }
-
-    [["HTML", "What is HTML?"], ["CSS", "What is CSS?"], ["JavaScript", "What is JavaScript?"], ["Python", "What is Python?"], ["Pakistan", "What is Pakistan?"], ["Gravity", "What is gravity?"], ["Computer", "What is a computer?"]].forEach(function (c) {
+    [["HTML", "What is HTML?"], ["JavaScript", "What is JavaScript?"], ["Python", "What is Python?"], ["Pakistan", "What is Pakistan?"], ["Gravity", "What is gravity?"], ["Iqbal", "Who was Allama Iqbal?"]].forEach(function (c) {
       const b = document.createElement("button");
       b.type = "button";
       b.textContent = c[0];
       b.onclick = function () { send(c[1]); };
       chips.appendChild(b);
     });
-
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       const t = input.value.trim();
@@ -193,9 +209,9 @@
     });
     document.getElementById("clearBtn").onclick = function () {
       logEl.innerHTML = "";
-      add("bot", "Ask any school-safe question. I answer coding directly and look up other facts.");
+      add("bot", "The desk is clear. Ask a question.");
     };
-    add("bot", "Ask any school-safe question.\nExamples:\nWhat is HTML?\nWho was Allama Iqbal?\nWhat is photosynthesis?\n12 * 8");
+    add("bot", "Maison Ask is ready.\nAsk a coding question or a public fact.\nA key does not belong in a public GitHub page.");
   </script>
 </body>
 </html>
