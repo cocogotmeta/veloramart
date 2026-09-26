@@ -1,111 +1,201 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coding AI Bot</title>
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <title>Ask Bot</title>
   <link rel="icon" href="favicon.svg" />
   <style>
-    :root {
-      --bg: #0f1210;
-      --panel: #171c19;
-      --ink: #e8eee6;
-      --muted: #9aa89a;
-      --line: #2a332c;
-      --me: #2d6a4f;
-      --bot: #243028;
-      --acc: #95d5b2;
-    }
     * { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; }
     body {
       font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
+      background: #0e1116;
+      color: #e7ecf3;
       display: flex;
       flex-direction: column;
     }
     header {
       padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid #2a3140;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
     }
-    header h1 { margin: 0; font-size: 18px; font-weight: 700; }
-    header p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+    header h1 { margin: 0; font-size: 18px; }
+    header p { margin: 3px 0 0; color: #93a0b5; font-size: 12px; }
     #log {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      flex: 1; overflow-y: auto; padding: 16px;
+      display: flex; flex-direction: column; gap: 10px;
     }
     .bubble {
-      max-width: min(720px, 92%);
+      max-width: min(740px, 94%);
       padding: 10px 12px;
       white-space: pre-wrap;
-      line-height: 1.45;
+      line-height: 1.5;
       font-size: 15px;
       border-radius: 10px;
     }
-    .bot { background: var(--bot); align-self: flex-start; }
-    .me { background: var(--me); align-self: flex-end; }
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 0 16px 10px;
-    }
+    .bot { background: #1b2230; align-self: flex-start; }
+    .me { background: #1f4e3a; align-self: flex-end; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 10px; }
     .chips button {
-      background: var(--panel);
-      color: var(--ink);
-      border: 1px solid var(--line);
-      padding: 7px 10px;
-      cursor: pointer;
-      font-size: 13px;
+      background: #171b24; color: #e7ecf3; border: 1px solid #2a3140;
+      padding: 7px 10px; cursor: pointer;
     }
     form {
-      display: flex;
-      gap: 8px;
-      padding: 12px 16px 16px;
-      border-top: 1px solid var(--line);
-      background: var(--panel);
+      display: flex; gap: 8px; padding: 12px 16px 16px;
+      border-top: 1px solid #2a3140; background: #141821;
     }
     input {
-      flex: 1;
-      background: #101410;
-      color: var(--ink);
-      border: 1px solid var(--line);
-      padding: 12px;
-      font-size: 16px;
+      flex: 1; background: #0e1116; color: #e7ecf3;
+      border: 1px solid #2a3140; padding: 12px; font-size: 16px;
     }
     form button, header button {
-      background: var(--acc);
-      color: #102016;
-      border: 0;
-      padding: 12px 16px;
-      font-weight: 700;
-      cursor: pointer;
+      background: #7dd3a0; color: #0b1a12; border: 0;
+      padding: 12px 16px; font-weight: 700; cursor: pointer;
     }
+    a { color: #7dd3a0; }
   </style>
 </head>
 <body>
   <header>
     <div>
-      <h1>Coding AI Bot</h1>
-      <p>HTML · CSS · JS · Python · logic · errors · Git</p>
+      <h1>Ask Bot</h1>
+      <p>Ask any school-safe question. Coding + general facts.</p>
     </div>
     <button type="button" id="clearBtn">Clear</button>
   </header>
   <div id="log"></div>
   <div class="chips" id="chips"></div>
   <form id="form">
-    <input id="input" type="text" placeholder="Kuch bhi poocho: loop kya hai, form, python, git..." autocomplete="off" />
+    <input id="input" type="text" placeholder="Ask anything: What is HTML? Who was Quaid-e-Azam?" autocomplete="off" />
     <button type="submit">Send</button>
   </form>
-  <script src="bot.js"></script>
+  <script>
+    const logEl = document.getElementById("log");
+    const form = document.getElementById("form");
+    const input = document.getElementById("input");
+    const chips = document.getElementById("chips");
+    const blocked = /\b(sex|sexy|porn|nude|naked|xxx|onlyfans|dating|hookup|kill|murder|suicide|self-harm|bomb|weapon|gun|drug|cocaine|hack into|password steal)\b/i;
+
+    const local = [
+      { k: ["hello", "hi", "hey", "salam"], a: "Hi. Ask any question.\nExamples: What is JavaScript? What is photosynthesis? Who invented the computer?" },
+      { k: ["what is html", "html"], a: "HTML (HyperText Markup Language) is the structure of a web page. Tags mark headings, paragraphs, links, images, and buttons.\nExample:\n<h1>My Page</h1>\n<p>Hello</p>" },
+      { k: ["what is css", "css"], a: "CSS styles a page: colors, size, layout.\nselector { property: value; }\nh1 { color: navy; text-align: center; }" },
+      { k: ["what is javascript", "what is js", "javascript"], a: "JavaScript makes a page interactive: clicks, calculations, showing and hiding things.\nalert(\"Hello\");" },
+      { k: ["python"], a: "Python is a beginner-friendly language used for apps, data, and school work.\nprint(\"Hello\")\nname = \"Ali\"" },
+      { k: ["variable"], a: "A variable stores a value.\nJavaScript: let score = 10;\nPython: score = 10" },
+      { k: ["loop", "for loop", "while"], a: "A loop repeats work.\nJS: for (let i = 1; i <= 5; i++) { console.log(i); }\nPython: for i in range(1, 6): print(i)" },
+      { k: ["function"], a: "A function is a reusable set of steps.\nJS: function add(a, b) { return a + b; }\nPython: def add(a, b): return a + b" },
+      { k: ["if else", "if statement"], a: "if checks a condition.\nJS:\nif (marks >= 50) { alert(\"Pass\"); } else { alert(\"Try again\"); }" },
+      { k: ["array"], a: "An array is a list.\nlet fruits = [\"mango\", \"banana\"];\nfruits[0] is the first item." },
+      { k: ["git", "github"], a: "Git saves versions of your code. GitHub stores that code online. A commit is a snapshot. Push uploads it. GitHub Pages can host a website from the repo." },
+      { k: ["who are you", "what are you"], a: "I am a site bot. I answer coding questions directly, and look up other school-safe facts." }
+    ];
+
+    function add(who, text) {
+      const el = document.createElement("div");
+      el.className = "bubble " + who;
+      el.textContent = text;
+      logEl.appendChild(el);
+      logEl.scrollTop = logEl.scrollHeight;
+      return el;
+    }
+
+    function cleanQ(q) {
+      return q.toLowerCase().replace(/[?!.,]/g, " ").replace(/\s+/g, " ").trim();
+    }
+
+    function localAnswer(q) {
+      const s = " " + cleanQ(q) + " ";
+      let best = null, n = 0;
+      local.forEach(function (row) {
+        row.k.forEach(function (k) {
+          if (s.indexOf(k) !== -1 && k.length >= n) { best = row; n = k.length; }
+        });
+      });
+      if (best && n >= 3) return best.a;
+      return null;
+    }
+
+    function mathAnswer(q) {
+      const t = q.replace(/what is|calculate|equals|=/gi, "").trim();
+      if (!/^[0-9+\-*/().%\s]+$/.test(t) || !/[0-9]/.test(t) || t.length > 40) return null;
+      try {
+        const val = Function('"use strict"; return (' + t + ")")();
+        if (typeof val === "number" && isFinite(val)) return t + " = " + val;
+      } catch (e) {}
+      return null;
+    }
+
+    async function wikiAnswer(q) {
+      const searchUrl = "https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=1&srsearch=" + encodeURIComponent(q);
+      const sRes = await fetch(searchUrl);
+      const sData = await sRes.json();
+      const hit = sData && sData.query && sData.query.search && sData.query.search[0];
+      if (!hit) return null;
+      const title = hit.title;
+      const sumUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(title);
+      const pRes = await fetch(sumUrl);
+      if (!pRes.ok) return hit.snippet.replace(/<[^>]+>/g, " ");
+      const p = await pRes.json();
+      if (p.type === "disambiguation") {
+        return title + " can mean more than one thing. Try a more specific question.";
+      }
+      const extract = p.extract || hit.snippet.replace(/<[^>]+>/g, " ");
+      return extract;
+    }
+
+    async function reply(q) {
+      if (blocked.test(q)) {
+        return "I cannot help with that topic.";
+      }
+      const math = mathAnswer(q);
+      if (math) return math;
+      const loc = localAnswer(q);
+      const pending = add("bot", "Looking that up...");
+      try {
+        const wiki = await wikiAnswer(q);
+        pending.remove();
+        if (wiki && wiki.length > 40) return wiki;
+        if (loc) return loc;
+        if (wiki) return wiki;
+        return "I could not find a clear fact for that. Try a simpler question, like \"What is gravity?\" or \"What is a loop in JavaScript?\"";
+      } catch (e) {
+        pending.remove();
+        if (loc) return loc;
+        return "Network lookup failed. Coding answers still work offline. Try: What is HTML?";
+      }
+    }
+
+    async function send(text) {
+      add("me", text);
+      const ans = await reply(text);
+      add("bot", ans);
+    }
+
+    [["HTML", "What is HTML?"], ["CSS", "What is CSS?"], ["JavaScript", "What is JavaScript?"], ["Python", "What is Python?"], ["Pakistan", "What is Pakistan?"], ["Gravity", "What is gravity?"], ["Computer", "What is a computer?"]].forEach(function (c) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = c[0];
+      b.onclick = function () { send(c[1]); };
+      chips.appendChild(b);
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const t = input.value.trim();
+      if (!t) return;
+      input.value = "";
+      send(t);
+    });
+    document.getElementById("clearBtn").onclick = function () {
+      logEl.innerHTML = "";
+      add("bot", "Ask any school-safe question. I answer coding directly and look up other facts.");
+    };
+    add("bot", "Ask any school-safe question.\nExamples:\nWhat is HTML?\nWho was Allama Iqbal?\nWhat is photosynthesis?\n12 * 8");
+  </script>
 </body>
 </html>
