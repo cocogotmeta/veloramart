@@ -1,42 +1,352 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ÉLVARA PRIVÉ — Private Luxury Maison</title>
-<meta name="description" content="ÉLVARA PRIVÉ is a private luxury maison. Timepieces, audio, leather, apparel and grooming, released by allocation.">
-<meta property="og:title" content="ÉLVARA PRIVÉ — Private Luxury Maison">
-<meta property="og:description" content="Objects finished by hand. Released by allocation.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<script>tailwind.config={theme:{extend:{fontFamily:{cinzel:["Cinzel","serif"],sans:["DM Sans","sans-serif"]},colors:{gold:"#D4AF37",champagne:"#F3E5AB",obsidian:"#020304"}}}}</script>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="extra.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Class 10 Coding Cheats — Super Easy</title>
+  <link rel="icon" href="favicon.svg" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffdf8;
+      --ink: #1c1914;
+      --muted: #5c564c;
+      --line: #e4d9c8;
+      --html: #e34f26;
+      --css: #264de4;
+      --js: #c9a227;
+      --ok: #1f7a4d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    header {
+      padding: 28px 20px 18px;
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper);
+    }
+    header .wrap, main, footer { max-width: 860px; margin: 0 auto; }
+    .tag {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      padding: 3px 8px;
+      margin-bottom: 10px;
+    }
+    h1 { font-size: 34px; margin: 0 0 8px; line-height: 1.15; }
+    .lead { margin: 0; color: var(--muted); font-size: 18px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--ink);
+      padding: 6px 10px;
+      background: #fff;
+    }
+    nav a:hover { background: #111; color: #fff; }
+    main { padding: 28px 20px 60px; }
+    section { margin: 36px 0; }
+    h2 {
+      font-size: 26px;
+      margin: 0 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+    }
+    h3 { margin: 22px 0 8px; font-size: 20px; }
+    p { margin: 0 0 12px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--ink);
+      padding: 14px;
+    }
+    .card b { display: block; font-size: 20px; margin-bottom: 4px; }
+    .dot { width: 10px; height: 10px; display: inline-block; border-radius: 50%; margin-right: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--paper);
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      text-align: left;
+      padding: 8px 10px;
+      vertical-align: top;
+    }
+    th { background: #efe6d6; font-family: Arial, sans-serif; font-size: 13px; }
+    code, pre {
+      font-family: Consolas, "Courier New", monospace;
+    }
+    code {
+      background: #efe6d6;
+      padding: 1px 5px;
+    }
+    pre {
+      background: #1c1914;
+      color: #f6f1e8;
+      padding: 14px;
+      overflow-x: auto;
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+    .note {
+      background: #fff6d8;
+      border: 1px solid #d8b84a;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+    .ok {
+      background: #e7f6ee;
+      border: 1px solid var(--ok);
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+    footer {
+      padding: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    button.try {
+      font-family: Arial, sans-serif;
+      border: 2px solid var(--ink);
+      background: #fff;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button.try:hover { background: var(--ink); color: #fff; }
+    #demoBox {
+      margin-top: 10px;
+      padding: 16px;
+      background: #fff;
+      border: 2px dashed var(--ink);
+      min-height: 48px;
+    }
+  </style>
 </head>
 <body>
-<div class="grain"></div><div id="particles"></div><div id="ambientGlow" class="ambientGlow"></div><div id="goldCursor" class="goldCursor"></div><div id="toast" class="toast"></div>
-<div id="luxuryLoader"><div class="loaderScene"><div class="loaderOrbit"></div><div class="loaderOrbit2"></div><div class="loaderDiamond"><i class="fa-solid fa-gem"></i></div><div class="loaderWords"><div class="loaderBrand">ÉLVARA</div><div class="loaderSub">Private Luxury Maison</div><div class="loaderBar"><span></span></div></div></div></div>
-<div class="relative z-50 border-b border-amber-500/10 bg-black/70 py-2.5 overflow-hidden"><div class="marquee text-[8px] sm:text-[9px] uppercase tracking-[.32em] text-amber-200/70"><span>Private Client Access</span><span>Allocation Only</span><span>Geneva · Milano · Karachi</span><span>Vault Hours 11:00–19:00 PKT</span><span>Private Client Access</span><span>Allocation Only</span><span>Geneva · Milano · Karachi</span><span>Vault Hours 11:00–19:00 PKT</span></div></div>
-<header id="navbar" class="navbar sticky top-0 z-40 glass border-b border-amber-500/10"><div class="max-w-7xl mx-auto px-4 sm:px-6 py-4"><div class="flex items-center justify-between gap-4"><a href="#home" class="flex items-center gap-3"><div class="logoOrb w-11 h-11 rounded-full border border-amber-500/40 bg-amber-500/5 text-amber-400 flex items-center justify-center"><i class="fa-solid fa-gem"></i></div><div><div class="font-cinzel font-bold text-base tracking-[.22em] text-white">ÉLVARA PRIVÉ</div><div class="text-[7px] font-bold text-amber-400/70 uppercase tracking-[.4em]">Private Luxury Maison</div></div></a><nav class="hidden lg:flex items-center gap-6 text-[10px] uppercase tracking-[.28em] text-white/55"><a href="#home" data-page="home" class="navLink hover:text-amber-200">Home</a><a href="#lookbook" data-page="lookbook" class="navLink hover:text-amber-200">Lookbook</a><a href="#collection" data-page="collection" class="navLink hover:text-amber-200">Collection</a><a href="#journal" data-page="journal" class="navLink hover:text-amber-200">Journal</a><a href="#maison" data-page="maison" class="navLink hover:text-amber-200">Maison</a></nav><div class="hidden md:block flex-1 max-w-md"><div class="relative flex items-center border border-amber-500/15 rounded-full bg-white/[.025]"><i class="fa-solid fa-magnifying-glass absolute left-4 text-amber-400/50 text-xs"></i><input id="searchInput" oninput="handleSearch()" type="text" placeholder="Search the vault..." class="w-full bg-transparent pl-10 pr-4 py-2.5 text-sm text-white outline-none placeholder:text-white/30"></div></div><div class="flex items-center gap-2"><button id="soundToggle" data-on="0" onclick="toggleSound()" class="iconBtn text-amber-300" title="طويل الشوق"><i class="fa-solid fa-volume-xmark"></i></button><a href="#saved" class="iconBtn relative flex items-center justify-center text-amber-300"><i class="fa-regular fa-bookmark"></i><span id="favBadge" class="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-amber-400 text-[9px] font-bold text-black hidden items-center justify-center">0</span></a><button onclick="toggleCart()" class="iconBtn relative text-amber-300"><i class="fa-solid fa-bag-shopping"></i><span id="cartBadge" class="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-amber-400 text-[9px] font-bold text-black hidden items-center justify-center">0</span></button></div></div><div class="md:hidden mt-3"><input id="searchInputMobile" oninput="syncSearch(this.value)" type="text" placeholder="Search pieces..." class="w-full bg-white/[.03] border border-amber-500/15 rounded-full px-4 py-2 text-sm outline-none placeholder:text-white/30"></div></div></header>
-<section id="view-home" class="view"><section class="hero px-4"><div class="heroOrb"></div><div class="heroOrbInner"></div><div class="relative z-10 max-w-4xl mx-auto text-center py-16"><div class="heroEyebrow text-[10px] uppercase tracking-[.48em] text-amber-300/80 mb-6">The Private Collection · 2026</div><h1 class="heroTitle mb-6">THE ART OF<br>PRIVATE LUXURY</h1><p class="heroDescription max-w-xl mx-auto text-white/55">Objects finished by hand. Released by allocation.</p><div class="heroButtons mt-10 flex flex-wrap items-center justify-center gap-4"><a href="#collection" class="goldBtn px-8 py-3.5 rounded-full text-[11px] font-semibold tracking-[.28em] uppercase">Enter Collection</a><a href="#lookbook" class="px-8 py-3.5 rounded-full text-[11px] tracking-[.28em] uppercase border border-amber-500/25">Lookbook</a></div></div></section><section class="max-w-6xl mx-auto px-4 sm:px-6 -mt-4 mb-16 grid grid-cols-2 md:grid-cols-4 gap-4"><div class="glass rounded-2xl p-5 text-center"><div class="statNum font-cinzel text-2xl text-amber-300" data-count="24">0</div><div class="mt-1 text-[9px] tracking-[.28em] uppercase text-white/40">Active Pieces</div></div><div class="glass rounded-2xl p-5 text-center"><div class="statNum font-cinzel text-2xl text-amber-300" data-count="5">0</div><div class="mt-1 text-[9px] tracking-[.28em] uppercase text-white/40">Maisons</div></div><div class="glass rounded-2xl p-5 text-center"><div class="statNum font-cinzel text-2xl text-amber-300" data-count="1998">0</div><div class="mt-1 text-[9px] tracking-[.28em] uppercase text-white/40">Established</div></div><div class="glass rounded-2xl p-5 text-center"><div class="font-cinzel text-2xl text-amber-300">24h</div><div class="mt-1 text-[9px] tracking-[.28em] uppercase text-white/40">Concierge</div></div></section><section class="pb-8"><div class="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-end justify-between"><div><div class="text-[10px] uppercase tracking-[.4em] text-amber-300/80 mb-2">Atelier Selection</div><h2 class="font-cinzel text-3xl">Featured allocations</h2></div><a href="#collection" class="text-[10px] uppercase tracking-[.3em] text-amber-200/70">View all</a></div><div id="featuredRow" class="flex gap-5 overflow-x-auto px-4 sm:px-6 pb-6"></div></section></section>
-<section id="view-lookbook" class="view max-w-7xl mx-auto px-4 sm:px-6 py-16"><div class="text-[10px] uppercase tracking-[.4em] text-amber-300/80 mb-2">Season 2026</div><h2 class="font-cinzel text-4xl mb-8">Lookbook</h2><div id="lookGrid" class="lookGrid"></div></section>
-<section id="view-collection" class="view max-w-7xl mx-auto px-4 sm:px-6 py-16"><div class="text-center mb-10"><div class="goldLine w-40 mx-auto mb-8"></div><div class="text-[10px] uppercase tracking-[.4em] text-amber-300/80 mb-3">The Vault</div><h2 class="font-cinzel text-3xl sm:text-5xl">Objects Worth Owning.</h2><p class="mt-4 text-white/45 text-sm" id="pieceCounter">24 pieces</p></div><div class="flex flex-wrap items-center justify-center gap-2 mb-8" id="filterBar"></div><div class="flex flex-wrap items-center justify-between gap-3 mb-6"><p id="resultNote" class="text-[11px] uppercase tracking-[.22em] text-white/35"></p><select id="sortSelect" onchange="renderProducts(currentList())" class="bg-black/40 border border-amber-500/20 rounded-full px-4 py-2 text-xs text-white/70 outline-none"><option value="featured">Sort: Maison order</option><option value="price-desc">Price: high to low</option><option value="price-asc">Price: low to high</option><option value="name">Name</option></select></div><div id="productsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div><div id="emptyState" class="hidden text-center py-20 text-white/40">No pieces match that search.</div></section>
-<section id="view-journal" class="view max-w-4xl mx-auto px-4 sm:px-6 py-16"><div class="text-[10px] uppercase tracking-[.4em] text-amber-300/80 mb-2">Atelier notes</div><h2 class="font-cinzel text-4xl mb-10">Journal</h2><div id="journalList" class="space-y-5"></div></section>
-<section id="view-maison" class="view max-w-6xl mx-auto px-4 sm:px-6 py-16"><div class="grid md:grid-cols-2 gap-10 items-center mb-16"><div class="overflow-hidden rounded-3xl border border-amber-500/15 h-[380px]"><img class="ken w-full h-full object-cover" alt="Maison" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600"></div><div><div class="text-[10px] uppercase tracking-[.4em] text-amber-300/80 mb-3">The Maison</div><h2 class="font-cinzel text-4xl mb-4">A private room for objects worth owning.</h2><p class="text-white/55 mb-6">Pieces leave with an allocation number. Requests are reviewed by concierge within one day.</p></div></div><form onsubmit="requestVisit(event)" class="glass rounded-3xl p-8 max-w-xl"><div class="font-cinzel text-2xl mb-4">Request an atelier visit</div><input id="visName" required placeholder="Full name" class="w-full bg-white/[.03] border border-amber-500/15 rounded-xl px-4 py-3 text-sm outline-none mb-3"><input id="visCity" required placeholder="City" class="w-full bg-white/[.03] border border-amber-500/15 rounded-xl px-4 py-3 text-sm outline-none mb-3"><input id="visNote" required placeholder="Piece or date you prefer" class="w-full bg-white/[.03] border border-amber-500/15 rounded-xl px-4 py-3 text-sm outline-none mb-4"><button class="goldBtn w-full py-3 rounded-xl text-[11px] tracking-[.25em] uppercase">Send on WhatsApp</button></form></section>
-<section id="view-saved" class="view max-w-7xl mx-auto px-4 sm:px-6 py-16"><div class="text-[10px] uppercase tracking-[.4em] text-amber-300/80 mb-2">Your vault list</div><h2 class="font-cinzel text-4xl mb-8">Saved pieces</h2><div id="savedGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div></section>
-<section id="view-piece" class="view max-w-6xl mx-auto px-4 sm:px-6 py-16"><a href="#collection" class="text-[10px] uppercase tracking-[.28em] text-amber-200/70">Back to collection</a><div id="pieceMount" class="mt-6"></div></section>
-<footer class="border-t border-amber-500/10 py-14 px-4"><div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-sm"><div><div class="font-cinzel tracking-[.25em] mb-3">ÉLVARA PRIVÉ</div><p class="text-white/40 text-xs">Private luxury maison. Allocation only.</p></div><div class="text-white/45 text-xs space-y-2"><div>Concierge · 24 hours</div><div>Atelier · 11:00–19:00 PKT</div></div><div class="text-white/35 text-[10px] uppercase tracking-[.25em] md:text-right">© 2026 ÉLVARA PRIVÉ</div></div></footer>
-<div id="compareBar" class="compareBar"></div>
-<div id="quickViewModal" class="fixed inset-0 z-[70] hidden modalBackdrop bg-black/80 backdrop-blur-sm p-4 overflow-y-auto"><div class="max-w-4xl mx-auto my-10 glass rounded-3xl p-6 modalPanel" id="quickViewContent"></div></div>
-<div id="cartModal" class="fixed inset-0 z-[80] hidden bg-black/70"><div class="absolute right-0 top-0 h-full w-full max-w-md bg-[#07080a] border-l border-amber-500/15 cartDrawer flex flex-col"><div class="p-6 border-b border-amber-500/10 flex items-center justify-between"><div><div class="font-cinzel tracking-[.2em]">Private Cart</div><div class="text-[10px] uppercase tracking-[.25em] text-white/35 mt-1">Allocation request</div></div><button onclick="toggleCart()"><i class="fa-solid fa-xmark text-lg text-white/50"></i></button></div><div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-4"></div><form onsubmit="processOrder(event)" class="p-6 border-t border-amber-500/10 space-y-3"><div class="flex justify-between text-sm"><span class="text-white/40">Valuation</span><span id="cartTotal" class="text-amber-300">Rs. 0</span></div><input id="custName" required placeholder="Full name" class="w-full bg-white/[.03] border border-amber-500/15 rounded-xl px-4 py-3 text-sm outline-none"><input id="custPhone" required placeholder="WhatsApp number" class="w-full bg-white/[.03] border border-amber-500/15 rounded-xl px-4 py-3 text-sm outline-none"><input id="custAddress" required placeholder="Delivery city / notes" class="w-full bg-white/[.03] border border-amber-500/15 rounded-xl px-4 py-3 text-sm outline-none"><button class="goldBtn w-full py-3.5 rounded-xl text-[11px] tracking-[.25em] uppercase font-semibold">Request Private Allocation</button></form></div></div>
-<div class="ytHost"><div id="ytPlayer"></div></div>
-<script src="data.js"></script>
-<script src="maison.js"></script>
-<script src="more.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
-<script src="music.js"></script>
-</body></html>
+  <header>
+    <div class="wrap">
+      <div class="tag">Class 10 · Super Easy Cheats</div>
+      <h1>Coding Cheatsheet</h1>
+      <p class="lead">HTML, CSS, JavaScript — Class 10 student ke liye. Bhasha simple. Sirf zaroori cheezein.</p>
+      <nav>
+        <a href="#idea">Idea</a>
+        <a href="#html">HTML</a>
+        <a href="#css">CSS</a>
+        <a href="#js">JavaScript</a>
+        <a href="#page">Pehli page</a>
+        <a href="#mistakes">Ghaltiyan</a>
+        <a href="#practice">Practice</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="idea">
+      <h2>1. Pehle yeh samajh lo</h2>
+      <p>Website 3 layers ki hoti hai. Yaad rakhne ka trick:</p>
+      <div class="cards">
+        <div class="card">
+          <b><span class="dot" style="background:var(--html)"></span>HTML</b>
+          Haddi / skeleton. Likhta hai: yeh heading hai, yeh button hai, yeh image hai.
+        </div>
+        <div class="card">
+          <b><span class="dot" style="background:var(--css)"></span>CSS</b>
+          Kapray / look. Color, size, gap, center.
+        </div>
+        <div class="card">
+          <b><span class="dot" style="background:var(--js)"></span>JavaScript</b>
+          Harkat. Click pe kuch ho, number change ho, message aaye.
+        </div>
+      </div>
+      <div class="note"><b>File names:</b> page ka naam <code>index.html</code> rakho. Style <code>style.css</code>. Logic <code>script.js</code>. Pehle sirf ek HTML file se start karo.</div>
+    </section>
+
+    <section id="html">
+      <h2>2. HTML — tags yaad karo</h2>
+      <p>Tag = box. Almost har tag open + close hota hai.</p>
+      <pre><p>Yeh ek paragraph hai.</p></pre>
+      <table>
+        <thead>
+          <tr><th>Tag</th><th>Kaam</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code><h1></code> se <code><h6></code></td><td>Headings. h1 sab se bari.</td><td><code><h1>Mera Page</h1></code></td></tr>
+          <tr><td><code><p></code></td><td>Normal text</td><td><code><p>Hello</p></code></td></tr>
+          <tr><td><code><a href=""></code></td><td>Link</td><td><code><a href="https://google.com">Google</a></code></td></tr>
+          <tr><td><code><img src="" alt=""></code></td><td>Picture. Close tag nahi.</td><td><code><img src="cat.jpg" alt="cat"></code></td></tr>
+          <tr><td><code><button></code></td><td>Button</td><td><code><button>Click</button></code></td></tr>
+          <tr><td><code><ul></code> + <code><li></code></td><td>List</td><td><code><li>Aam</li></code></td></tr>
+          <tr><td><code><div></code></td><td>Box / section</td><td>cheezon ko group karne ke liye</td></tr>
+          <tr><td><code><br></code></td><td>Next line</td><td>close nahi hota</td></tr>
+        </tbody>
+      </table>
+      <h3>Har page ka skeleton</h3>
+      <pre><!DOCTYPE html>
+<html>
+  <head>
+    <title>Mera Pehla Page</title>
+  </head>
+  <body>
+    <h1>Salam</h1>
+    <p>Yeh meri website hai.</p>
+  </body>
+</html></pre>
+      <div class="ok"><b>Sirf itna yaad rakho:</b> <code>head</code> = title waghera jo tab pe likha aata hai. <code>body</code> = jo screen pe dikhta hai.</div>
+    </section>
+
+    <section id="css">
+      <h2>3. CSS — sundar banana</h2>
+      <p>Formula hamesha yehi hai:</p>
+      <pre>selector {
+  property: value;
+}</pre>
+      <p>Matlab: <b>kis cheez ko</b> change karna hai, <b>kya</b> change karna hai.</p>
+      <pre>h1 {
+  color: darkgreen;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+}
+
+body {
+  background: #f6f1e8;
+  font-family: Arial;
+}</pre>
+      <table>
+        <thead>
+          <tr><th>Property</th><th>Kaam</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>color</code></td><td>text ka rang</td></tr>
+          <tr><td><code>background</code></td><td>peeche ka rang</td></tr>
+          <tr><td><code>font-size</code></td><td>text bada/chhota</td></tr>
+          <tr><td><code>text-align</code></td><td>left / center / right</td></tr>
+          <tr><td><code>padding</code></td><td>andar se space</td></tr>
+          <tr><td><code>margin</code></td><td>bahar se space</td></tr>
+          <tr><td><code>border</code></td><td>line around box</td></tr>
+          <tr><td><code>width</code> / <code>height</code></td><td>size</td></tr>
+        </tbody>
+      </table>
+      <h3>HTML ke andar CSS kaise lagao</h3>
+      <pre><head>
+  <style>
+    h1 { color: navy; }
+  </style>
+</head></pre>
+    </section>
+
+    <section id="js">
+      <h2>4. JavaScript — click pe kaam</h2>
+      <p>Class 10 ke liye 4 cheezein kaafi hain.</p>
+      <h3>A) Message dikhana</h3>
+      <pre>alert("Salam Class 10");</pre>
+      <h3>B) Variable (dibba)</h3>
+      <pre>let name = "Ali";
+let score = 10;
+score = score + 1;</pre>
+      <h3>C) If (agar)</h3>
+      <pre>if (score >= 10) {
+  alert("Jeet gaye");
+} else {
+  alert("Phir try karo");
+}</pre>
+      <h3>D) Button click</h3>
+      <pre><button onclick="alert('Hi')">Press me</button></pre>
+      <p>Live try:</p>
+      <button class="try" onclick="helloDemo()">Salam button</button>
+      <button class="try" onclick="scoreDemo()">Score +1</button>
+      <div id="demoBox">Yahan result aayega.</div>
+    </section>
+
+    <section id="page">
+      <h2>5. Copy-paste: pehli poori page</h2>
+      <p>Notepad mein save karo as <code>index.html</code>. Double click. Browser khul jayega.</p>
+      <pre><!DOCTYPE html>
+<html>
+<head>
+  <title>Mera Page</title>
+  <style>
+    body { font-family: Arial; background: #f3efe6; text-align: center; }
+    button { padding: 10px 16px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Mera Pehla Website</h1>
+  <p>Class 10 coding start.</p>
+  <button onclick="document.body.style.background='lightblue'">
+    Rang badlo
+  </button>
+</body>
+</html></pre>
+    </section>
+
+    <section id="mistakes">
+      <h2>6. Common ghaltiyan</h2>
+      <table>
+        <thead>
+          <tr><th>Ghalti</th><th>Theek</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tag band nahi kiya <code><h1>Hi</code></td><td><code><h1>Hi</h1></code></td></tr>
+          <tr><td>File <code>.txt</code> save kar di</td><td><code>.html</code> save karo</td></tr>
+          <tr><td><code>colr</code> likh diya</td><td><code>color</code> spelling check</td></tr>
+          <tr><td>CSS mein <code>;</code> bhool gaye</td><td>har line ke end pe semicolon</td></tr>
+          <tr><td>Quotes mix <code>"Hello'</code></td><td>ek hi type: <code>" "</code> ya <code>' '</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="practice">
+      <h2>7. 20 minute practice</h2>
+      <ol>
+        <li>Apna naam <code>h1</code> mein likho.</li>
+        <li>Neeche 2 sentences <code>p</code> mein likho.</li>
+        <li>Heading ko center + apna favourite color do.</li>
+        <li>Ek button banao jo alert mein "I can code" dikhaye.</li>
+        <li>Background ko light yellow karo.</li>
+      </ol>
+      <div class="note">Jab yeh 5 ho jayein, tum Class 10 web coding ka base jaante ho. Next step: list + image add karna.</div>
+    </section>
+  </main>
+
+  <footer>
+    Class 10 Coding Cheats · HTML + CSS + JS · Easy mode
+  </footer>
+
+  <script>
+    let score = 0;
+    function helloDemo() {
+      document.getElementById("demoBox").textContent = "Salam! Button kaam kar raha hai.";
+    }
+    function scoreDemo() {
+      score = score + 1;
+      document.getElementById("demoBox").textContent = "Score: " + score;
+    }
+  </script>
+</body>
+</html>
