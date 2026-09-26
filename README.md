@@ -1,9 +1,5 @@
-# Class 10 Coding Cheats
+# Coding AI Bot
 
-Super easy HTML, CSS, and JavaScript cheatsheet for Class 10 students.
+Full-page beginner coding bot (HTML, CSS, JavaScript, Python, logic, Git).
 
-## Live
-
-https://cocogotmeta.github.io/veloramart/
-
-Roman Urdu + English. Only the basics: tags, colors, click buttons, first page template, common mistakes.
+Live: https://cocogotmeta.github.io/veloramart/
